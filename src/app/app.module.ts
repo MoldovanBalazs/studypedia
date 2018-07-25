@@ -9,6 +9,8 @@ import { DeadlineComponent } from './deadline/deadline.component';
 
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleListComponent } from './article-list/article-list.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { ProfiledetailComponent } from './profiledetail/profiledetail.component'
 
     MainmenuComponent,
     ProfiledetailComponent,
+    ArticlesComponent,
+    ArticleListComponent,
 
   ],
   imports: [
