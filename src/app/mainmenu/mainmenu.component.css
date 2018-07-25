@@ -1,0 +1,36 @@
+
+body {
+  margin-right: 25%;
+}
+.menustyle {
+
+  float: left;
+}
+
+.menubutton {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+  width: 100%;
+  vertical-align: center;
+
+ display: table;
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  border: 5px solid #355C7D   ;
+  margin: 12px;
+  padding: 5px;
+  border-radius: 300px / 15px;;
+  align-items: center;
+}
+
+.vl {
+  border-left: 6px solid green;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+
+  top: 0;
+}

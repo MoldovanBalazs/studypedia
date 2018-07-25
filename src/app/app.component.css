@@ -1,0 +1,36 @@
+body {
+
+
+}
+h1 {
+  background-color: #f8f8fa;
+  text-align: center;
+  color: #58668b   ;
+  font-weight: 700;
+  margin: 0 auto;
+
+  margin-bottom: 30px;
+
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+
+  margin: 25px;
+
+  padding: 25px;
+  border-radius: 50px / 15px;
+}
+
+input.mystyle {
+  color: rosybrown ;
+  font-family: Corbel;
+  font-size: x-large;
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
