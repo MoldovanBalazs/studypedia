@@ -9,13 +9,13 @@ import { DeadlineComponent } from './deadline/deadline.component';
 
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
-import {RouterModule, Routes} from "@angular/router";
+import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
 
 const routes: Routes = [
-      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
+      // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+      // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+      {path: 'search', component: ArticleListComponent }
   ];
 
 @NgModule({
