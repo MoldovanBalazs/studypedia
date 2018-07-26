@@ -27,22 +27,22 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table class="table" *ngIf="(btn_notes || btn_seminars || btn_labs || btn_exams) && articles && articles.length">
-        <thead>
-        <tr>
-          <th>Article</th>
-          <th>Author</th>
-          <th>Date</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let article of filteredArticles">
-          <td>{{ article.articleName }}</td>
-          <td>{{ article.articleAuthor }}</td>
-          <td>{{ article.articleDate }}</td>
-        </tr>
-        </tbody>
-      </table>
+      <!--<table class="table" *ngIf="(btn_notes || btn_seminars || btn_labs || btn_exams) && articles && articles.length">-->
+        <!--<thead>-->
+        <!--<tr>-->
+          <!--<th>Article</th>-->
+          <!--<th>Author</th>-->
+          <!--<th>Date</th>-->
+        <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+        <!--<tr *ngFor="let article of filteredArticles">-->
+          <!--<td>{{ article.articleName }}</td>-->
+          <!--<td>{{ article.articleAuthor }}</td>-->
+          <!--<td>{{ article.articleDate }}</td>-->
+        <!--</tr>-->
+        <!--</tbody>-->
+      <!--</table>-->
       <!--<table class="table" [ngSwitch]="true">-->
       <!--<ng-container>-->
       <!--<div *ngSwitchCase="(btn_notes || btn_seminars || btn_labs || btn_exams) && articles && articles.length">-->
