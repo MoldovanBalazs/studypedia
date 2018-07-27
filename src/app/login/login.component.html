@@ -1,0 +1,32 @@
+
+<div class='card'>
+  <div class = 'card-header'>
+    <h1>{{pageTitle}}</h1>
+  </div>
+</div>
+
+
+<form>
+  <div class="input">
+    <label>Username</label>
+    <input type="text">
+  </div>
+  <div class = "input">
+    <label> Password </label>
+    <input type = 'password'>
+  </div>
+  <div class = 'input'>
+    <input type = 'submit' value = "Login">
+  </div>
+  <div>
+    <h4>New user?
+      <button type="button"
+              (click) = 'toggleRegister()'>
+        {{ registerButton ? 'Nevermind' : 'Register here!'}}
+      </button>
+      <div *ngIf = 'registerButton'>
+        <app-register></app-register>
+      </div>
+    </h4>
+  </div>
+</form>

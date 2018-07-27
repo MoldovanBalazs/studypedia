@@ -1,0 +1,63 @@
+
+
+<p></p>
+<div>
+  <div class="input">
+    <label>Username &nbsp;</label>
+    <input type="text">
+  </div>
+  <p></p>
+  <div class = "input">
+    <label> Password &nbsp; </label>
+    <input type = 'password'>
+  </div>
+  <p></p>
+
+  <div class="input">
+    <label> University </label>
+    <input type = 'text'>
+  </div>
+  <div class = 'input'>
+    <label> Faculty  &nbsp;&nbsp; &nbsp;&nbsp;</label>
+    <input type = 'text'>
+  </div>
+  <div class = 'input'>
+    <label> Branch  &nbsp;&nbsp; &nbsp; </label>
+
+    <input type = 'text'>
+  </div>
+
+
+  <h4>
+    <button type="button"
+            (click) = 'toggleMod()'>
+      {{ modButton ? 'I lied' : "Click here if you're a moderator"}}
+    </button>
+
+    <div *ngIf = 'modButton'>
+      <div class = "input">
+        <label> Prove it &nbsp; </label>
+        <input type = 'password'>
+      </div>
+    </div>
+  <!--
+  <div>
+    <label>
+      <div >
+        <input type="checkbox" id= 'isMod' [(ngModel)] = "isMod">
+        Moderator
+      </div>
+    </label>
+
+    <div class = 'input' *ngIf isMod = 'true'>
+      <label>Moderator password:</label>
+      <input type = 'password'>
+    </div>
+  </div>
+
+</div>
+-->
+<div class = 'input'>
+  <h2> <input type = 'submit' value = "Register"> </h2>
+</div>
+
