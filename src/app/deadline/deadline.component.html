@@ -2,18 +2,10 @@
 <div class = "container" style = "float:right">
 
   <div class = "centered">
-    <div *ngFor="let curriculaObj of curricula">
-      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:-->
-        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
-      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:-->
-        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
-      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:-->
-        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
-    </div>
-
-    <!--p class = "ok" *ngFor="let curriculaObj of curricula">{{curriculaObj.name}}:
+  <!--<p class = "isComing">Java exam: {{ getPeriod()}}</p>-->
+    <p class = "ok" *ngFor="let curriculaObj of curricula">{{curriculaObj.name}}:
     {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
-    </p-->
+    </p>
   </div>
 
 <hr>
@@ -21,16 +13,16 @@
   <div title="add deadline">
     <p class = "paragraphInput"> Register your assignment
     </p>
-    <input #curriculaName class = "inputstyle"  style = "float:left">
+    <input class = "inputstyle"  style = "float:left">
     <br>
 
-    <input #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
+    <input class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
     <br>
   </div>
 
   <div>
     <br>
-    <button (click)="addCurricula(curriculaName.value, curriculaDate.value)" class = "addbutton" style = "float:right">Add</button>
+    <button class = "addbutton" style = "float:right">Add</button>
   </div>
 </div>
 

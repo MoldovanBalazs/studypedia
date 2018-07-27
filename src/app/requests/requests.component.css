@@ -1,0 +1,56 @@
+.selected {
+  background-color: #CFD8EC !important;
+  color: white;
+}
+.requests {
+  margin: 0 0 2em 0em;
+  list-style-type: none;
+  padding: 0;
+  width: 60em;
+}
+.requests li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #1FE;
+  margin: .5em;
+  padding: 1.0em 2em;
+  height: 1.6em;
+  border-radius: 15px;
+}
+.requests li:hover {
+  color: #607D8D;
+  background-color: #DDD;
+  left: 0em;
+}
+button {
+  background-color: #1e1;
+  border: ridge;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+button:hover {
+  background-color: #eee;
+}
+
+button.accept {
+  position: absolute;
+  left: 750px;
+  top: 10px;
+  background-color: green !important;
+  color: yellow;
+}
+button.deny {
+  position: absolute;
+  left: 850px;
+  top: 10px;
+  background-color: green !important;
+  color: red;
+}
+.login_info {
+  position: absolute;
+
+}
