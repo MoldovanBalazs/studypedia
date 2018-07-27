@@ -21,5 +21,11 @@
       Add Faculty
     </button>
   </div>
+    <div>
+      <h3>Faculties</h3>
+      <div *ngFor="let faculty of this.currentUniversity.faculties">
+        {{faculty}}
+      </div>
+    </div>
   </div>
 </div>
