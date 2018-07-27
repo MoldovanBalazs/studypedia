@@ -9,36 +9,6 @@ import {IUser} from './user';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  get listFilter(): string {
-    return this._listFilter;
-  }
-
-  set listFilter(value: string) {
-    this._listFilter = value;
-    if (this.btn_notes) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnNotes(this.listFilter) : this.articles;
-    } else if (this.btn_seminars) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnSeminars(this.listFilter) : this.articles;
-    } else if (this.btn_labs) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnLabs(this.listFilter) : this.articles;
-    } else if (this.btn_exams) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnExams(this.listFilter) : this.articles;
-    } else if (this.btn_users) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnUsers(this.listFilter) : this.users;
-    } else if (this.btn_subjects) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnSubjects(this.listFilter) : this.subjects;
-    }
-  }
-  pageTitle = 'Search...';
-  _listFilter: string;
-  filteredArticles: any[];
-  btn_notes: boolean;
-  btn_seminars: boolean;
-  btn_labs: boolean;
-  btn_exams: boolean;
-  btn_users: boolean;
-  btn_subjects: boolean;
-
   users: IUser[] = [
     {
       'userId': 1,
@@ -59,7 +29,7 @@ export class ArticleListComponent implements OnInit {
       'userId': 4,
       'userName': 'Mariuca',
       'university': 'UBB'
-    },
+    }
   ];
   subjects: ISubject[] = [
     {
@@ -78,7 +48,7 @@ export class ArticleListComponent implements OnInit {
       'description': 'something with tables'
     }
   ];
-  articles: IArticle[] = [
+  articles: any[] = [
     {
       'articleId': 1,
       'articleName': 'OOP Basics',
@@ -88,7 +58,7 @@ export class ArticleListComponent implements OnInit {
     },
     {
       'articleId': 2,
-      'articleName': 'OOP Advanced',
+      'articleName': '+OOP Advanced',
       'articleAuthor': 'Gigel',
       'articleType': 'note',
       'articleDate': '24.07.2018'
@@ -99,22 +69,59 @@ export class ArticleListComponent implements OnInit {
       'articleAuthor': 'Maria',
       'articleType': 'lab',
       'articleDate': '15.07.2018'
-    },
+    }
   ];
 
+  pageTitle = 'Search...';
+  _listFilter: string;
+  filteredArticles: any[];
+  btn_notes: boolean;
+  btn_seminars: boolean;
+  btn_labs: boolean;
+  btn_exams: boolean;
+  btn_users: boolean;
+  btn_subjects: boolean;
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.updateListFilter(value);
+  }
+
   constructor() {
-    this.filteredArticles = this.articles;
+    this.filteredArticles = [];
     this.listFilter = '';
   }
 
-  // performFilter(filterBy: string): any[] {
-  //   if (this.btn_notes) { return this.performFilterOnNotes(filterBy); }
-  //   if (this.btn_seminars) { return this.performFilterOnSeminars(filterBy); }
-  //   if (this.btn_labs) { return this.performFilterOnLabs(filterBy); }
-  //   if (this.btn_exams) { return this.performFilterOnExams(filterBy); }
-  //   if (this.btn_users) { return this.performFilterOnUsers(filterBy); }
-  //   if (this.btn_subjects) { return this.performFilterOnSubjects(filterBy); }
-  // }
+  showTable(id): void {
+    document.getElementById('t01').hidden = true;
+    document.getElementById('t02').style.display = 'none';
+    document.getElementById('t03').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+    this.updateListFilter(this._listFilter);
+  }
+
+  public updateListFilter(value: string) {
+    console.log('LOG');
+    this._listFilter = value;
+    if (this.btn_notes) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnNotes(this.listFilter) : this.articles;
+    } else if (this.btn_seminars) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnSeminars(this.listFilter) : this.articles;
+    } else if (this.btn_labs) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnLabs(this.listFilter) : this.articles;
+    } else if (this.btn_exams) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnExams(this.listFilter) : this.articles;
+    } else if (this.btn_users) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnUsers(this.listFilter) : this.users;
+    } else if (this.btn_subjects) {
+      this.filteredArticles = this.listFilter ? this.performFilterOnSubjects(this.listFilter) : this.subjects;
+    }
+  }
+
   performFilterOnNotes(filterBy: string): IArticle[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.articles.filter((article: IArticle) => article.articleType === 'note' &&
