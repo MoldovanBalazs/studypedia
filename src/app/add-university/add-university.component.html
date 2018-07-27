@@ -1,3 +1,25 @@
-<p>
-  add-university works!
-</p>
+<h1>Add new University or add a new Faculty to an existent University</h1>
+<div>
+  <label>University Name:
+  </label>
+  <input [(ngModel)]="this.currentUniversity.name" placeholder="university name">
+  <div *ngIf="this.currentUniversity.name">
+  <div *ngIf="this.existsUniversity(this.currentUniversity); else unexistentUniversity;">
+    <h2>University already exists; add faculties</h2>
+  </div>
+  <ng-template #unexistentUniversity>
+    <h2>University does not exist</h2>
+    <button (click)="addUniversity()">
+      Add University
+    </button>
+  </ng-template>
+  <div>
+    <label>Faculty name:
+    </label>
+    <input [(ngModel)]="this.currentFaculty" placeholder="faculty name">
+    <button (click)="addFaculty()">
+      Add Faculty
+    </button>
+  </div>
+  </div>
+</div>
