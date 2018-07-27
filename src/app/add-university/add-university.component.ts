@@ -31,4 +31,8 @@ export class AddUniversityComponent implements OnInit {
     this.currentUniversity.faculties.push(this.currentFaculty);
   }
 
+  replaceExistentUniversity(): void {
+    this.universityService.replaceExistentUniversity(this.currentUniversity);
+  }
+
 }

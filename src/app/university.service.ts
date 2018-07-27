@@ -33,4 +33,9 @@ export class UniversityService {
     return false;
   }
 
+  replaceExistentUniversity(oldUniversity: University): void {
+    this.universities = this.universities.filter(university => university.name !== oldUniversity.name);
+    this.universities.push(oldUniversity);
+  }
+
 }

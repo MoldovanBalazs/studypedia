@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {logger} from "codelyzer/util/logger";
+import {logger} from 'codelyzer/util/logger';
 
 
 @Component({
