@@ -3,12 +3,12 @@
 
   <div class = "centered">
     <div *ngFor="let curriculaObj of curricula">
-      <p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
-        {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-      <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
-        {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-      <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
-        {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:-->
+        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
+      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:-->
+        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
+      <!--<p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:-->
+        <!--{{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>-->
     </div>
 
     <!--p class = "ok" *ngFor="let curriculaObj of curricula">{{curriculaObj.name}}:

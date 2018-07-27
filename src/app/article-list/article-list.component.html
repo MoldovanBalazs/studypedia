@@ -8,11 +8,11 @@
       <div class="col-md-2">Type:</div>
       <form>
         <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (onclick)="showTable('t01')"> Notes
-        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (onclick)="showTable('t01')" [checked]='false'> Seminars
-        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (onclick)="showTable('t01')"[checked]='false'> Labs
-        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (onclick)="showTable('t01')"[checked]='false'> Exams
-        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (onclick)="showTable('t02')"[checked]='false'> Users
-        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (onclick)="showTable('t03')"[checked]='false'> Subjects<br>
+        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (onclick)="showTable('t01')" > Seminars
+        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (onclick)="showTable('t01')"> Labs
+        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (onclick)="showTable('t01')"> Exams
+        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (onclick)="showTable('t02')"> Users
+        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (onclick)="showTable('t03')"> Subjects<br>
         <br>
         <!--<button onclick="updateListFilter(listFilter)">Submit</button>-->
       </form>
