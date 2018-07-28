@@ -22,6 +22,8 @@ const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent }
+      {path: 'requests', component: RequestsComponent }
+      {path: 'add-university', component: AddUniversityComponent}
   ];
 
 @NgModule({
