@@ -11,6 +11,7 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
@@ -25,6 +26,7 @@ const routes: Routes = [
     MainmenuComponent,
     ProfiledetailComponent,
     ArticleListComponent,
+    RequestsComponent,
 
   ],
   imports: [
