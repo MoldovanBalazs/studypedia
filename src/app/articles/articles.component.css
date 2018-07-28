@@ -1,0 +1,108 @@
+p.ok {
+  background-color: #f8f8fa   ;
+  color: #58668b   ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+  /*width: 900px;*/
+  border: 10px solid #88d8b0;
+  margin: 25px;
+
+  padding: 25px;
+  border-radius: 50px / 15px;
+  width: 60%;
+}
+
+p.isComing {
+  background-color: #f8f8fa  ;
+  color: #58668b   ;
+  font-weight: 700;
+  width: 60%;
+
+  margin-bottom: 30px;
+
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+  /*width: 900px;*/
+  border: 10px solid #ffcc5c ;
+  margin: 25px;
+
+  padding: 25px;
+  border-radius:  50px / 15px;;
+}
+
+p.urgent {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+  width: 60%;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+  /*width: 900px;*/
+  border: 10px solid #ff6f69  ;
+  margin: 25px;
+  padding: 25px;
+  border-radius:  50px / 15px;;
+}
+
+.inputstyle {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  border: 5px solid #355C7D ;
+  margin: 12px;
+  padding: 5px;
+  border-radius:  50px / 15px;
+}
+.inputstyle_date{
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  border: 5px solid #355C7D  ;
+  margin: 8px;
+  padding: 1px;
+  border-radius:  50px / 15px;
+}
+
+.paragraphInput{
+
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+
+}
+
+.addbutton {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  width: 20%;
+  border: 5px solid #355C7D  ;
+  margin: 12px;
+  padding: 5px;
+  border-radius: 50px / 15px;;
+}

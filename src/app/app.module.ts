@@ -12,6 +12,11 @@ import { ProfiledetailComponent } from './profiledetail/profiledetail.component'
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { RequestsComponent } from './requests/requests.component';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
+import { UniversityComponent } from './university/university.component';
+import { AddUniversityComponent } from './add-university/add-university.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
@@ -27,6 +32,11 @@ const routes: Routes = [
     ProfiledetailComponent,
     ArticleListComponent,
     RequestsComponent,
+    RequestDetailComponent,
+    UniversityComponent,
+    AddUniversityComponent,
+    ArticlesComponent,
+    NewsfeedComponent
 
   ],
   imports: [
