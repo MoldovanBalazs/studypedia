@@ -2,8 +2,8 @@
 <div>
   <label>University Name:
   </label>
-  <input [(ngModel)]="this.currentUniversity.name" placeholder="university name">
-  <div *ngIf="this.currentUniversity.name">
+  <input [(ngModel)]="this.currentUniversityName" placeholder="university name">
+  <div *ngIf="this.currentUniversityName">
     <div *ngIf="this.existsUniversity(this.currentUniversity); else unexistentUniversity;">
       <h2>University already exists; add faculties</h2>
     </div>

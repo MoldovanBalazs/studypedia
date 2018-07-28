@@ -9,11 +9,12 @@ import { University } from '../university';
 })
 export class AddUniversityComponent implements OnInit {
 
+  currentUniversityName: string;
   currentUniversity: University;
   currentFaculty: string;
 
   constructor(private universityService: UniversityService) {
-    this.currentUniversity = new University();
+    //this.currentUniversity = new University();
   }
 
   ngOnInit() {

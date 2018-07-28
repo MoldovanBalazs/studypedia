@@ -24,9 +24,13 @@ export class UniversityService {
     this.universities.push(university);
   }
 
-  existsUniversity(university: University): boolean {
+  getUniversity(): Observable<University> {
+
+  }
+
+  existsUniversity(universityName: string): boolean {
     if(this.universities.some(function (otherUniversity: University) {
-      return otherUniversity.name === university.name;
+      return otherUniversity.name === universityName;
     })) {
       return true;
     }

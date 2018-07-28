@@ -9,19 +9,13 @@ import { UniversityService } from '../university.service';
 })
 export class UniversityComponent implements OnInit {
 
-  universities: University[] = [];
-  currentUniversity: University;
+  university : University;
 
   constructor(private universityService: UniversityService) {
-    this.currentUniversity = new University();
+
   }
 
   ngOnInit() {
-  }
-
-  getUniversities(): void {
-    this.universityService.getUniversities()
-      .subscribe(universities => this.universities = universities);
   }
 
 }
