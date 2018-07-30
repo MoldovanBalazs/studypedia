@@ -13,8 +13,8 @@ import {RouterModule, Routes} from "@angular/router";
 
 const routes: Routes = [
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
+      //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+      //{path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
   ];
 
 @NgModule({

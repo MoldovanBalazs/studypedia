@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CurriculaService} from "../curricula.service";
 import * as angular from 'angular';
 import {Curricula, Duration} from "../curricula";
+import {s} from "@angular/core/src/render3";
 
 
 @Component({
@@ -16,7 +17,7 @@ export class DeadlineComponent implements OnInit {
   private countDownDate : any;
   private now;
   private distance;
-  private x;
+  private timeoutId;
 
   constructor(private curriculaService: CurriculaService) { }
 
@@ -32,14 +33,13 @@ export class DeadlineComponent implements OnInit {
         return -1;
       }
     });
-
+    this.displayCountDown();
   }
 
   getCurricula(){
     this.curriculaService.getCurricula().subscribe((result)=>{
       this.curricula = result;
     })
-    //this.curricula.s
   }
 
   addCurricula(name: string, deadline: Date): void {
@@ -53,21 +53,12 @@ export class DeadlineComponent implements OnInit {
       .subscribe(curricula => {
       this.curricula.push(curricula);
     });
-
-    //console.log("Add button event noticed");
-  }
-
-  getDuration() {
-
-    for(let curriculaObj of this.curricula){
-      this.calculateDuration(curriculaObj);
-    }
   }
 
   calculateDuration(curricula:Curricula):void{
     this.countDownDate = curricula.deadline.getTime();
 
-    this.now = new Date().getTime(); //now
+    this.now = new Date().getTime();//now
     this.distance = this.countDownDate - this.now; //difference from now
 
     curricula.timeRemaining.days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
@@ -77,9 +68,10 @@ export class DeadlineComponent implements OnInit {
   }
 
   displayCountDown() {
-    //this.x = setTimeout(()=>this.getDuration(), 1000);
-    this.getDuration();
+    setInterval(()=>{
+      for(let curriculaObj of this.curricula){
+        this.calculateDuration(curriculaObj);
+      }
+    }, 1000);
   }
-
-
 }
