@@ -17,12 +17,13 @@ import { UniversityComponent } from './university/university.component';
 import { AddUniversityComponent } from './add-university/add-university.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { UniversityDetailComponent } from './university-detail/university-detail.component';
 
 const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'search', component: ArticleListComponent }
-      {path: 'requests', component: RequestsComponent }
+      {path: 'search', component: ArticleListComponent },
+      {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent}
   ];
 
@@ -38,7 +39,8 @@ const routes: Routes = [
     UniversityComponent,
     AddUniversityComponent,
     ArticlesComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
+    UniversityDetailComponent
 
   ],
   imports: [

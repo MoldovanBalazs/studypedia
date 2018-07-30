@@ -11,30 +11,41 @@ export class UniversityService {
   universities: University[] = [];
   currentUniversity: University;
 
-  constructor() { }
+  constructor() {
 
-  getCurrentUniversity(): University {
-    return this.currentUniversity;
+    this.generateMockUniversities();
+
   }
 
   getUniversities(): Observable<University[]> {
     return of(this.universities);
   }
-  addUniversity(university: University): void {
-    this.universities.push(university);
+
+  generateMockUniversities(): void {
+
+    var aUniversity = new University();
+    aUniversity.name = 'Universitatea a';
+    aUniversity.id = 0;
+    aUniversity.faculties.push('Facultatea 1');
+    aUniversity.faculties.push('Facultatea 2');
+
+    var bUniversity = new University();
+    bUniversity.name = 'Universitatea b';
+    bUniversity.id = 1;
+    bUniversity.faculties.push('Facultatea 3');
+
+    var cUniversity = new University();
+    cUniversity.name = 'Universitatea c';
+    cUniversity.id = 2;
+    cUniversity.faculties.push('Facultatea 4');
+
+    this.universities.push(aUniversity);
+    this.universities.push(bUniversity);
+    this.universities.push(cUniversity);
   }
 
-  getUniversity(): Observable<University> {
-
-  }
-
-  existsUniversity(universityName: string): boolean {
-    if(this.universities.some(function (otherUniversity: University) {
-      return otherUniversity.name === universityName;
-    })) {
-      return true;
-    }
-    return false;
+  getLength(): number {
+    return this.universities.length;
   }
 
 }

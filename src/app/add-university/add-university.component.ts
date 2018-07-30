@@ -12,24 +12,43 @@ export class AddUniversityComponent implements OnInit {
   currentUniversityName: string;
   currentUniversity: University;
   currentFaculty: string;
+  universitySelected: boolean = false;
+  universities: University[];
 
   constructor(private universityService: UniversityService) {
-    //this.currentUniversity = new University();
   }
 
   ngOnInit() {
+    this.getUniversities();
   }
 
   addUniversity(): void {
-    this.universityService.universities.push(this.currentUniversity);
+    if(this.currentUniversity){
+      this.universityService.universities.push(this.currentUniversity);
+    }
   }
 
-  existsUniversity(university: University): boolean {
-    return this.universityService.existsUniversity(university);
+  createNewUniversity(): void {
+    this.currentUniversity = new University();
+  }
+
+  existsUniversity(universityName: string): boolean {
+    if(this.universities.length === 0){return false;}
+    if(this.universities.find(university => university.name === universityName)){
+      return true;
+    }
+    return false;
   }
 
   addFaculty(): void {
-    this.currentUniversity.faculties.push(this.currentFaculty);
+    if(this.currentUniversity){
+      this.currentUniversity.faculties.push(this.currentFaculty);
+    }
+  }
+
+  getUniversities(): void {
+    this.universityService.getUniversities()
+            .subscribe(universities => this.universities = universities);
   }
 
 }
