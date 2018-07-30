@@ -48,7 +48,7 @@ export class ArticleListComponent implements OnInit {
       'description': 'something with tables'
     }
   ];
-  articles: any[] = [
+  notes: IArticle[] = [
     {
       'articleId': 1,
       'articleName': 'OOP Basics',
@@ -67,11 +67,82 @@ export class ArticleListComponent implements OnInit {
       'articleId': 3,
       'articleName': 'C++',
       'articleAuthor': 'Maria',
-      'articleType': 'lab',
+      'articleType': 'note',
       'articleDate': '15.07.2018'
     }
   ];
 
+  seminars: IArticle[] = [
+    {
+      'articleId': 1,
+      'articleName': 'OOP S1',
+      'articleAuthor': 'Gigica',
+      'articleType': 'seminar',
+      'articleDate': '24.06.2018'
+    },
+    {
+      'articleId': 2,
+      'articleName': 'MAP S1',
+      'articleAuthor': 'Gigel',
+      'articleType': 'seminar',
+      'articleDate': '7.07.2018'
+    },
+    {
+      'articleId': 3,
+      'articleName': 'MAP S2',
+      'articleAuthor': 'Maria',
+      'articleType': 'seminar',
+      'articleDate': '30.07.2018'
+    }
+  ];
+
+  labs: IArticle[] = [
+    {
+      'articleId': 1,
+      'articleName': 'OOP L1',
+      'articleAuthor': 'Gigel',
+      'articleType': 'lab',
+      'articleDate': '24.06.2018'
+    },
+    {
+      'articleId': 2,
+      'articleName': 'OOP L2',
+      'articleAuthor': 'Gigel',
+      'articleType': 'lab',
+      'articleDate': '7.07.2018'
+    },
+    {
+      'articleId': 3,
+      'articleName': 'MAP L1',
+      'articleAuthor': 'Maria',
+      'articleType': 'lab',
+      'articleDate': '30.07.2018'
+    }
+  ];
+
+  exams: IArticle[] = [
+    {
+      'articleId': 1,
+      'articleName': 'OOP 2017',
+      'articleAuthor': 'Gigel',
+      'articleType': 'exam',
+      'articleDate': '24.06.2017'
+    },
+    {
+      'articleId': 2,
+      'articleName': 'OOP 2016',
+      'articleAuthor': 'Gigel',
+      'articleType': 'exam',
+      'articleDate': '7.07.2016'
+    },
+    {
+      'articleId': 3,
+      'articleName': 'MAP 2018',
+      'articleAuthor': 'Maria',
+      'articleType': 'exam',
+      'articleDate': '30.07.2018'
+    }
+  ];
   pageTitle = 'Search...';
   _listFilter: string;
   filteredArticles: any[];
@@ -97,7 +168,10 @@ export class ArticleListComponent implements OnInit {
   }
 
   showTable(id): void {
-    document.getElementById('t01').hidden = true;
+    document.getElementById('t01').style.display = 'none';
+    document.getElementById('t011').style.display = 'none';
+    document.getElementById('t012').style.display = 'none';
+    document.getElementById('t013').style.display = 'none';
     document.getElementById('t02').style.display = 'none';
     document.getElementById('t03').style.display = 'none';
     document.getElementById(id).style.display = 'block';
@@ -108,13 +182,13 @@ export class ArticleListComponent implements OnInit {
     console.log('LOG');
     this._listFilter = value;
     if (this.btn_notes) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnNotes(this.listFilter) : this.articles;
+      this.filteredArticles = this.listFilter ? this.performFilterOnNotes(this.listFilter) : this.notes;
     } else if (this.btn_seminars) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnSeminars(this.listFilter) : this.articles;
+      this.filteredArticles = this.listFilter ? this.performFilterOnSeminars(this.listFilter) : this.seminars;
     } else if (this.btn_labs) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnLabs(this.listFilter) : this.articles;
+      this.filteredArticles = this.listFilter ? this.performFilterOnLabs(this.listFilter) : this.labs;
     } else if (this.btn_exams) {
-      this.filteredArticles = this.listFilter ? this.performFilterOnExams(this.listFilter) : this.articles;
+      this.filteredArticles = this.listFilter ? this.performFilterOnExams(this.listFilter) : this.exams;
     } else if (this.btn_users) {
       this.filteredArticles = this.listFilter ? this.performFilterOnUsers(this.listFilter) : this.users;
     } else if (this.btn_subjects) {
@@ -124,25 +198,25 @@ export class ArticleListComponent implements OnInit {
 
   performFilterOnNotes(filterBy: string): IArticle[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.articles.filter((article: IArticle) => article.articleType === 'note' &&
+    return this.notes.filter((article: IArticle) => article.articleType === 'note' &&
       article.articleName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   performFilterOnSeminars(filterBy: string): IArticle[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.articles.filter((article: IArticle) => article.articleType === 'seminar' &&
+    return this.seminars.filter((article: IArticle) => article.articleType === 'seminar' &&
       article.articleName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   performFilterOnLabs(filterBy: string): IArticle[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.articles.filter((article: IArticle) => article.articleType === 'lab' &&
+    return this.labs.filter((article: IArticle) => article.articleType === 'lab' &&
       article.articleName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   performFilterOnExams(filterBy: string): IArticle[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.articles.filter((article: IArticle) => article.articleType === 'exam' &&
+    return this.exams.filter((article: IArticle) => article.articleType === 'exam' &&
       article.articleName.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
   performFilterOnUsers(filterBy: string): IUser[] {

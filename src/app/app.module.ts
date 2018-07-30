@@ -35,13 +35,14 @@ import { UniversityComponent } from './university/university.component';
     UniversityComponent,
     ArticleListComponent,
     ArticlesComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

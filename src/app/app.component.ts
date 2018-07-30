@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {logger} from "codelyzer/util/logger";
+import {logger} from 'codelyzer/util/logger';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class AppComponent {
 
   onCreate() {
 
-  };
+  }
 
   getCurrentDate() {
    this.date = new Date();
