@@ -12,12 +12,8 @@ import { BeginningState } from './BeginningState';
 })
 export class AddUniversityComponent implements OnInit {
 
-  currentUniversityName: string;
   currentUniversity: University;
-  currentFaculty: string;
-  universitySelected: boolean = false;
   universities: University[] = [];
-  pageState: IPageState;
 
   constructor(private universityService: UniversityService) {
   }
@@ -27,49 +23,29 @@ export class AddUniversityComponent implements OnInit {
   }
 
   addUniversity(): void {
-    if(this.currentUniversity){
-      //this.universityService.universities.push(this.currentUniversity);
-      this.universities.push(this.currentUniversity);
-      this.currentUniversity = null;
-      this.currentUniversityName = '';
-      this.currentFaculty = '';
-      this.universityService.universities.push(this.currentUniversity);
-    }
+    if(!this.currentUniversity){return;}
+    this.universityService.addUniversity(this.currentUniversity)
+        .subscribe(university => {
+          this.universities.push(this.currentUniversity);
+        });
   }
 
   createNewUniversity(): void {
     this.currentUniversity = new University();
     this.currentUniversity.faculties = [];
-    this.currentUniversity.name = this.currentUniversityName;
   }
 
   existsUniversity(universityName: string): boolean {
-    if(this.universities.length === 0){
-      return false;
-    }
-    if(this.universities.find(university => university.name === universityName)){
-      return true;
-    }
     return false;
   }
 
-  addFaculty(): void {
-    if(this.currentUniversity){
-      this.currentUniversity.faculties.push(this.currentFaculty);
-    }
+  addFaculty(facultyName: string): void {
+    this.currentUniversity.faculties.push(facultyName);
   }
 
   getUniversities(): void {
     this.universityService.getUniversities()
             .subscribe(universities => this.universities = universities);
-  }
-
-  emptyName(): boolean {
-    if(this.currentUniversityName === ''){
-      this.currentUniversity = null;
-      return true;
-    }
-    return false;
   }
 
 }

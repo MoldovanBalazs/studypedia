@@ -1,36 +1,21 @@
 <h1>Add new University or add a new Faculty to an existent University</h1>
 
-<div>
-  {{universities.length}}
-  <ul>
-    <li *ngFor="let university of universities">
-      {{university.name}} {{university.id}}
-    </li>
-  </ul>
+<div *ngIf="!this.currentUniversity">
+  <app-university-search></app-university-search>
+</div>
+<div *ngIf="!this.currentUniversity">
+  <button (click)="createNewUniversity()">Create New University</button>
 </div>
 
-<app-university-search></app-university-search>
-
-<div>
-  <label>University Name:
-  </label>
-  <input [(ngModel)]="this.currentUniversityName" placeholder="university name">
-  <div *ngIf="existsUniversity(currentUniversityName); else unexistentUnivesrity;">
-    <p>University already exists</p>
-  </div>
-  <ng-template #unexistentUnivesrity>
-    <p>University does not exist yet</p>
-    <div *ngIf="!this.currentUniversity && this.currentUniversityName"><button (click)="createNewUniversity()">Create New University</button></div>
-  </ng-template>
-</div>
 <div *ngIf="this.currentUniversity">
-  {{currentUniversity.name}}
-  <div><input [(ngModel)]="this.currentUniversity.id" placeholder="university id"/></div>
-  <div>
-    <input [(ngModel)]="this.currentFaculty" placeholder="faculty name">
-    <button (click)="addFaculty()">Add Faculty</button>
-  </div>
   <div><button (click)="addUniversity()">Add University</button></div>
+  <div>University name: <input [(ngModel)]="this.currentUniversity.name"/></div>
+  <div>University id: <input [(ngModel)]="this.currentUniversity.id"/></div>
+  <div>
+    <input #facultyName placeholder="faculty"/>
+    <button (click)="addFaculty(facultyName.value)">Add Faculty</button>
+  </div>
+  <div>Faculties:</div>
   <div>
     <ul>
       <li *ngFor="let faculty of this.currentUniversity.faculties">

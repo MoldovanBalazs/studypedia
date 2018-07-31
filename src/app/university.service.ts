@@ -4,6 +4,10 @@ import { University } from './university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,36 +16,19 @@ export class UniversityService {
   universities: University[] = [];
   currentUniversity: University;
   private universitiesUrl = 'api/universities';
+  existentUniversity: boolean;
+  newUniversity: boolean;
 
   constructor(private http: HttpClient) {
-    this.generateMockUniversities();
+  }
+
+  /**POST: add a new University to the server;*/
+  addUniversity(newUniversity: University): Observable<University> {
+    return this.http.post<University>(this.universitiesUrl, newUniversity, httpOptions);
   }
 
   getUniversities(): Observable<University[]> {
     return this.http.get<University[]>(this.universitiesUrl);
-  }
-
-  generateMockUniversities(): void {
-/*
-    var aUniversity = new University();
-    aUniversity.name = 'Universitatea a';
-    aUniversity.id = 0;
-    aUniversity.faculties.push('Facultatea 1');
-    aUniversity.faculties.push('Facultatea 2');
-
-    var bUniversity = new University();
-    bUniversity.name = 'Universitatea b';
-    bUniversity.id = 1;
-    bUniversity.faculties.push('Facultatea 3');
-
-    var cUniversity = new University();
-    cUniversity.name = 'Universitatea c';
-    cUniversity.id = 2;
-    cUniversity.faculties.push('Facultatea 4');
-
-    this.universities.push(aUniversity);
-    this.universities.push(bUniversity);
-    this.universities.push(cUniversity);*/
   }
 
   searchUniversities(term: string): Observable<University[]> {
@@ -49,6 +36,22 @@ export class UniversityService {
       return of([]);
     }
     return this.http.get<University[]>(`${this.universitiesUrl}/?name=${term}`);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
+  }
+
+  private log(message: string): void {
+    console.log(message);
+  }
+
+  /**POST: update a university;*/
+  updateUniversity(university: University): Observable<any> {
+    return this.http.put(this.universitiesUrl, university, httpOptions).pipe();
   }
 
 }

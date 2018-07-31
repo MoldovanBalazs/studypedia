@@ -15,6 +15,8 @@ export class UniversitySearchComponent implements OnInit {
 
   universities$: Observable<University[]>;
   private searchTerms = new Subject<string>();
+  currentUniversity: University;
+  currentFaculty: string;
 
   constructor(private universityService: UniversityService) { }
 
@@ -28,6 +30,20 @@ export class UniversitySearchComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.universityService.searchUniversities(term)),
     );
+  }
+
+  onSelect(university: University): void {
+    if(!university){return;}
+    this.currentUniversity = university;
+    this.currentFaculty = '';
+  }
+
+  addFaculty(newFaculty: string): void {
+    this.currentUniversity.faculties.push(newFaculty);
+  }
+
+  updateUniversity(): void {
+    this.universityService.updateUniversity(this.currentUniversity).subscribe();
   }
 
 }
