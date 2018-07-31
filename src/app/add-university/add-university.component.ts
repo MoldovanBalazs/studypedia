@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UniversityService } from '../university.service';
 import { University } from '../university';
 
+import { IPageState } from './IPageState';
+import { BeginningState } from './BeginningState';
+
 @Component({
   selector: 'app-add-university',
   templateUrl: './add-university.component.html',
@@ -14,6 +17,7 @@ export class AddUniversityComponent implements OnInit {
   currentFaculty: string;
   universitySelected: boolean = false;
   universities: University[] = [];
+  pageState: IPageState;
 
   constructor(private universityService: UniversityService) {
   }
@@ -26,6 +30,10 @@ export class AddUniversityComponent implements OnInit {
     if(this.currentUniversity){
       //this.universityService.universities.push(this.currentUniversity);
       this.universities.push(this.currentUniversity);
+      this.currentUniversity = null;
+      this.currentUniversityName = '';
+      this.currentFaculty = '';
+      this.universityService.universities.push(this.currentUniversity);
     }
   }
 
@@ -54,6 +62,14 @@ export class AddUniversityComponent implements OnInit {
   getUniversities(): void {
     this.universityService.getUniversities()
             .subscribe(universities => this.universities = universities);
+  }
+
+  emptyName(): boolean {
+    if(this.currentUniversityName === ''){
+      this.currentUniversity = null;
+      return true;
+    }
+    return false;
   }
 
 }
