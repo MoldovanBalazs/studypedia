@@ -1,28 +1,15 @@
 import { Injectable } from '@angular/core';
-import { UniversityComponent } from './university/university.component';
+import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { University } from './university';
-import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UniversityService {
+export class InMemoryUniversityDataService implements InMemoryDbService {
 
   universities: University[] = [];
-  currentUniversity: University;
-  private universitiesUrl = 'api/universities';
-
-  constructor(private http: HttpClient) {
-    this.generateMockUniversities();
-  }
-
-  getUniversities(): Observable<University[]> {
-    return this.http.get<University[]>(this.universitiesUrl);
-  }
 
   generateMockUniversities(): void {
-/*
     var aUniversity = new University();
     aUniversity.name = 'Universitatea a';
     aUniversity.id = 0;
@@ -41,14 +28,15 @@ export class UniversityService {
 
     this.universities.push(aUniversity);
     this.universities.push(bUniversity);
-    this.universities.push(cUniversity);*/
+    this.universities.push(cUniversity);
   }
 
-  searchUniversities(term: string): Observable<University[]> {
-    if(!term.trim()){
-      return of([]);
-    }
-    return this.http.get<University[]>(`${this.universitiesUrl}/?name=${term}`);
+  constructor() {
+    this.generateMockUniversities();
   }
 
+  createDb(){
+    const universities = this.universities;
+    return {universities};
+  }
 }

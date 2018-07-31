@@ -33,7 +33,13 @@ export class AddUniversityComponent implements OnInit {
   }
 
   existsUniversity(universityName: string): boolean {
-    if(this.universities.length === 0){return false;}
+    console.log('universities');
+    if(this.universities == null){
+      this.getUniversities();
+    }
+    if(this.universities.length === 0){
+      return false;
+    }
     if(this.universities.find(university => university.name === universityName)){
       return true;
     }

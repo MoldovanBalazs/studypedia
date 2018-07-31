@@ -18,6 +18,11 @@ import { AddUniversityComponent } from './add-university/add-university.componen
 import { ArticlesComponent } from './articles/articles.component';
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
+import { UniversitySearchComponent } from './university-search/university-search.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryUniversityDataService }  from './in-memory-university-data.service';
+import { AppRoutingModule } from './/app-routing.module';
 
 const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
@@ -40,14 +45,19 @@ const routes: Routes = [
     AddUniversityComponent,
     ArticlesComponent,
     NewsfeedComponent,
-    UniversityDetailComponent
+    UniversityDetailComponent,
+    UniversitySearchComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUniversityDataService, {dataEncapsulation: false}
+    ),
     RouterModule.forRoot(routes),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

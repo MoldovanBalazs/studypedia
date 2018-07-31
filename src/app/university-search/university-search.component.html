@@ -1,0 +1,9 @@
+<div>
+  <h4>University Search</h4>
+  <input #searchBox (keyup)="search(searchBox.value)"/>
+  <ul>
+    <li *ngFor="let university of universities$ | async">
+      {{university.name}}
+    </li>
+  </ul>
+</div>
