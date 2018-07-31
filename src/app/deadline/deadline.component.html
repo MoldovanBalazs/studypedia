@@ -1,8 +1,10 @@
 
 <div class = "container" style = "float:right">
+  <div *ngIf = "(renderable)">
 
   <div class = "centered">
     <div *ngFor="let curriculaObj of curricula">
+
       <p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
         {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
       <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
@@ -10,12 +12,8 @@
       <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
         {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
     </div>
-
-    <!--p class = "ok" *ngFor="let curriculaObj of curricula">{{curriculaObj.name}}:
-    {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
-    </p-->
   </div>
-
+  </div>
 <hr>
 
   <div title="add deadline">
@@ -23,14 +21,13 @@
     </p>
     <input #curriculaName class = "inputstyle"  style = "float:left">
     <br>
-
     <input #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
     <br>
   </div>
 
   <div>
     <br>
-    <button (click)="addCurricula(curriculaName.value, curriculaDate.value)" class = "addbutton" style = "float:right">Add</button>
+    <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = " (checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton' " style = "float:right">Add</button>
   </div>
 </div>
 

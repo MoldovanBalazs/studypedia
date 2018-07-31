@@ -3,6 +3,7 @@ import {CurriculaService} from "../curricula.service";
 import * as angular from 'angular';
 import {Curricula, Duration} from "../curricula";
 import {s} from "@angular/core/src/render3";
+import DateTimeFormat = Intl.DateTimeFormat;
 
 
 @Component({
@@ -15,25 +16,22 @@ export class DeadlineComponent implements OnInit {
   curricula: Curricula[];
 
   private countDownDate : any;
-  private now;
+  public now;
   private distance;
-  private timeoutId;
+  public t;
+  public renderable: boolean = false;
 
   constructor(private curriculaService: CurriculaService) { }
 
   ngOnInit() {
-
     this.getCurricula();
-
-    let array = this.curricula;
-    this.curricula.sort((a,b) => {
-      if(a.deadline.getTime() >= b.deadline.getTime()) {
-        return 1;
-      } else {
-        return -1;
-      }
-    });
+    for(let curriculaObj of this.curricula){
+      curriculaObj.deadline.setHours(curriculaObj.deadline.getHours() - 3);
+    }
+    this.sortDeadlines();
     this.displayCountDown();
+    // this.now = new Date().getTime();
+    this.renderable = true;
   }
 
   getCurricula(){
@@ -51,8 +49,8 @@ export class DeadlineComponent implements OnInit {
 
     this.curriculaService.addCurricula(curricula)
       .subscribe(curricula => {
-      this.curricula.push(curricula);
-    });
+        this.curricula.push(curricula);
+      });
   }
 
   calculateDuration(curricula:Curricula):void{
@@ -70,8 +68,39 @@ export class DeadlineComponent implements OnInit {
   displayCountDown() {
     setInterval(()=>{
       for(let curriculaObj of this.curricula){
+        this.deleteOutdatedDeadlines();
         this.calculateDuration(curriculaObj);
       }
     }, 1000);
+  }
+
+  deleteOutdatedDeadlines(): void {
+    for(let curriculaObj of this.curricula) {
+
+      if( curriculaObj.deadline.getTime()< this.now ) {
+        let index: number = this.curricula.indexOf(curriculaObj);
+        if( index != -1){ //object is in the array
+          this.curricula.splice(index, 1);
+        }
+      }
+    }
+  }
+
+  checkValidInput(name: string, date: string): boolean {
+    let aux = new Date(date);
+    if((name.trim() != '') && (aux.getTime() > Date.now())){
+      return true;
+    }
+    return false;
+  }
+
+  sortDeadlines(): void {
+    this.curricula.sort((a,b) => {
+      if(a.deadline.getTime() >= b.deadline.getTime()) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
   }
 }

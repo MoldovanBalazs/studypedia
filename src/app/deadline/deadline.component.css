@@ -94,7 +94,7 @@ p.urgent {
 
 .addbutton {
   background-color: #f8f8fa  ;
-  color:#58668b  ;
+  color:#88d8b0  ;
   font-weight: 700;
 
   margin-bottom: 30px;
@@ -108,4 +108,19 @@ p.urgent {
   border-radius: 50px / 15px;;
 }
 
+.cantAddButton {
+  background-color: #f8f8fa  ;
+  color: #ffbdb7;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  width: 20%;
+  border: 5px solid #94a1b5;
+  margin: 12px;
+  padding: 5px;
+  border-radius: 50px / 15px;;
+}
 
