@@ -48,4 +48,8 @@ export class AddUniversityComponent implements OnInit {
             .subscribe(universities => this.universities = universities);
   }
 
+  switchExistentUniversity(): void {
+    this.currentUniversity = null;
+  }
+
 }
