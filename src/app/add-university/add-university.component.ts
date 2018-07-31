@@ -13,7 +13,7 @@ export class AddUniversityComponent implements OnInit {
   currentUniversity: University;
   currentFaculty: string;
   universitySelected: boolean = false;
-  universities: University[];
+  universities: University[] = [];
 
   constructor(private universityService: UniversityService) {
   }
@@ -24,19 +24,18 @@ export class AddUniversityComponent implements OnInit {
 
   addUniversity(): void {
     if(this.currentUniversity){
-      this.universityService.universities.push(this.currentUniversity);
+      //this.universityService.universities.push(this.currentUniversity);
+      this.universities.push(this.currentUniversity);
     }
   }
 
   createNewUniversity(): void {
     this.currentUniversity = new University();
+    this.currentUniversity.faculties = [];
+    this.currentUniversity.name = this.currentUniversityName;
   }
 
   existsUniversity(universityName: string): boolean {
-    console.log('universities');
-    if(this.universities == null){
-      this.getUniversities();
-    }
     if(this.universities.length === 0){
       return false;
     }
