@@ -2,48 +2,32 @@
 <div class = "container" style = "float:right">
   <div *ngIf = "(renderable)">
 
-  <div class = "centered">
-<<<<<<< HEAD
-    <div *ngFor="let curriculaObj of curricula">
+    <div class = "centered">
+      <div *ngFor="let curriculaObj of curricula">
 
-      <p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
-        {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-      <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
-        {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-      <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
-        {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+        <p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
+          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+        <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
+          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+        <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
+          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+      </div>
     </div>
-=======
-  <!--<p class = "isComing">Java exam: {{ getPeriod()}}</p>-->
-    <p class = "ok" *ngFor="let curriculaObj of curricula">{{curriculaObj.name}}:
-    {{displayCountDown()}} {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
-    </p>
->>>>>>> master
   </div>
-  </div>
-<hr>
+  <hr>
 
   <div title="add deadline">
     <p class = "paragraphInput"> Register your assignment
     </p>
-    <input class = "inputstyle"  style = "float:left">
+    <input #curriculaName class = "inputstyle"  style = "float:left">
     <br>
-<<<<<<< HEAD
     <input #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
-=======
-
-    <input class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
->>>>>>> master
     <br>
   </div>
 
   <div>
     <br>
-<<<<<<< HEAD
     <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = " (checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton' " style = "float:right">Add</button>
-=======
-    <button class = "addbutton" style = "float:right">Add</button>
->>>>>>> master
   </div>
 </div>
 

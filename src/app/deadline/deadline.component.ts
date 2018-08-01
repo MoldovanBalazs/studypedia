@@ -1,13 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CurriculaService} from "../curricula.service";
 import * as angular from 'angular';
-<<<<<<< HEAD
 import {Curricula, Duration} from "../curricula";
 import {s} from "@angular/core/src/render3";
 import DateTimeFormat = Intl.DateTimeFormat;
-=======
-import {Curricula} from "../curricula";
->>>>>>> master
 
 
 @Component({
@@ -19,24 +15,14 @@ export class DeadlineComponent implements OnInit {
 
   curricula: Curricula[];
 
-<<<<<<< HEAD
   private countDownDate : any;
   public now;
   private distance;
   public t;
   public renderable: boolean = false;
-=======
-  getDuration() {
-    for(let curriculaObj of this.curricula){
-      this.calculateDuration(curriculaObj);
-    }
-  }
->>>>>>> master
 
-  calculateDuration(curricula:Curricula):void{
-    var countDownDate = curricula.deadline.getTime();
+  constructor(private curriculaService: CurriculaService) { }
 
-<<<<<<< HEAD
   ngOnInit() {
     this.getCurricula();
     for(let curriculaObj of this.curricula){
@@ -46,23 +32,7 @@ export class DeadlineComponent implements OnInit {
     this.displayCountDown();
     // this.now = new Date().getTime();
     this.renderable = true;
-=======
-    var now = new Date().getTime(); //now
-    var distance = countDownDate - now; //difference from now
-
-    curricula.timeRemaining.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    curricula.timeRemaining.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    curricula.timeRemaining.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    curricula.timeRemaining.seconds = Math.floor((distance % (1000 * 60)) / 1000);
   }
-
-  displayCountDown() {
-    var x = setTimeout(()=>this.getDuration(), 1000);
-    console.log(this.curricula);
->>>>>>> master
-  }
-
-  constructor(private curriculaService: CurriculaService) { }
 
   getCurricula(){
     this.curriculaService.getCurricula().subscribe((result)=>{
@@ -70,7 +40,6 @@ export class DeadlineComponent implements OnInit {
     })
   }
 
-<<<<<<< HEAD
   addCurricula(name: string, deadline: Date): void {
 
     let curricula = new Curricula();
@@ -134,15 +103,4 @@ export class DeadlineComponent implements OnInit {
       }
     });
   }
-=======
-  getHeroes(): void {
-   this.curriculaService.getCurricula().subscribe(curricula => this.curricula = curricula);
-  }
-
-  ngOnInit() {
-    this.getHeroes();
-    this.getCurricula();
-  }
-
->>>>>>> master
 }

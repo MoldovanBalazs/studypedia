@@ -1,7 +1,6 @@
 import {Curricula, Duration} from "./curricula";
 
 export const DEADLINES: Curricula[] = [
-<<<<<<< HEAD
 
   //{name : 'OOP lab evaluation', deadline : new Date(Date.UTC("2018-08-15T14:45:00-00:00")), timeRemaining : new Duration()},
   {name : 'OOP lab evaluation', deadline : new Date("2018-07-31T13:00:00-00:00"), timeRemaining : new Duration()},
@@ -9,11 +8,6 @@ export const DEADLINES: Curricula[] = [
   {name : 'DSD exam', deadline : new Date("2018-07-29T13:30:00-00:00"), timeRemaining : new Duration()},
   {name : 'CA exam', deadline : new Date("2018-07-31T08:10:00-00:00"), timeRemaining : new Duration()},
   {name : 'FPT project', deadline : new Date("2018-09-03T11:30:00-00:00"), timeRemaining : new Duration()}
-=======
-  {name : 'DSD exam', deadline : new Date("2018-10-12"), timeRemaining : new Duration()},
-  {name : 'OOP lab evaluation', deadline : new Date("2018-10-12"), timeRemaining : new Duration()},
-  {name : 'OS homework', deadline : new Date("2018-10-12"), timeRemaining : new Duration()},
-  {name : 'FPT project', deadline : new Date("2018-10-12"), timeRemaining : new Duration()}
->>>>>>> master
+
 ];
 
