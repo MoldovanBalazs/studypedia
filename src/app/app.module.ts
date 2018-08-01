@@ -18,6 +18,7 @@ import {AddUniversityComponent} from './add-university/add-university.component'
 import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 const routes: Routes = [
+      {path: 'search', component: ArticleListComponent },
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
