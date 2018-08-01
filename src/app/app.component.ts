@@ -15,7 +15,7 @@ export class AppComponent {
 
   onCreate() {
 
-  };
+  }
 
   getCurrentDate() {
    this.date = new Date();

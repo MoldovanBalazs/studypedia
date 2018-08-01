@@ -20,6 +20,12 @@ const routes: Routes = [
       {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
   ];
 
+const routes: Routes = [
+  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  //{path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +39,7 @@ const routes: Routes = [
     UniversityComponent,
     ArticleListComponent,
     ArticlesComponent,
-    NewsfeedComponent
+    NewsfeedComponent,
 
   ],
   imports: [

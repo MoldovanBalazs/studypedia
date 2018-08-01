@@ -1,3 +1,4 @@
+
 <div class="card">
   <div class="card-header">
     {{pageTitle}}
@@ -6,12 +7,12 @@
     <div class="row">
       <div class="col-md-2">Type:</div>
       <form>
-        <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (onclick)="showTable('t01')"> Notes
-        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (onclick)="showTable('t01')" [checked]='false'> Seminars
-        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (onclick)="showTable('t01')"[checked]='false'> Labs
-        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (onclick)="showTable('t01')"[checked]='false'> Exams
-        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (onclick)="showTable('t02')"[checked]='false'> Users
-        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (onclick)="showTable('t03')"[checked]='false'> Subjects<br>
+        <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (ngModelChange)="showTable('t01')"> Notes
+        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (ngModelChange)="showTable('t011')"> Seminars
+        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (ngModelChange)="showTable('t012')"> Labs
+        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (ngModelChange)="showTable('t013')"> Exams
+        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (ngModelChange)="showTable('t02')"> Users
+        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (ngModelChange)="showTable('t03')" > Subjects<br>
         <br>
         <!--<button onclick="updateListFilter(listFilter)">Submit</button>-->
       </form>
@@ -31,16 +32,70 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table id="t01" class="table" *ngIf="(btn_notes || btn_seminars || btn_labs || btn_exams) && articles && articles.length">
+      <table id="t01" class="table" *ngIf="btn_notes && notes && notes.length">
         <thead>
         <tr>
-          <th>Article</th>
+          <th>Note</th>
           <th>Author</th>
           <th>Date</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of articles">
+        <tr *ngFor="let article of notes">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t011" class="table" *ngIf="btn_seminars && seminars && seminars.length">
+        <thead>
+        <tr>
+          <th>Seminar</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of seminars">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t012" class="table" *ngIf="btn_labs && labs && labs.length">
+        <thead>
+        <tr>
+          <th>Lab</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of labs">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t013" class="table" *ngIf="btn_exams && exams && exams.length">
+        <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of exams">
           <td>{{ article.articleName }}</td>
           <td>{{ article.articleAuthor }}</td>
           <td>{{ article.articleDate }}</td>
