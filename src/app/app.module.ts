@@ -29,8 +29,17 @@ import { UniversitySearchComponent } from './university-search/university-search
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryUniversityDataService }  from './in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
+import {NewsfeedComponent} from './newsfeed/newsfeed.component';
+import {ArticlesComponent} from './articles/articles.component';
+import {RequestsComponent} from './requests/requests.component';
+import {RequestDetailComponent} from './request-detail/request-detail.component';
+import {AddUniversityComponent} from './add-university/add-university.component';
+import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 const routes: Routes = [
+  {path: 'search', component: ArticleListComponent },
+  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+  {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent },
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
@@ -51,6 +60,9 @@ const routes: Routes = [
     AddUniversityComponent,
     AddSubjectComponent,
     ArticleListComponent,
+    ArticlesComponent,
+    NewsfeedComponent,
+
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
