@@ -1,4 +1,8 @@
-<div class="card">
+<!--<div class="row">-->
+  <!--<div style = "float:left;" class="column side">-->
+    <!--<app-mainmenu></app-mainmenu>-->
+  <!--</div>-->
+<div>
   <div class="card-header">
     {{pageTitle}}
   </div>
@@ -6,14 +10,13 @@
     <div class="row">
       <div class="col-md-2">Type:</div>
       <form>
-        <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (onclick)="showTable('t01')"> Notes
-        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (onclick)="showTable('t01')" > Seminars
-        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (onclick)="showTable('t01')"> Labs
-        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (onclick)="showTable('t01')"> Exams
-        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (onclick)="showTable('t02')"> Users
-        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (onclick)="showTable('t03')"> Subjects<br>
+        <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (ngModelChange)="showTable('t01')"> Notes
+        <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (ngModelChange)="showTable('t011')"> Seminars
+        <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (ngModelChange)="showTable('t012')"> Labs
+        <input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (ngModelChange)="showTable('t013')"> Exams
+        <input type="radio" name="type" value="users" [(ngModel)]="btn_users" (ngModelChange)="showTable('t02')"> Users
+        <input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (ngModelChange)="showTable('t03')" > Subjects<br>
         <br>
-        <!--<button onclick="updateListFilter(listFilter)">Submit</button>-->
       </form>
     </div>
     <div class="row">
@@ -31,16 +34,70 @@
       </div>
     </div>
     <div class="table-responsive">
-      <table id="t01" class="table" *ngIf="(btn_notes || btn_seminars || btn_labs || btn_exams) && articles && articles.length">
+      <table id="t01" class="table" *ngIf="btn_notes && notes && notes.length">
         <thead>
         <tr>
-          <th>Article</th>
+          <th>Note</th>
           <th>Author</th>
           <th>Date</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of articles">
+        <tr *ngFor="let article of filteredNotes">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t011" class="table" *ngIf="btn_seminars && seminars && seminars.length">
+        <thead>
+        <tr>
+          <th>Seminar</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of filteredSeminars">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t012" class="table" *ngIf="btn_labs && labs && labs.length">
+        <thead>
+        <tr>
+          <th>Lab</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of filteredLabs">
+          <td>{{ article.articleName }}</td>
+          <td>{{ article.articleAuthor }}</td>
+          <td>{{ article.articleDate }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-responsive">
+      <table id="t013" class="table" *ngIf="btn_exams && exams && exams.length">
+        <thead>
+        <tr>
+          <th>Exam</th>
+          <th>Author</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let article of filteredExams">
           <td>{{ article.articleName }}</td>
           <td>{{ article.articleAuthor }}</td>
           <td>{{ article.articleDate }}</td>
@@ -58,7 +115,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of users">
+        <tr *ngFor="let user of filteredUsers">
           <td>{{user.userId}}</td>
           <td>{{user.userName}}</td>
           <td>{{user.university}}</td>
@@ -76,7 +133,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let subject of subjects">
+        <tr *ngFor="let subject of filteredSubjects">
           <td>{{ subject.subjectId }}</td>
           <td>{{ subject.subjectName }}</td>
           <td>{{ subject.description }}</td>
@@ -86,3 +143,4 @@
     </div>
   </div>
 </div>
+<!--</div>-->

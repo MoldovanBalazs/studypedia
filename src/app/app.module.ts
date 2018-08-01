@@ -11,6 +11,12 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import {NewsfeedComponent} from './newsfeed/newsfeed.component';
+import {ArticlesComponent} from './articles/articles.component';
+import {RequestsComponent} from './requests/requests.component';
+import {RequestDetailComponent} from './request-detail/request-detail.component';
+import {AddUniversityComponent} from './add-university/add-university.component';
+import {AddSubjectComponent} from './add-subject/add-subject.component';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { UniversityComponent } from './university/university.component';
@@ -25,11 +31,12 @@ import { InMemoryUniversityDataService }  from './in-memory-university-data.serv
 import { AppRoutingModule } from './/app-routing.module';
 
 const routes: Routes = [
-      // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent },
-      {path: 'requests', component: RequestsComponent },
-      {path: 'add-university', component: AddUniversityComponent}
+      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+      {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+      {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: 'requests', component: RequestsComponent },
+  {path: 'add-university', component: AddUniversityComponent}
   ];
 
 @NgModule({
@@ -38,16 +45,16 @@ const routes: Routes = [
     DeadlineComponent,
     MainmenuComponent,
     ProfiledetailComponent,
-    ArticleListComponent,
+    /*Adrian's part:*/
     RequestsComponent,
     RequestDetailComponent,
-    UniversityComponent,
     AddUniversityComponent,
+    AddSubjectComponent,
+    ArticleListComponent,
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
     UniversitySearchComponent
-
   ],
   imports: [
     BrowserModule,
