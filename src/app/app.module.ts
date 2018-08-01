@@ -12,19 +12,16 @@ import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
+import {RequestsComponent} from './requests/requests.component';
+import {RequestDetailComponent} from './request-detail/request-detail.component';
+import {AddUniversityComponent} from './add-university/add-university.component';
+import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 const routes: Routes = [
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
   ];
-
-const routes: Routes = [
-  {path: 'search', component: ArticleListComponent },
-  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-  //{path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
-];
 
 @NgModule({
   declarations: [
@@ -36,7 +33,7 @@ const routes: Routes = [
     RequestsComponent,
     RequestDetailComponent,
     AddUniversityComponent,
-    UniversityComponent,
+    AddSubjectComponent,
     ArticleListComponent,
     ArticlesComponent,
     NewsfeedComponent,
