@@ -4,7 +4,6 @@ import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
-
 import { DeadlineComponent } from './deadline/deadline.component';
 
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
     MainmenuComponent,
     ProfiledetailComponent,
     ArticleListComponent,
-
   ],
   imports: [
     BrowserModule,
