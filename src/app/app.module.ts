@@ -42,7 +42,10 @@ import { UniversityComponent } from './university/university.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([
+      {path: 'search', component : ArticleListComponent},
+      {path: 'home', component : NewsfeedComponent}
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]

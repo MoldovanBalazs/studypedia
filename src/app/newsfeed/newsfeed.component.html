@@ -3,7 +3,7 @@
     Welcome, {{user}}!
   </div>
   <div align = "center" class = card-body>
-    <form action="url" >
+    <form action="url" routerLink="/search" routerLinkActive="active">
       <input type="submit" value="SEARCH" />
     </form>
     <h1>{{subscribed <= 0 ? 'You are not subscribed to anybody' : 'Here are some news for you:'}}</h1>

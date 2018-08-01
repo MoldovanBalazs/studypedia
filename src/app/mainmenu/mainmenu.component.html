@@ -1,7 +1,9 @@
 <body>
 
 <!-- home, my page, submit,  -->
-  <button class = "menubutton">Home</button>
+  <a routerLink="/home" routerLinkActive="active">
+    <button class = "menubutton">Home</button>
+  </a>
   <br>
   <button class = "menubutton">My profile</button>
   <br>
@@ -14,6 +16,7 @@
   <a routerLink="/requests" routerLinkActive="active">
     <button class = "menubutton">Requests</button>
   </a>
+  <div allign = "right">
   <router-outlet></router-outlet>
-
+  </div>
 </body>

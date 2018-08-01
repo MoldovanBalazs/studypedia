@@ -11,10 +11,10 @@ body {
   background-color: #f8f8fa  ;
   color:#58668b  ;
   font-weight: 700;
-  width: 100%;
+  width: 20%;
   vertical-align: center;
 
- display: table;
+
   margin-bottom: 30px;
   font-family: "HP Simplified Light";
   font-size: x-large;
@@ -23,7 +23,7 @@ body {
   margin: 12px;
   padding: 5px;
   border-radius: 300px / 15px;;
-  align-items: center;
+  align-items: left;
 }
 
 .vl {
