@@ -10,12 +10,23 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import {NewsfeedComponent} from './newsfeed/newsfeed.component';
+import {ArticlesComponent} from './articles/articles.component';
+
+/*Adrian's part:*/
+/*requests:*/
+import { RequestsComponent } from './requests/requests.component';
+import { RequestDetailComponent } from './request-detail/request-detail.component';
+/*add university:*/
+import { AddUniversityComponent } from './add-university/add-university.component';
+import { UniversityComponent } from './university/university.component';
 
 const routes: Routes = [
-      // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'search', component: ArticleListComponent }
-  ];
+  {path: 'search', component: ArticleListComponent },
+  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  //{path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'}
+];
 
 @NgModule({
   declarations: [
@@ -23,7 +34,15 @@ const routes: Routes = [
     DeadlineComponent,
     MainmenuComponent,
     ProfiledetailComponent,
+    /*Adrian's part:*/
+    RequestsComponent,
+    RequestDetailComponent,
+    AddUniversityComponent,
+    UniversityComponent,
     ArticleListComponent,
+    ArticlesComponent,
+    NewsfeedComponent,
+
   ],
   imports: [
     BrowserModule,

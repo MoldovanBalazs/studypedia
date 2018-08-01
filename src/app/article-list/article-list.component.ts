@@ -4,7 +4,7 @@ import {ISubject} from './subject';
 import {IUser} from './user';
 
 @Component({
-  selector: 'app-articles',
+  selector: 'app-article-list',
   templateUrl: './article-list.component.html',
   styleUrls: ['./article-list.component.css']
 })
