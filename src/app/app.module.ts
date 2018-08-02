@@ -27,9 +27,10 @@ import {AddUniversityComponent} from './add-university/add-university.component'
 import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 const routes: Routes = [
+  {path : 'home', component: NewsfeedComponent},
   {path: 'search', component: ArticleListComponent },
   {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent },
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
