@@ -6,28 +6,18 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 
 import { DeadlineComponent } from './deadline/deadline.component';
-
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
-import {NewsfeedComponent} from './newsfeed/newsfeed.component';
-import {ArticlesComponent} from './articles/articles.component';
-import {RequestsComponent} from './requests/requests.component';
-import {RequestDetailComponent} from './request-detail/request-detail.component';
-import {AddUniversityComponent} from './add-university/add-university.component';
-import {AddSubjectComponent} from './add-subject/add-subject.component';
-import { RequestsComponent } from './requests/requests.component';
-import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { UniversityComponent } from './university/university.component';
-import { AddUniversityComponent } from './add-university/add-university.component';
-import { ArticlesComponent } from './articles/articles.component';
-import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryUniversityDataService }  from './in-memory-university-data.service';
+import { InMemoryUniversityDataService } from './in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
@@ -42,10 +32,11 @@ const routes: Routes = [
   {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent },
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+      // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
   {path: 'requests', component: RequestsComponent },
-  {path: 'add-university', component: AddUniversityComponent}
+  {path: 'add-university', component: AddUniversityComponent},
+  {path: 'profile', component: ProfiledetailComponent},
+  {path: 'login', component: LoginComponent}
   ];
 
 @NgModule({
@@ -54,6 +45,8 @@ const routes: Routes = [
     DeadlineComponent,
     MainmenuComponent,
     ProfiledetailComponent,
+    LoginComponent,
+    RegisterComponent,
     /*Adrian's part:*/
     RequestsComponent,
     RequestDetailComponent,
@@ -72,6 +65,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryUniversityDataService, {dataEncapsulation: false}
     ),
