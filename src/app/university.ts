@@ -1,13 +1,19 @@
+export class Faculty {
+  name: string;
+  id: number;
+  idUniv: number;
+}
+
 export class University {
 
   name: string;
-  faculties: string[] = [];
+  faculties: Faculty[] = [];
   id: number;
 
   constructor(
   ) {}
 
-  addFaculty(faculty: string): void {
+  addFaculty(faculty: Faculty): void {
     this.faculties.push(faculty);
   }
 

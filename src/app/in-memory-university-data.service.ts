@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { University } from './university';
+import {Faculty, University} from './university';
 
 @Injectable({
   providedIn: 'root'
@@ -10,32 +10,31 @@ export class InMemoryUniversityDataService implements InMemoryDbService {
   universities: University[] = [];
 
   generateMockUniversities(): void {
-    var aUniversity = new University();
+    const aUniversity = new University();
     aUniversity.name = 'Universitatea a';
     aUniversity.id = 0;
-    aUniversity.faculties.push('Facultatea 1');
-    aUniversity.faculties.push('Facultatea 2');
+    const faculty1 = new Faculty();
+    faculty1.name = 'Facultatea 1';
+    faculty1.id = 0;
+    aUniversity.faculties.push(faculty1);
 
-    var bUniversity = new University();
+    const bUniversity = new University();
     bUniversity.name = 'Universitatea b';
     bUniversity.id = 1;
-    bUniversity.faculties.push('Facultatea 3');
-
-    var cUniversity = new University();
-    cUniversity.name = 'Universitatea c';
-    cUniversity.id = 2;
-    cUniversity.faculties.push('Facultatea 4');
+    const faculty2 = new Faculty();
+    faculty2.name = 'Facultatea 2';
+    faculty2.id = 1;
+    bUniversity.faculties.push(faculty2);
 
     this.universities.push(aUniversity);
     this.universities.push(bUniversity);
-    this.universities.push(cUniversity);
   }
 
   constructor() {
     this.generateMockUniversities();
   }
 
-  createDb(){
+  createDb() {
     const universities = this.universities;
     return {universities};
   }

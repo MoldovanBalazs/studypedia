@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversityService } from '../university.service';
-import { University } from '../university';
+import { University, Faculty } from '../university';
 
 import { IPageState } from './IPageState';
 import { BeginningState } from './BeginningState';
@@ -23,7 +23,7 @@ export class AddUniversityComponent implements OnInit {
   }
 
   addUniversity(): void {
-    if(!this.currentUniversity){return;}
+    if (!this.currentUniversity) {return; }
     this.universityService.addUniversity(this.currentUniversity)
         .subscribe(university => {
           this.universities.push(this.currentUniversity);
@@ -39,8 +39,15 @@ export class AddUniversityComponent implements OnInit {
     return false;
   }
 
+  getFacultyId(): number {
+    return 0;
+  }
+
   addFaculty(facultyName: string): void {
-    this.currentUniversity.faculties.push(facultyName);
+    const newFaculty = new Faculty();
+    newFaculty.name = facultyName;
+    newFaculty.id = this.getFacultyId();
+    this.currentUniversity.faculties.push(newFaculty);
   }
 
   getUniversities(): void {
