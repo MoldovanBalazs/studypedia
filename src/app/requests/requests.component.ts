@@ -17,10 +17,10 @@ export class RequestsComponent implements OnInit {
   usertype: number;
 
   constructor(
-              private requestService: RequestService,
-              private userInfoService: UserinfoService
-              ) {
-              }
+    private requestService: RequestService,
+    private userInfoService: UserinfoService
+  ) {
+  }
 
   ngOnInit() {
     this.getRequests();
@@ -29,16 +29,16 @@ export class RequestsComponent implements OnInit {
 
   getRequests(): void {
     this.requestService
-        .getRequests()
-        .subscribe(requests => this.requests = requests);
+      .getRequests()
+      .subscribe(requests => this.requests = requests);
   }
 
   accept(request: Request): void {
-      this.requests = this.requests.filter(r => r !== request);
+    this.requests = this.requests.filter(r => r !== request);
   }
 
   deny(request: Request): void {
-      this.requests = this.requests.filter(r => r !== request);
+    this.requests = this.requests.filter(r => r !== request);
   }
 
   getUser(): void {

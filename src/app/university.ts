@@ -15,4 +15,8 @@ export class University {
     this.name = name;
   }
 
+  getName(): string {
+    return this.name;
+  }
+
 }

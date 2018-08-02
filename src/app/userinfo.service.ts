@@ -16,7 +16,7 @@ export class UserinfoService {
 
   constructor() {
 
-   }
+  }
 
   ngOnInit(){
 

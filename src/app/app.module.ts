@@ -6,21 +6,38 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 
 import { DeadlineComponent } from './deadline/deadline.component';
-
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { UniversityComponent } from './university/university.component';
+import { UniversityDetailComponent } from './university-detail/university-detail.component';
+import { UniversitySearchComponent } from './university-search/university-search.component';
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryUniversityDataService } from './in-memory-university-data.service';
+import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
+import {RequestsComponent} from './requests/requests.component';
+import {RequestDetailComponent} from './request-detail/request-detail.component';
+import {AddUniversityComponent} from './add-university/add-university.component';
+import {AddSubjectComponent} from './add-subject/add-subject.component';
 
-/*Adrian's part:*/
-/*requests:*/
-import { RequestsComponent } from './requests/requests.component';
-import { RequestDetailComponent } from './request-detail/request-detail.component';
-/*add university:*/
-import { AddUniversityComponent } from './add-university/add-university.component';
-import { UniversityComponent } from './university/university.component';
+const routes: Routes = [
+  {path: 'search', component: ArticleListComponent },
+  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+  {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+      {path: 'search', component: ArticleListComponent },
+      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+      // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: 'requests', component: RequestsComponent },
+  {path: 'add-university', component: AddUniversityComponent},
+  {path: 'profile', component: ProfiledetailComponent},
+  {path: 'login', component: LoginComponent}
+  ];
 
 @NgModule({
   declarations: [
@@ -28,24 +45,32 @@ import { UniversityComponent } from './university/university.component';
     DeadlineComponent,
     MainmenuComponent,
     ProfiledetailComponent,
+    LoginComponent,
+    RegisterComponent,
     /*Adrian's part:*/
     RequestsComponent,
     RequestDetailComponent,
     AddUniversityComponent,
-    UniversityComponent,
+    AddSubjectComponent,
     ArticleListComponent,
     ArticlesComponent,
     NewsfeedComponent,
 
+    ArticlesComponent,
+    NewsfeedComponent,
+    UniversityDetailComponent,
+    UniversitySearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'search', component : ArticleListComponent},
-      {path: 'home', component : NewsfeedComponent}
-    ]),
+    RouterModule.forRoot(routes),
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUniversityDataService, {dataEncapsulation: false}
+    ),
+    RouterModule.forRoot(routes),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
