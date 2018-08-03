@@ -1,5 +1,5 @@
-export interface ISubject {
-  subjectId: number;
-  subjectName: string;
-  description: string;
+export class Subject {
+  public id: number;
+  public name: string;
+  public description: string;
 }

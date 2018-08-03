@@ -2,6 +2,10 @@
   float: left;
   width: 15%;
 }
+.leftcolumn2 {
+  float: left;
+  width: 60%;
+}
 
 /* Right column */
 .rightcolumn {

@@ -22,6 +22,7 @@ import { RequestDetailComponent } from './request-detail/request-detail.componen
 import { AddUniversityComponent } from './add-university/add-university.component';
 import { UniversityComponent } from './university/university.component';
 
+
 const routes: Routes = [
   {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
   //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
@@ -41,7 +42,7 @@ const routes: Routes = [
     UniversityComponent,
     ArticleListComponent,
     ArticlesComponent,
-    NewsfeedComponent,
+    NewsfeedComponent
 
   ],
   imports: [
