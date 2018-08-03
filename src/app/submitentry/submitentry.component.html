@@ -1,0 +1,57 @@
+
+<DOCTYPE html>
+  <html>
+  <head>
+  <title> Submit Entry</title>
+    <link rel="stylesheet" type="text/css" href="submitentry.component.css">
+  </head>
+  <body>
+  <h1>Submit Entry</h1>
+
+  <form #submitentryForm="ngForm"(ngSubmit)="saveSubmitentry(submitentryForm)">
+    <div class="form-group">
+      <input id="University" type="text" placeholder="University" class="form-control" name="University" [(ngModel)]="universityName" required="required">
+      <input id="Faculty" type="text" placeholder="Faculty" class="form-control" name="Faculty"[(ngModel)]="facultyName">
+      <input id="Specialization" type="text" placeholder="Specialization" class="form-control" name="Specialization" [(ngModel)]="specializationName">
+      <input id="Subject" type="text" placeholder="Subject" class="form-control" name="Subject"[(ngModel)]="subjectName">
+
+    </div>
+
+
+
+<div class="search_categories">
+<div class="select">
+    <select name="search_categories" id="search_categories" [(ngModel)]="selectedOptions.value" #selects="ngModel" (change)="selection($event)">
+      <option value="1">Notes</option>
+      <option value="2">Seminars</option>
+      <option value="3">Labs</option>
+      <option value="4">Exams</option>
+  </select> </select>
+  <div *ngIf="selects.invalid">
+</div>
+</div>
+    <input type="text" placeholder="Title">
+    <input type="text" placeholder="Details">
+</div>
+  </form>
+  <form action="index.php" method="post" enctype="multipart/form-data">
+
+    <input type="file" name="file" multiple="multiple"/>
+
+
+    <input type="submit" value="SUBMIT"/>
+
+
+
+
+  </form>
+
+
+
+  </body>
+  </html>
+</DOCTYPE>
+
+
+
+

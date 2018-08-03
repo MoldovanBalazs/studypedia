@@ -1,9 +1,7 @@
 body {
-
-
 }
 h1 {
-  background-color: #f8f8fa;
+  background-color: #e8f8fa;
   text-align: center;
   color: #58668b   ;
   font-weight: 700;
@@ -34,3 +32,4 @@ input.mystyle {
   right: 0;
   margin: auto;
 }
+
