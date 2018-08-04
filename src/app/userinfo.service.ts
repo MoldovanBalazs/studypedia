@@ -18,10 +18,6 @@ export class UserinfoService {
 
   }
 
-  ngOnInit(){
-
-  }
-
   getUsername(): string {
     return this.username;
   }

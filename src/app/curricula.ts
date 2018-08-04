@@ -6,7 +6,7 @@ export class Curricula {
 
 }
 
-export class Duration{
+export class Duration {
 
   public days: number;
   public hours: number;

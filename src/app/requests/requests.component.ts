@@ -11,6 +11,12 @@ import { UserinfoService } from '../userinfo.service';
 })
 export class RequestsComponent implements OnInit {
 
+  /*used for access control;*/
+  moderator = 2;
+  none = 0;
+  simple = 1;
+  admin = 3;
+
   selectedRequest: Request;
   requests: Request[];
   username: string;

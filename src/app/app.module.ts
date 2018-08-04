@@ -20,17 +20,19 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import {HttpClientInMemoryWebApiModule, HttpInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import { InMemoryUniversityDataService } from './in-memory-university-data.service';
 import { InMemoryRequestDataService } from './in-memory-request-data.service';
 import { AppRoutingModule } from './/app-routing.module';
+import { HttpModule } from '@angular/http';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 const routes: Routes = [
       // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'search', component: ArticleListComponent },
-      {path: 'requests', component: RequestsComponent },
-      {path: 'add-university', component: AddUniversityComponent}
+      { path: 'search', component: ArticleListComponent },
+      { path: 'requests', component: RequestsComponent },
+      { path: 'add-university', component: AddUniversityComponent}
   ];
 
 @NgModule({
@@ -54,8 +56,9 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryUniversityDataService, {dataEncapsulation: false}
+      InMemoryRequestDataService, {dataEncapsulation: false}
     ),
+    // InMemoryWebApiModule.forRoot(InMemoryRequestDataService),
     RouterModule.forRoot(routes),
     AppRoutingModule,
   ],

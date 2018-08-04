@@ -1,5 +1,5 @@
 <h2>Requests</h2>
-<div *ngIf = "userInfoService.moderator === userInfoService.getUsertype(); else nonModeratorBlock;">
+<div *ngIf = "moderator === this.usertype; else nonModeratorBlock;">
   <ul class="requests">
     <li *ngFor="let request of requests" [class.selected]="request === selectedRequest" (click)="onSelect(request)">
       hashcode: {{request.hash}}, article name: {{request.documentName}}, proposer: {{request.proposerName}}, author: {{request.authorName}}

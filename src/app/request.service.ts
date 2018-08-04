@@ -15,16 +15,12 @@ export class RequestService {
   constructor(private http: HttpClient) { }
 
   getRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(this.requestsUrl).pipe(
-      tap(requests => this.log('fetched requests')),
-      catchError(this.handleError('getRequests', []))
-    );
+    return this.http.get<Request[]>(this.requestsUrl);
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error),
-      this.log(`${operation} failed: ${error.message}`);
+      console.error(error);
       return of(result as T);
     };
   }
