@@ -31,7 +31,7 @@ const routes: Routes = [
   {path : 'home', component: NewsfeedComponent},
   {path: 'search', component: ArticleListComponent },
   {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
       {path: 'search', component: ArticleListComponent },
       {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
       // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
@@ -55,8 +55,6 @@ const routes: Routes = [
     AddUniversityComponent,
     AddSubjectComponent,
     ArticleListComponent,
-    ArticlesComponent,
-    NewsfeedComponent
 
     ArticlesComponent,
     NewsfeedComponent,
