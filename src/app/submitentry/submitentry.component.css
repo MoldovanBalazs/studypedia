@@ -21,7 +21,6 @@ input {
   font-size: inherit;
 }
 
-
 input[type="text"] {
   display:block;
   margin-bottom: 25px;
@@ -29,22 +28,29 @@ input[type="text"] {
   border: 2px solid steelblue;
   background-color: antiquewhite;
 }
-
-input[type="submit"]{
-  position: center;
-
+textarea {
+  resize: none;
+  margin-bottom: 25px;
+  border: 2px solid steelblue;
+  background-color: antiquewhite;
+  width:345px;
+  height: 100px;
+  font: 1em/1.5 sans-serif;
 }
-.search_categories .select {
+
+
+ .form-group {
   width: 320px;
 }
-.search_categories .select select{
+  select{
   margin-bottom: 25px;
   border: 2px solid steelblue;
   height: 40px;
-  width: 320px;
+  width: 345px;
   padding: 10px;
   font-size: inherit;
-  background-color: white;
+  background-color: antiquewhite;
+  position: center;
 }
 input [type="submit"] {
   width: 344px;
@@ -52,23 +58,16 @@ input [type="submit"] {
   border: none;
   background-color: steelblue;
   color: white;
+  position: center;
 }
 
-input [type="submit"]:focus {
-  width: 344px;
-  height: 45px;
-  border: solid steelblue;
-  background-color:white;
-  color: steelblue;
-}
+
 input:focus {
   background-color: white;
 }
-input[type="radio"]:checked + label{
-  font-weight: bold;
-  font-size: 18px;
 
-}
+
+
 
 
 

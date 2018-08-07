@@ -1,7 +1,28 @@
+.leftcolumn {
+  float: left;
+  width: 15%;
+}
+.leftcolumn2 {
+  float: left;
+  width: 60%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 20%;
+  /*background-color: #f1f1f1;*/
+  padding-left: 20px;
+}
+
+.row:after {
+  display: table;
+  clear: both;
+}
 body {
 }
 h1 {
-  background-color: #e8f8fa;
+  background-color: #f8f8fa;
   text-align: center;
   color: #58668b   ;
   font-weight: 700;
@@ -32,4 +53,3 @@ input.mystyle {
   right: 0;
   margin: auto;
 }
-

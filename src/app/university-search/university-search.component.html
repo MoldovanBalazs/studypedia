@@ -1,0 +1,29 @@
+<div>
+  <h4>University Search</h4>
+  <input #searchBox (keyup)="search(searchBox.value)"/>
+  <ul>
+    <li *ngFor="let university of universities$ | async " (click)="onSelect(university);">
+        {{university.name}}
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="this.currentUniversity">
+  <div>
+    <button (click)="updateUniversity()">Update University</button>
+  </div>
+  <div>University name: {{currentUniversity.name}}</div>
+  <div>University id: {{currentUniversity.id}}</div>
+  <div>
+    <input [(ngModel)]="this.currentFaculty" placeholder="faculty name"/>
+    <button (click)="addFaculty(this.currentFaculty);">Add Faculty</button>
+  </div>
+  <p>Faculties:</p>
+  <div>
+    <ul>
+      <li *ngFor="let faculty of this.currentUniversity.faculties">
+        {{faculty}}
+      </li>
+    </ul>
+  </div>
+</div>

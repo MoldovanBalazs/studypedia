@@ -1,0 +1,29 @@
+<h1>Add new University or add a new Faculty to an existent University</h1>
+
+<div *ngIf="!this.currentUniversity">
+  <app-university-search></app-university-search>
+</div>
+<div *ngIf="!this.currentUniversity">
+  <button (click)="createNewUniversity()">Create New University</button>
+</div>
+
+<div *ngIf="this.currentUniversity">
+  <div><button (click)="addUniversity()">Add University</button></div>
+  <div>University name: <input [(ngModel)]="this.currentUniversity.name"/></div>
+  <div>University id: <input [(ngModel)]="this.currentUniversity.id"/></div>
+  <div>
+    <input #facultyName placeholder="faculty"/>
+    <button (click)="addFaculty(facultyName.value)">Add Faculty</button>
+  </div>
+  <div>Faculties:</div>
+  <div>
+    <ul>
+      <li *ngFor="let faculty of this.currentUniversity.faculties">
+        {{faculty}}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <button (click)="switchExistentUniversity()">Update an existent University</button>
+  </div>
+</div>

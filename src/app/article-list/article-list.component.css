@@ -1,0 +1,17 @@
+/*center {*!*/
+  /*position: absolute;*!*/
+  /*!*left: 300px;*!*/
+  /*!*text-align: center;*!*/
+  /*!*border: 3px solid #58668b;*!*/
+/*!*}*!*/
+/*!*.gallery {*!*/
+  /*!*display: grid;*!*/
+  /*!*grid-gap: 100px;*!*/
+  /*!*grid-template-columns: repeat(2, 1fr);*!*/
+/*!*}*!*/
+/*!*body{*!*/
+  /*!*display: inline-block;*!*/
+/*!*}*!*/
+thead {
+  color: blue;
+}

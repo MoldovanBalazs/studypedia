@@ -1,57 +1,44 @@
+<h1>Submit Entry</h1>
 
-<DOCTYPE html>
-  <html>
-  <head>
-  <title> Submit Entry</title>
-    <link rel="stylesheet" type="text/css" href="submitentry.component.css">
-  </head>
-  <body>
-  <h1>Submit Entry</h1>
 
-  <form #submitentryForm="ngForm"(ngSubmit)="saveSubmitentry(submitentryForm)">
+  <form>
     <div class="form-group">
-      <input id="University" type="text" placeholder="University" class="form-control" name="University" [(ngModel)]="universityName" required="required">
-      <input id="Faculty" type="text" placeholder="Faculty" class="form-control" name="Faculty"[(ngModel)]="facultyName">
-      <input id="Specialization" type="text" placeholder="Specialization" class="form-control" name="Specialization" [(ngModel)]="specializationName">
-      <input id="Subject" type="text" placeholder="Subject" class="form-control" name="Subject"[(ngModel)]="subjectName">
 
+      <input type="text" placeholder="University" class="form-control" id="university" required [(ngModel)]="universityName" name="universityName">
+      <input type="text" placeholder="Faculty" class="form-control" id="faculty" required [(ngModel)]="facultyName" name="facultyName">
+      <input type="text" placeholder="Branch" class="form-control" id="branch" required [(ngModel)]="branchName" name="branchName">
+      <input type="text" placeholder="Subject" class="form-control" id="subject" required [(ngModel)]="subjectName" name="subjectName">
+
+
+    <form>
+      <select [(ngModel)]="categories" name="cat">
+        <option *ngFor="let cat of categories" [value]="cat">
+          {{cat}}
+        </option>
+      </select>
+    </form>
     </div>
 
+    <div>
+    <input type="text" placeholder="Title" class="form-control" id="title" required [(ngModel)]="titleName" name="titleName">
+    <!--<input type="text" placeholder="Description" class="form-control" id="description" required [(ngModel)]="descriptionName" name="descriptionName">-->
+      <!--<textarea placeholder="Description" class="form-control" id="description" required [(ngModel)]="descriptionName" name="descriptionName"></textarea>-->
 
+    <textarea class="form-control" id="description" name="descriptionName" placeholder="Description" required [(ngModel)]="descriptionName"></textarea>
+    </div>
+  <!--<form action="index.php" method="post" enctype="multipart/form-data">-->
 
-<div class="search_categories">
-<div class="select">
-    <select name="search_categories" id="search_categories" [(ngModel)]="selectedOptions.value" #selects="ngModel" (change)="selection($event)">
-      <option value="1">Notes</option>
-      <option value="2">Seminars</option>
-      <option value="3">Labs</option>
-      <option value="4">Exams</option>
-  </select> </select>
-  <div *ngIf="selects.invalid">
-</div>
-</div>
-    <input type="text" placeholder="Title">
-    <input type="text" placeholder="Details">
-</div>
-  </form>
-  <form action="index.php" method="post" enctype="multipart/form-data">
+    <!--<input type="file" name="file" multiple="multiple"/>-->
 
-    <input type="file" name="file" multiple="multiple"/>
+    <!--<input type="submit" value="SUBMIT">-->
 
-
-    <input type="submit" value="SUBMIT"/>
-
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      Select file to upload:
+      <input type="file" name="avatar" id="fileToUpload" formControlName="file1" (change)="fileEvent($event)">
+      <input type="submit" value="SUBMIT" name="submit">
+    </form>
 
 
 
   </form>
-
-
-
-  </body>
-  </html>
-</DOCTYPE>
-
-
-
 
