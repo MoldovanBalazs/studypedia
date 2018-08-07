@@ -57,9 +57,6 @@ const routes: Routes = [
     ArticleListComponent,
     ArticlesComponent,
     NewsfeedComponent,
-
-    ArticlesComponent,
-    NewsfeedComponent,
     UniversityDetailComponent,
     UniversitySearchComponent
   ],
