@@ -4,8 +4,9 @@ export class User {
     public id: number,
     public username: string,
     public password: string,
-    public university?: string,
-    public faculty?: string,
-    public branch?: string
+    public university: string,
+    public faculty: string,
+    public branch: string,
+    public userType?: any
   ) {  }
 }

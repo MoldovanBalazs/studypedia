@@ -8,11 +8,13 @@ import {User} from 'src/app/models/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   modButton = false;
   universities = ['UTCN', 'UBB',
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
+  model = new User(17, 'admin', 'admin',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', true);
 
   submitted = false;
 
@@ -20,20 +22,6 @@ export class RegisterComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-
-  //
-  /*
-  isModerator(): boolean {
-    return form.controls['mod'].value;
-  }
-*/
-/*
-  toggleMod(event) {
-    if ( event.target.checked ) {
-      this.isMod = true;
-    }
-  }
-  */
 
 
   toggleMod(): void {

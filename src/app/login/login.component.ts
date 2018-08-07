@@ -10,14 +10,9 @@ export class LoginComponent implements OnInit {
 
   pageTitle = 'Login';
   registerButton = false;
-  model = new User(18, 'admin', 'admin');
-  users: any[] = [
-    {
-      'username': 'admin2',
-      'password': 'admin2'
-    }
-  ];
-  submitted = false;
+  /*modelMod = new User(18, 'admin', 'admin',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', true);
+  modelNoMod = new User(19, 'noMod', 'noMod',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', false);
+*/  submitted = false;
 
   onSubmit() { this.submitted = true; }
 
