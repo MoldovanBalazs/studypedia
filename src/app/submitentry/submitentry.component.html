@@ -11,7 +11,7 @@
 
 
     <form>
-      <select [(ngModel)]="categories" name="cat">
+      <select [(ngModel)]="categories" name="cat" id="cat">
         <option *ngFor="let cat of categories" [value]="cat">
           {{cat}}
         </option>
