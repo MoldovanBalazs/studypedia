@@ -17,7 +17,7 @@ import { UniversityDetailComponent } from './university-detail/university-detail
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryUniversityDataService } from './in-memory-university-data.service';
+import { InMemoryUniversityDataService } from './services/in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';

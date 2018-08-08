@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Request } from './request';
-import { REQUESTS } from './mock-requests';
+import { Request } from '../models/request';
+import { REQUESTS } from '../mock-data/mock-requests';
 import { Observable, of } from 'rxjs';
 
 @Injectable({

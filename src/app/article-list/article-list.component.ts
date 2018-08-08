@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from './article';
-import {Subject} from './subject';
+import {Article} from '../models/article';
+import {Subject} from '../models/subject';
 import {User} from './user';
 
 @Component({

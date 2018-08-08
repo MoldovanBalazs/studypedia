@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { MYARTICLES} from "./mock-articles";
+import { MYARTICLES} from "../mock-data/mock-articles";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs/index";
-import { Article } from '../article-list/article'
+import { Article } from '../models/article'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
