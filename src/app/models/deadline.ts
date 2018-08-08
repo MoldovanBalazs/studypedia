@@ -1,6 +1,7 @@
 import {User} from "./user";
 
 export class Deadline {
+  public id: number;
   public name: string;
   public date: Date;
   public user: User;
