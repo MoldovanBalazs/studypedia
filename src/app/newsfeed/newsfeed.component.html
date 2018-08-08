@@ -22,9 +22,9 @@
           <tbody>
           <tr *ngFor='let article of articles'>
 
-            <td> <a href={{article.articleLink}}}>{{article.title}}</a> </td>
-            <td> <a href={{article.profileLink}}}>{{article.author}}</a> </td>
-            <td>{{ article.date }}</td>
+          <td> <a routerLink="/article" routerLinkActive="active" > {{article.title}} </a> </td>
+          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.author}} </a> </td>
+          <td>{{ article.releaseDate.toLocaleString() }}</td>
 
           </tr>
           </tbody>
@@ -32,5 +32,4 @@
       </div>
     </div>
   </div>
-
 </div>

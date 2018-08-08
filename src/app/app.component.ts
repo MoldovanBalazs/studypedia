@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {logger} from 'codelyzer/util/logger';
 
 
@@ -11,12 +11,16 @@ export class AppComponent {
   title = '#hub';
   name = '';
   date;
+  loginPhase: boolean = true;
   someValue;
 
   onCreate() {
 
   }
 
+  toogle() {
+    this.loginPhase = !this.loginPhase;
+  }
   getCurrentDate() {
    this.date = new Date();
    return this.date.getDate();
