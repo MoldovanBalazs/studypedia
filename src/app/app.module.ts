@@ -27,16 +27,16 @@ import {AddUniversityComponent} from './add-university/add-university.component'
 import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path : 'home', component: NewsfeedComponent},
-  {path: 'search', component: ArticleListComponent },
-  {path: 'search', component: ArticleListComponent },
-  {path: 'requests', component: RequestsComponent },
-  {path: 'add-university', component: AddUniversityComponent},
-  {path: 'profile', component: ProfiledetailComponent},
+  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'article', component: ArticlesComponent},
-  {path: 'mainmenu', component: MainmenuComponent}
+  {path: 'mainmenu', component: MainmenuComponent, children: [
+      {path : 'home', component: NewsfeedComponent},
+      {path: 'search', component: ArticleListComponent },
+      {path: 'requests', component: RequestsComponent },
+      {path: 'add-university', component: AddUniversityComponent},
+      {path: 'profile', component: ProfiledetailComponent},
+      {path: 'article', component: ArticlesComponent}
+    ]},
   ];
 @NgModule({
   declarations: [

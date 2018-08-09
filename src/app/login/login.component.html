@@ -5,8 +5,7 @@
   }
 </style>
 
-<body>
-<div class="content">
+<div  class="content">
   <div class="container">
     <h2>Login</h2>
     <form>
@@ -19,8 +18,8 @@
         <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
         <input type="password" class="form-control" id="password" required>
       </div>
-      <a  [routerLink]="[{ outlets: { primary: 'mainmenu', login: null }}]">
-        <button type="submit" class = "btn btn-primary">Login </button>
+      <a  >
+        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
       </a>
     </form>
   </div>
@@ -38,7 +37,6 @@
 
 
 </div>
-</body>
 
 <!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
 

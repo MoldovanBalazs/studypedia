@@ -1,5 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
+import { Events } from 'ionic-angular';
 import {logger} from 'codelyzer/util/logger';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -7,15 +9,15 @@ import {logger} from 'codelyzer/util/logger';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = '#hub';
   name = '';
   date;
-  loginPhase: boolean = true;
+  @Input()loginPhase = true;
   someValue;
 
-  onCreate() {
-
+  constructor(private router: Router) {
+    console.log('dsadadsadas1');
   }
 
   toogle() {
@@ -24,6 +26,11 @@ export class AppComponent {
   getCurrentDate() {
    this.date = new Date();
    return this.date.getDate();
+  }
+
+  ngAfterViewInit(): void {
+    console.log('dsadadsadas2');
+    this.router.navigateByUrl('/login');
   }
 }
 

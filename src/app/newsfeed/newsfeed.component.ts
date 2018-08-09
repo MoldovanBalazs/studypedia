@@ -18,15 +18,17 @@ export class NewsfeedComponent implements OnInit {
       'author'        : 'Ramura John',
       'date'          : '1 ianuarie 1876',
       'articleLink'   : 'url',
-      'profileLink'   : 'url'
-    },
+      'profileLink'   : 'url',
+      'releaseDate'   : new Date()
+      },
     {
       'id'            : 2,
       'title'         : 'Un peroneu de milioane',
       'author'        : 'Jutra',
       'date'          : '20 februarie 1998',
       'articleLink'   : 'url',
-      'profileLink'   : 'url'
+      'profileLink'   : 'url',
+      'releaseDate'   : new Date()
     }
   ];
 

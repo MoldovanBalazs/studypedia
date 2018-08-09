@@ -5,4 +5,5 @@ export interface  INewsfeed {
   date : string;
   articleLink : string;
   profileLink : string;
+  releaseDate : Date;
 }

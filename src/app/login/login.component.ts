@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit, ViewChild} from '@angular/core';
+import {Component, NgModule, OnInit, NgZone, Injector, Injectable} from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AppComponent } from 'src/app/app.component';
 import {Declaration} from '@angular/compiler/src/i18n/serializers/xml_helper';
@@ -26,12 +26,14 @@ import {Router} from '@angular/router';
   declarations: [
   AppComponent,
   ]})
-
+@Injectable()
 export class LoginComponent implements OnInit {
 
   pageTitle = 'Login';
   router: Router;
   registerButton = false;
+  injector: Injector;
+
   model = new User(18, 'admin', 'admin');
   users: any[] = [
     {
@@ -59,6 +61,12 @@ export class LoginComponent implements OnInit {
 
   loginClick() {
 
+    // const ngZone = this.injector.get(NgZone);
+    // const routerService = this.injector.get(Router);
+    // ngZone.run(() => {
+    //   routerService.navigate(['/mainmenu'], {skipLocationChange: true});
+    //   });
+    console.log('test');
     this.router.navigateByUrl('/mainmenu');
   }
 }

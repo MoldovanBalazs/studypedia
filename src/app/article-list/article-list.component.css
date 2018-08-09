@@ -1,17 +1,10 @@
-/*.center {*/
-  /*position: absolute;*/
-  /*left: 300px;*/
-  /*text-align: center;*/
-  /*border: 3px solid #58668b;*/
-/*}*/
-/*.gallery {*/
-  /*display: grid;*/
-  /*grid-gap: 100px;*/
-  /*grid-template-columns: repeat(2, 1fr);*/
-/*}*/
-/*body{*/
-  /*display: inline-block;*/
-/*}*/
+.requests {
+  margin: 0 0 2em 0em;
+  list-style-type: none;
+  padding: 0;
+  width: 60em;
+}
 thead {
   color: blue;
 }
+
