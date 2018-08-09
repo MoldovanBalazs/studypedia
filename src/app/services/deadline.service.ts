@@ -25,9 +25,7 @@ export class DeadlineService {
     public http: HttpClient) { }
 
   getCurricula() : Observable<Deadline[]>{
-
-      const url = 'http://localhost:8080/deadlines';
-
+    const url = 'http://localhost:8080/deadlines';
     return this.http.get<Deadline[]>(url, {headers: this.headers}).pipe();
   }
 

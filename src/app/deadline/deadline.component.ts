@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DeadlineService} from "../services/deadline.service";
 import * as angular from 'angular';
 import {Deadline, Duration} from "../models/deadline";
 import {s} from "@angular/core/src/render3";
 import DateTimeFormat = Intl.DateTimeFormat;
+import {copyObj} from "@angular/animations/browser/src/util";
 
 
 @Component({
@@ -11,41 +12,63 @@ import DateTimeFormat = Intl.DateTimeFormat;
   templateUrl: './deadline.component.html',
   styleUrls: ['./deadline.component.css']
 })
-export class DeadlineComponent implements OnInit {
+export class DeadlineComponent implements OnInit, AfterViewInit {
 
-  curricula: Deadline[];
+  curricula: Deadline[] = [];
+  list: Array<object> = [];
 
   private countDownDate : any;
   public now;
   private distance;
   public t;
-  public renderable: boolean = false;
+  public renderable: boolean = true;
 
-  constructor(private curriculaService: DeadlineService) { }
+  constructor(private curriculaService: DeadlineService) {
+    this.curriculaService.getCurricula().subscribe((data: Deadline[]) => {
+      this.curricula = data;
+
+
+      for(let curriculaObj of this.curricula){
+        console.log(curriculaObj);
+        //curriculaObj.date.setHours(curriculaObj.date.getHours() - 3);
+      }
+      this.sortDeadlines();
+      this.curricula.forEach(item => {
+        item.timeRemaining = new Duration();
+        item.timeRemaining.days = 0;
+        item.timeRemaining.hours = 0;
+        item.timeRemaining.minutes = 0;
+        item.timeRemaining.seconds = 0;
+      });
+
+      this.curricula.forEach(item => {
+        console.log(item.timeRemaining.seconds);
+      })
+    });
+  }
 
   ngOnInit() {
-    this.getCurricula();
-    for(let curriculaObj of this.curricula){
-      curriculaObj.date.setHours(curriculaObj.date.getHours() - 3);
-    }
-    this.sortDeadlines();
+    this.now = new Date().getTime();
     this.displayCountDown();
-    // this.now = new Date().getTime();
-    this.renderable = true;
+
   }
 
-  getCurricula(){
-    this.curriculaService.getCurricula().subscribe((result)=>{
-      this.curricula = result;
-    })
+  getCurricula(): void{
+    let array: Array<Deadline> = [];
+    this.curriculaService.getCurricula().subscribe((data: Array<Deadline>) => {
+      console.log(data);
+      data.forEach(item => {this.curricula.push(item);
+        console.log(item.name)});
+    });
   }
+
 
   addCurricula(name: string, deadline: Date): void {
 
     let curricula = new Deadline();
     curricula.name = name;
     curricula.date = deadline;
-    curricula.timeRemaining = new Duration();
+   // curricula.timeRemaining = new Duration();
 
     this.curriculaService.addCurricula(curricula)
       .subscribe(curricula => {
@@ -54,7 +77,7 @@ export class DeadlineComponent implements OnInit {
   }
 
   calculateDuration(curricula:Deadline):void{
-    this.countDownDate = curricula.date.getTime();
+    this.countDownDate = curricula.date;
 
     this.now = new Date().getTime();//now
     this.distance = this.countDownDate - this.now; //difference from now
@@ -67,8 +90,8 @@ export class DeadlineComponent implements OnInit {
 
   displayCountDown() {
     setInterval(()=>{
+      this.deleteOutdatedDeadlines();
       for(let curriculaObj of this.curricula){
-        this.deleteOutdatedDeadlines();
         this.calculateDuration(curriculaObj);
       }
     }, 1000);
@@ -77,7 +100,7 @@ export class DeadlineComponent implements OnInit {
   deleteOutdatedDeadlines(): void {
     for(let curriculaObj of this.curricula) {
 
-      if( curriculaObj.date.getTime()< this.now ) {
+      if( curriculaObj.date< this.now ) {
         let index: number = this.curricula.indexOf(curriculaObj);
         if( index != -1){ //object is in the array
           this.curricula.splice(index, 1);
@@ -96,11 +119,19 @@ export class DeadlineComponent implements OnInit {
 
   sortDeadlines(): void {
     this.curricula.sort((a,b) => {
-      if(a.date.getTime() >= b.date.getTime()) {
+      if(a.date >= b.date) {
         return 1;
       } else {
         return -1;
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+
+   //console.log("before get");
+    //this.getCurricula();
+    //console.log("afteer get");
+
   }
 }
