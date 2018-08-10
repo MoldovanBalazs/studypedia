@@ -28,7 +28,7 @@ export class ArticleListComponent implements OnInit {
   btn_users: boolean;
   btn_subjects: boolean;
   shownTable: string;
-  public artileList: Article[];
+  public articleList: Article[];
   public userList: User[];
   public subjectList: Subject[];
 
@@ -38,7 +38,7 @@ export class ArticleListComponent implements OnInit {
 
   getArticles(){
     this.articleService.getArticles().subscribe((result) => {
-      this.artileList = result;
+      this.articleList = result;
     });
   }
 
@@ -67,7 +67,7 @@ export class ArticleListComponent implements OnInit {
 
   constructor(private articleService : ArticleService, private userService : UserService, private subjectService : SubjectService) {
     this.articleService.getArticles().subscribe((result) => {
-      this.artileList = result;
+      this.articleList = result;
     });
     this.userService.getUsers().subscribe((result) => {
       this.userList = result;
@@ -88,12 +88,9 @@ export class ArticleListComponent implements OnInit {
   showTable(id): void {
     this.shownTable = id;
     this.updateListFilter(this.listFilter);
-
   }
 
   public updateListFilter(value: string) {
-    // console.log('LOG');
-    // this._listFilter = value;
     if (this.btn_notes) {
       return this.listFilter ? this.performFilterOnNotes(value) : this.performFilterOnNotes('');
     } else if (this.btn_seminars) {
@@ -111,7 +108,7 @@ export class ArticleListComponent implements OnInit {
 
   performFilterOnNotes(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.artileList.filter((article: Article) =>article.type === 0 && (
+    return this.articleList.filter((article: Article) =>article.type === 0 && (
       article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
       || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1));
 
@@ -119,21 +116,21 @@ export class ArticleListComponent implements OnInit {
 
   performFilterOnSeminars(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.artileList.filter((article: Article) => article.type === 1 &&
+    return this.articleList.filter((article: Article) => article.type === 1 &&
       (article.title.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
         article.author.toLocaleLowerCase().indexOf(filterBy) !== -1));
   }
 
   performFilterOnLabs(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.artileList.filter((article: Article) => article.type === 2 && (
+    return this.articleList.filter((article: Article) => article.type === 2 && (
       article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
       || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1));
   }
 
   performFilterOnExams(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.artileList.filter((article: Article) => article.type === 3 && (
+    return this.articleList.filter((article: Article) => article.type === 3 && (
       article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
       || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1));
   }
@@ -156,5 +153,5 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
     this.getUsers();
     this.getSubjects();
-  }
+    }
 }
