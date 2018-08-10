@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
-import { Deadline} from "../models/deadline";
-import { DEADLINES} from "../mock-data/mock-deadline";
-import {Subscription} from "rxjs/internal/Subscription";
+import {Deadline, Duration} from "../models/deadline";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,15 +22,35 @@ export class DeadlineService {
   constructor(
     public http: HttpClient) { }
 
-  getCurricula() : Observable<Deadline[]>{
+  getDeadlines() : Observable<Deadline[]>{
     const url = 'http://localhost:8080/deadlines';
     return this.http.get<Deadline[]>(url, {headers: this.headers}).pipe();
   }
 
-  addCurricula(curricula: Deadline): Observable<Deadline> {
-    return this.http.post<Deadline>(this.curriculaUrl, curricula, httpOptions);
-      /*.pipe(tap((curricula: Deadline) =>
-        this.log(`added curricula w/ name = ${curricula.name}`)), catchError(this.handleError<Deadline>('addCurricula')));*/
+  getUserDeadlines(userId: number) : Observable<Deadline[]>{
+    const url = 'http://localhost:8080/user/' + userId + '/deadlines';
+    return this.http.get<Deadline[]>(url, {headers: this.headers}).pipe();
+  }
+
+  addDeadline(deadline: Deadline, deadlineList: Deadline[]): void{
+
+    let body = JSON.stringify(deadline); console.log("BODY" + body);
+    const url = 'http://localhost:8080/insert/';
+    this.http.post<Deadline>(url, body, httpOptions)
+      .subscribe((val) => {
+        console.log("Post successfully item" + val);
+        val.timeRemaining = new Duration();
+        deadlineList.push(val as Deadline);
+        deadlineList.sort((a,b) => {
+            if(a.date >= b.date) {
+              return 1;
+            } else {
+              return -1;
+            }
+          });
+        //calculateDuration(val);
+        console.log("LIST" + deadlineList);
+      });
   }
 
   private handleError(error: any): Promise<any> {

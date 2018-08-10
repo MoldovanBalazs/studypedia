@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonalService} from "../services/personal.service";
 import {Article} from "../models/article";
+import {ArticleService} from "../services/article.service";
 
 
 @Component({
@@ -16,18 +16,29 @@ export class ProfiledetailComponent implements OnInit {
   public name: string = "Muresan Daniel";
   public university: string = "UBB";
 
-  articleList: Article[];
+  public articleList: Article[] = [];
 
 
-  constructor(private articleService: PersonalService) { }
+  constructor(private articleService: ArticleService) {
+    // this.articleService.getPersonalArticles(1).subscribe((data: Article[]) => {
+    //   this.articleList = data;
+    // })
 
-  ngOnInit() {
-    this.getPersonalArticles();
+
   }
 
-  getPersonalArticles(){
-    this.articleService.getCurricula().subscribe((result)=>{
+  ngOnInit() {
+
+    this.getArticles();
+    console.log(this.articleList);
+  }
+
+  getArticles(){
+    this.articleService.getPersonalArticles(1).subscribe((result)=>{
       this.articleList = result;
+      this.articleList.forEach(item => {
+        item.releaseDate = new Date();
+      })
     })
   }
 
