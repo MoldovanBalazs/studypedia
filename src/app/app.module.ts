@@ -28,19 +28,17 @@ import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 
 const routes: Routes = [
-  {path : 'home', component: NewsfeedComponent},
-  {path: 'search', component: ArticleListComponent },
-  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'mainmenu', component: MainmenuComponent, children: [
+      {path : 'home', component: NewsfeedComponent},
       {path: 'search', component: ArticleListComponent },
-      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-  {path: 'requests', component: RequestsComponent },
-  {path: 'add-university', component: AddUniversityComponent},
-  {path: 'profile', component: ProfiledetailComponent},
-  {path: 'login', component: LoginComponent}
+      {path: 'requests', component: RequestsComponent },
+      {path: 'add-university', component: AddUniversityComponent},
+      {path: 'profile', component: ProfiledetailComponent},
+      {path: 'article', component: ArticlesComponent}
+    ]},
   ];
-
 @NgModule({
   declarations: [
     AppComponent,
