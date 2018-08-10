@@ -17,4 +17,6 @@ export class User {
     this.branch = branch;
     this.userType = usertype;
   }
+
+
 }

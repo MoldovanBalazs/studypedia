@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
-import { Events } from 'ionic-angular';
+// import { Events } from 'ionic-angular';
 import {logger} from 'codelyzer/util/logger';
 import {Router} from '@angular/router';
 

@@ -41,8 +41,8 @@
         <tbody>
         <tr *ngFor="let article of filteredNotes">
           <td align="center">{{ article.title}}</td>
-          <td align="center">{{ article.author }}</td>
-          <td align="center">{{ article.releaseDate.toLocaleString() }}</td>
+          <td align="center">{{ article.user.username }}</td>
+          <td align="center">{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
@@ -59,8 +59,8 @@
         <tbody>
         <tr *ngFor="let article of filteredSeminars">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
@@ -77,8 +77,8 @@
         <tbody>
         <tr *ngFor="let article of filteredLabs">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
@@ -95,8 +95,8 @@
         <tbody>
         <tr *ngFor="let article of filteredExams">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
@@ -113,7 +113,7 @@
         <tbody>
         <tr *ngFor="let user of filteredUsers">
           <td>{{user.id}}</td>
-          <td>{{user.name}}</td>
+          <td>{{user.username}}</td>
           <td>{{user.university}}</td>
         </tr>
         </tbody>

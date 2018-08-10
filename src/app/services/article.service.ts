@@ -11,25 +11,26 @@ import {catchError} from 'rxjs/operators';
 export class ArticleService {
 
   articleInsertUrl: string = "/insertArticle";
-  articleGetByType : string = "/typeArticle";
+  articleGetByTypeUrl : string = "http://localhost:8080/typeArticle";
+  allArticles : string = "http://localhost:8080/article/all";
 
   constructor(private http: HttpClient)  { }
 
   getArticles(): Observable<Article[]> {
-    return of(ARTICLES);
+    return this.http.get<Article[]>(this.allArticles);
   }
 
-  insertArticle (title: string, type: string, description: string) {
+  insertArticle (title: string, type: number, description: string) {
     const params = new HttpParams()
       .set('title', title)
-      .set('type', type)
+      .set('type', type.toString())
       .set('description', description);
     this.http.post(this.articleInsertUrl, {params});
   }
 
-  getArticleByType(type: string): Observable<Article[]>{
+  getArticleByType(type: number): Observable<Article[]>{
     const params = new HttpParams()
-      .set('type', type)
-    return this.http.get<Article[]>(this.articleGetByType, {params});
+      .set('type', type.toString());
+    return this.http.get<Article[]>(this.articleGetByTypeUrl, {params});
   }
 }
