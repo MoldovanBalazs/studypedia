@@ -11,6 +11,7 @@ import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
+import {AddSubjectComponent} from './add-subject/add-subject.component';
 import { RequestsComponent } from './requests/requests.component';
 import { RequestDetailComponent } from './request-detail/request-detail.component';
 import { UniversityComponent } from './university/university.component';
@@ -28,11 +29,12 @@ import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 const routes: Routes = [
-      // {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      { path: 'search', component: ArticleListComponent },
-      { path: 'requests', component: RequestsComponent },
-      { path: 'add-university', component: AddUniversityComponent}
+  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
+  {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: 'search', component: ArticleListComponent },
+  {path: 'requests', component: RequestsComponent },
+  {path: 'add-university', component: AddUniversityComponent}
   ];
 
 @NgModule({
@@ -46,10 +48,16 @@ const routes: Routes = [
     RequestDetailComponent,
     UniversityComponent,
     AddUniversityComponent,
+    AddSubjectComponent,
+    ArticleListComponent,
+    ArticlesComponent,
+    NewsfeedComponent,
+
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
     UniversitySearchComponent
+
   ],
   imports: [
     BrowserModule,
