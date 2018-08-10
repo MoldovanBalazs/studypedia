@@ -11,13 +11,13 @@ import {catchError} from 'rxjs/operators';
 export class ArticleService {
 
   articleInsertUrl: string = "/insertArticle";
-  articleGetByTypeUrl : string = "http://localhost:8080/typeArticle";
-  allArticles : string = "http://localhost:8080/article/all";
+  articleGetByTypeUrl : string = "http://localhost:8080/article/type";
+  allArticlesUrl : string = "http://localhost:8080/article/all";
 
   constructor(private http: HttpClient)  { }
 
   getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.allArticles);
+    return this.http.get<Article[]>(this.allArticlesUrl);
   }
 
   insertArticle (title: string, type: number, description: string) {

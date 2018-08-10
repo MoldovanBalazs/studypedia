@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
 import {USERS} from '../mock-data/mock-users';
 import {User} from '../models/user';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class UserService {
 
   username = 'none';
   usertype = this.moderator;
-
-  constructor() {
+  allUsersUrl = "http://localhost:8080/user/all";
+  constructor(private http: HttpClient) {
 
   }
 
@@ -36,7 +37,8 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return of(USERS);
+    return this.http.get<User[]>(this.allUsersUrl);
   }
+
 
 }
