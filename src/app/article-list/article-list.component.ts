@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from './article';
-import {Subject} from './subject';
+import {Article} from '../models/article';
+import {Subject} from '../models/subject';
 import {User} from './user';
 
 @Component({
@@ -49,40 +49,31 @@ export class ArticleListComponent implements OnInit {
     }
   ];
 
-  /*
-  public id: number;
-  public title: string;
-  public author: string;
-  public releaseDate: Date;
-  public type: string;
-  public link: string;
-  public authorLink: string;
-   */
   notes: Article[] = [
     {
       'id': 1,
-      'title': ' notes Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'title': 'OOP Basics',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'note',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': ' notes Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 2,
+      'title': '+OOP Advanced',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'note',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': 'notes Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 3,
+      'title': 'C++',
+      'author': 'Maria',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'note',
       'link': 'somelink',
       'authorLink': 'somelink'
     }
@@ -91,27 +82,27 @@ export class ArticleListComponent implements OnInit {
   seminars: Article[] = [
     {
       'id': 1,
-      'title': ' seminar Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
+      'title': 'OOP S1',
+      'author': 'Gigica',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
       'type': 'seminar',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': ' seminar  Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
+      'id': 2,
+      'title': 'MAP S1',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
       'type': 'seminar',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': ' seminar  Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
+      'id': 3,
+      'title': 'MAP S2',
+      'author': 'Maria',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
       'type': 'seminar',
       'link': 'somelink',
       'authorLink': 'somelink'
@@ -121,58 +112,80 @@ export class ArticleListComponent implements OnInit {
   labs: Article[] = [
     {
       'id': 1,
-      'title': 'labs Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'title': 'OOP L1',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'lab',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': 'labs Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 2,
+      'title': 'OOP L2',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'lab',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': 'labs Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 3,
+      'title': 'MAP L1',
+      'author': 'Maria',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'lab',
       'link': 'somelink',
       'authorLink': 'somelink'
     }
   ];
-
+  // exams: IArticle[] = [
+  //   {
+  //     'articleId': 1,
+  //     'articleName': 'OOP 2017',
+  //     'articleAuthor': 'Gigel',
+  //     'articleType': 'exam',
+  //     'articleDate': '24.06.2017'
+  //   },
+  //   {
+  //     'articleId': 2,
+  //     'articleName': 'OOP 2016',
+  //     'articleAuthor': 'Gigel',
+  //     'articleType': 'exam',
+  //     'articleDate': '7.07.2016'
+  //   },
+  //   {
+  //     'articleId': 3,
+  //     'articleName': 'MAP 2018',
+  //     'articleAuthor': 'Maria',
+  //     'articleType': 'exam',
+  //     'articleDate': '30.07.2018'
+  //   }
+  // ];
   exams: Article[] = [
     {
       'id': 1,
-      'title': ' exams Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'title': 'OOP 2017',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'exam',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': ' exams Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 2,
+      'title': 'OOP 2016',
+      'author': 'Gigel',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'exam',
       'link': 'somelink',
       'authorLink': 'somelink'
     },
     {
-      'id': 1,
-      'title': ' exams Punguta cu doi bani',
-      'author': 'Ramura John',
-      'releaseDate': new Date("2018-07-31T13:00:00-00:00"),
-      'type': 'seminar',
+      'id': 3,
+      'title': 'MAP 2018',
+      'author': 'Maria',
+      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
+      'type': 'exam',
       'link': 'somelink',
       'authorLink': 'somelink'
     }
@@ -191,6 +204,7 @@ export class ArticleListComponent implements OnInit {
   btn_exams: boolean;
   btn_users: boolean;
   btn_subjects: boolean;
+  shownTable: string;
 
   get listFilter(): string {
     return this._listFilter;
@@ -215,17 +229,13 @@ export class ArticleListComponent implements OnInit {
     this.filteredUsers = this.users;
     this.filteredSubjects = this.subjects;
     this.listFilter = '';
+    this.shownTable = 't01';
   }
 
   showTable(id): void {
-    document.getElementById('t01').style.display = 'none';
-    document.getElementById('t011').style.display = 'none';
-    document.getElementById('t012').style.display = 'none';
-    document.getElementById('t013').style.display = 'none';
-    document.getElementById('t02').style.display = 'none';
-    document.getElementById('t03').style.display = 'none';
-    document.getElementById(id).style.display = 'block';
+    this.shownTable = id;
     this.updateListFilter(this.listFilter);
+
   }
 
   public updateListFilter(value: string) {

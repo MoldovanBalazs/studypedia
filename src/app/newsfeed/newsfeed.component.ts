@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article} from '../article-list/article';
+import { Article} from '../models/article';
 //import {INewsfeed} from './INewsfeed';
 
 @Component({

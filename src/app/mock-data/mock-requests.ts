@@ -1,4 +1,4 @@
-import {Request} from './request';
+import {Request} from '../models/request';
 
 export const REQUESTS: Request[] = [
   { hash: 'hash1ffs', documentName: 'document1', proposerName: 'accountName1333', authorName: 'Ion Anton', contentLink: 'cL1', articleDescription: 'aD1'},

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UniversityComponent } from './university/university.component';
-import { University } from './university';
+import { UniversityComponent } from '../university/university.component';
+import { University } from '../models/university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 

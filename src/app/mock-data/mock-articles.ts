@@ -1,4 +1,4 @@
-import {Article} from "../article-list/article";
+import {Article} from "../models/article";
 
 export const MYARTICLES : Article[] = [
   {
