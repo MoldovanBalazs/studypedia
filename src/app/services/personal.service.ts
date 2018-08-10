@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MYARTICLES} from "../mock-data/mock-articles";
+import { ARTICLES} from "../mock-data/mock-articles";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs/index";
 import { Article } from '../models/article'
@@ -20,6 +20,6 @@ export class PersonalService {
     private http: HttpClient) { }
 
   getCurricula(): Observable<Article[]> {
-    return of(MYARTICLES);
+    return of(ARTICLES);
   }
 }
