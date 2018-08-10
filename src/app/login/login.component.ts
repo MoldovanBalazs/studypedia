@@ -11,9 +11,7 @@ export class LoginComponent implements OnInit {
 
   pageTitle = 'Login';
   registerButton = false;
-  /*modelMod = new User(18, 'admin', 'admin',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', true);
-  modelNoMod = new User(19, 'noMod', 'noMod',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', false);
-*/  submitted = false;
+  submitted = false;
   modelLogin2 = new User(1, '', '',  '',  '', '', '');
 
   onSubmit() { this.submitted = true; }
@@ -21,6 +19,9 @@ export class LoginComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+  loginUser(event) {
+    console.log(event);
   }
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
