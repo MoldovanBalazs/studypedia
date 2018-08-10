@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 
@@ -31,10 +30,6 @@ const routes: Routes = [
   {path : 'home', component: NewsfeedComponent},
   {path: 'search', component: ArticleListComponent },
   {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-      {path: 'search', component: ArticleListComponent },
-      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
   {path: 'requests', component: RequestsComponent },
   {path: 'add-university', component: AddUniversityComponent},
   {path: 'profile', component: ProfiledetailComponent},

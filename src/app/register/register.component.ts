@@ -10,17 +10,21 @@ import {User} from 'src/app/models/user';
 export class RegisterComponent implements OnInit {
 
   modButton = false;
+  registerButton = false;
   universities = ['UTCN', 'UBB',
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
-  model = new User(17, 'admin', 'admin',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', true);
+  model = new User(17, '', '',  '',  '', '', '');
 
   submitted = false;
 
   onSubmit() { this.submitted = true; }
   constructor() { }
   ngOnInit() {
+  }
+  toggleRegister(): void {
+    this.registerButton = !this.registerButton;
   }
 
 

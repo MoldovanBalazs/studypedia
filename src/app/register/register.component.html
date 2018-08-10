@@ -1,11 +1,26 @@
 
+
 <div [hidden]="submitted">
+  <h4>New user?
+    <button type="button"
+            (click) = 'toggleRegister()'>
+      {{ registerButton ? 'Nevermind' : 'Register here!'}}
+    </button><!--
+      <div *ngIf = 'registerButton'>
+        <app-register></app-register>
+      </div>-->
+  </h4>
+</div>
+
+
+<div [hidden]="submitted" *ngIf = 'registerButton'>
+
 <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
 <div class="container">
     <div class="form-group">
       <label for="username">Username &nbsp;&nbsp;</label>
       <input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username"  #username="ngModel">
-      <div [hidden]="username.valid || username.pristine"
+      <div [hidden]="username.valid || username.untouched"
            class="alert alert-danger">
         Username can't be empty
       </div>
@@ -14,7 +29,7 @@
     <div class="form-group">
       <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
       <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel">
-      <div [hidden]="password.valid || password.pristine"
+      <div [hidden]="password.valid || password.untouched"
            class="alert alert-danger">
         Password can't be empty
       </div>
@@ -63,6 +78,7 @@
   </form>
 </div>
 
+<div [hidden] ="submitted" *ngIf = 'registerButton'>
   <h4>
     <button type="button"
             (click) = 'toggleMod()'>
@@ -76,17 +92,20 @@
         <input type = 'password'>
       </div>
     </div>
+</div>
 
 <div [hidden]="!submitted">
+  <h1>You've succesfully registered!</h1>
+  <!--
   <h2>You submitted the following:</h2>
   <div class="row">
     <div class="col-xs-3">Username: </div>
     <div class="col-xs-9  pull-left">{{ model.username }}</div>
   </div>
-  <!--<div class="row">
+  &lt;!&ndash;<div class="row">
     <div class="col-xs-3">Password: </div>
     <div class="col-xs-9 pull-left" type="password">{{ model.password }}</div>
-  </div>-->
+  </div>&ndash;&gt;
   <div class="row">
     <div class="col-xs-3">University: </div>
     <div class="col-xs-9 pull-left">{{ model.university }}</div>
@@ -101,5 +120,5 @@
   </div>
   <br>
   Not right?
-  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>-->
 </div>
