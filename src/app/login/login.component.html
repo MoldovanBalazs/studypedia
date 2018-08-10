@@ -4,27 +4,8 @@
     margin: auto;
   }
 </style>
-<body>
-<div class="content">
-<!--
-<div class='card'>
-  <div class = 'card-header'>
-    <h1>{{pageTitle}}</h1>
-  </div>
-</div>
--->
-<!--
-<form>
-  <div class="input">
-    <label>Username</label>
-    <input type="text">
-  </div>
-  <div class = "input">
-    <label> Password </label>
-    <input type = 'password'>
-  </div>
-  -->
 
+<div  class="content">
   <div class="container">
     <h2>Login</h2>
     <form>
@@ -37,17 +18,9 @@
         <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
         <input type="password" class="form-control" id="password" required>
       </div>
-  <!--
-  <a routerLink="/profile" routerLinkActive="active">
-  -->
-      <button type="submit" class="btn btn-success">Login</button>
-
-
-  <!--
-  </a>
-  <router-outlet></router-outlet>
-  -->
-
+      <a  >
+        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
+      </a>
     </form>
   </div>
   <div>
@@ -64,24 +37,6 @@
 
 
 </div>
-</body>
 
-<!--
-<div class="container">
-    <h1>Login Form</h1>
-    <form>
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" required>
-      </div>
+<!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" required>
-      </div>
-
-      <button type="submit" class="btn btn-success">Login</button>
-
-    </form>
-</div>
--->
