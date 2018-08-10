@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {CurriculaService} from "../curricula.service";
+import {DeadlineService} from "../services/deadline.service";
 import * as angular from 'angular';
-import {Curricula, Duration} from "../curricula";
+import {Deadline, Duration} from "../models/deadline";
 import {s} from "@angular/core/src/render3";
 import DateTimeFormat = Intl.DateTimeFormat;
 
@@ -13,7 +13,7 @@ import DateTimeFormat = Intl.DateTimeFormat;
 })
 export class DeadlineComponent implements OnInit {
 
-  curricula: Curricula[];
+  curricula: Deadline[];
 
   private countDownDate : any;
   public now;
@@ -21,12 +21,12 @@ export class DeadlineComponent implements OnInit {
   public t;
   public renderable: boolean = false;
 
-  constructor(private curriculaService: CurriculaService) { }
+  constructor(private curriculaService: DeadlineService) { }
 
   ngOnInit() {
     this.getCurricula();
     for(let curriculaObj of this.curricula){
-      curriculaObj.deadline.setHours(curriculaObj.deadline.getHours() - 3);
+      curriculaObj.date.setHours(curriculaObj.date.getHours() - 3);
     }
     this.sortDeadlines();
     this.displayCountDown();
@@ -42,9 +42,9 @@ export class DeadlineComponent implements OnInit {
 
   addCurricula(name: string, deadline: Date): void {
 
-    let curricula = new Curricula();
+    let curricula = new Deadline();
     curricula.name = name;
-    curricula.deadline = deadline;
+    curricula.date = deadline;
     curricula.timeRemaining = new Duration();
 
     this.curriculaService.addCurricula(curricula)
@@ -53,8 +53,8 @@ export class DeadlineComponent implements OnInit {
       });
   }
 
-  calculateDuration(curricula:Curricula):void{
-    this.countDownDate = curricula.deadline.getTime();
+  calculateDuration(curricula:Deadline):void{
+    this.countDownDate = curricula.date.getTime();
 
     this.now = new Date().getTime();//now
     this.distance = this.countDownDate - this.now; //difference from now
@@ -77,7 +77,7 @@ export class DeadlineComponent implements OnInit {
   deleteOutdatedDeadlines(): void {
     for(let curriculaObj of this.curricula) {
 
-      if( curriculaObj.deadline.getTime()< this.now ) {
+      if( curriculaObj.date.getTime()< this.now ) {
         let index: number = this.curricula.indexOf(curriculaObj);
         if( index != -1){ //object is in the array
           this.curricula.splice(index, 1);
@@ -96,7 +96,7 @@ export class DeadlineComponent implements OnInit {
 
   sortDeadlines(): void {
     this.curricula.sort((a,b) => {
-      if(a.deadline.getTime() >= b.deadline.getTime()) {
+      if(a.date.getTime() >= b.date.getTime()) {
         return 1;
       } else {
         return -1;

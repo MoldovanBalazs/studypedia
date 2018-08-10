@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { REQUESTS } from '../mock-requests';
-import { RequestService } from '../request.service';
-import { Request } from '../request';
-import { UserinfoService } from '../userinfo.service';
+import { REQUESTS } from '../mock-data/mock-requests';
+import { RequestService } from '../services/request.service';
+import { Request } from '../models/request';
+import { UserinfoService } from '../services/userinfo.service';
 
 @Component({
   selector: 'app-requests',

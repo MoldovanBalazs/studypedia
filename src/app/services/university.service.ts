@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UniversityComponent } from './university/university.component';
-import { University } from './university';
+import { UniversityComponent } from '../university/university.component';
+import { University } from '../models/university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -15,7 +15,7 @@ export class UniversityService {
 
   universities: University[] = [];
   currentUniversity: University;
-  private universitiesUrl = 'api/universities';
+  private universitiesUrl = 'http://localhost:8080/university/all';
   existentUniversity: boolean;
   newUniversity: boolean;
 
@@ -24,7 +24,14 @@ export class UniversityService {
 
   /**POST: add a new University to the server;*/
   addUniversity(newUniversity: University): Observable<University> {
-    return this.http.post<University>(this.universitiesUrl, newUniversity, httpOptions);
+	const url = 'http://localhost:8080/insertUniversity';
+	let body = JSON.stringify(newUniversity);
+    return this.http.post<University>(url, body, httpOptions);
+  }
+  
+  getUniversity(universityId: number): Observable<University> {
+	  const url = 'http://localhost:8080/university/' + universityId;
+	  return this.http.get<University>(url);
   }
 
   getUniversities(): Observable<University[]> {
@@ -35,7 +42,7 @@ export class UniversityService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<University[]>(`${this.universitiesUrl}/?name=${term}`);
+    return this.http.get<University[]>(`${this.universitiesUrl}?param=${term}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -49,9 +56,11 @@ export class UniversityService {
     console.log(message);
   }
 
-  /**POST: update a university;*/
+  /**PUT: update a university;*/
   updateUniversity(university: University): Observable<any> {
-    return this.http.put(this.universitiesUrl, university, httpOptions).pipe();
+	const url = 'http://localhost:8080';
+	let body = JSON.stringify(university);
+    return this.http.put(url, body, httpOptions).pipe();
   }
 
 }

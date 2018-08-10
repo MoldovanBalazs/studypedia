@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalService} from "../services/personal.service";
+import {Article} from "../models/article";
+
 
 @Component({
   selector: 'app-profiledetail',
@@ -8,14 +11,24 @@ import { Component, OnInit } from '@angular/core';
 export class ProfiledetailComponent implements OnInit {
 
   public pageTitle: string = "My profile";
+  public contributionHeader : string = "My contributions"
 
   public name: string = "Muresan Daniel";
   public university: string = "UBB";
 
+  articleList: Article[];
 
-  constructor() { }
+
+  constructor(private articleService: PersonalService) { }
 
   ngOnInit() {
+    this.getPersonalArticles();
+  }
+
+  getPersonalArticles(){
+    this.articleService.getCurricula().subscribe((result)=>{
+      this.articleList = result;
+    })
   }
 
 }

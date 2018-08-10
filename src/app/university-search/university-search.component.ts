@@ -3,8 +3,8 @@ import { Observable, Subject } from 'rxjs';
 import {
    debounceTime, distinctUntilChanged, switchMap
  } from 'rxjs/operators';
-import { University, Faculty } from '../university';
-import { UniversityService } from '../university.service';
+import { University, Faculty } from '../models/university';
+import { UniversityService } from '../services/university.service';
 
 @Component({
   selector: 'app-university-search',
@@ -33,7 +33,7 @@ export class UniversitySearchComponent implements OnInit {
   }
 
   onSelect(university: University): void {
-    if(!university) {return; }
+    if (!university) {return; }
     this.currentUniversity = university;
     this.currentFaculty = '';
   }

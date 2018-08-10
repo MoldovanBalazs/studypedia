@@ -10,7 +10,6 @@
 <div *ngIf="this.currentUniversity">
   <div><button (click)="addUniversity()">Add University</button></div>
   <div>University name: <input [(ngModel)]="this.currentUniversity.name"/></div>
-  <div>University id: <input [(ngModel)]="this.currentUniversity.id"/></div>
   <div>
     <input #facultyName placeholder="faculty"/>
     <button (click)="addFaculty(facultyName.value)">Add Faculty</button>

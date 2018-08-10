@@ -25,7 +25,7 @@ export class Faculty {
   name: string;
   id: number;
   idUniv: number;
-  branches: Branch[];
+  // branches: Branch[];
 }
 
 export class University {

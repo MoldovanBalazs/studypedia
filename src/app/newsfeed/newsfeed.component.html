@@ -9,7 +9,7 @@
     <h1>{{subscribed <= 0 ? 'You are not subscribed to anybody' : 'Here are some news for you:'}}</h1>
     <div class='table-responsive'>
       <table class='table'
-             *ngIf="articles && articles.length">
+             *ngIf="articleList && articleList.length">
         <thead>
           <tr>
             <th>Title</th>
@@ -19,15 +19,17 @@
         </thead>
 
         <tbody>
-        <tr *ngFor='let article of articles'>
+        <tr *ngFor='let article of articleList'>
 
-          <td> <a href={{article.articleLink}}}>{{article.title}}</a> </td>
-          <td> <a href={{article.profileLink}}}>{{article.author}}</a> </td>
-          <td>{{ article.date }}</td>
+          <td> <a href={{article.link}}> {{article.title}} </a> </td>
+          <td> <a href={{article.authorLink}}> {{article.author}} </a> </td>
+          <td>{{ article.releaseDate.toLocaleString() }}</td>
 
         </tr>
         </tbody>
       </table>
-    </div>
+
+
   </div>
+</div>
 </div>

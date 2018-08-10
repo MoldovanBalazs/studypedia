@@ -1,6 +1,10 @@
-export class Curricula {
+import {User} from "./user";
+
+export class Deadline {
+  public id: number;
   public name: string;
-  public deadline: Date;
+  public date: Date;
+  public user: User;
   public timeRemaining: Duration;
 }
 
