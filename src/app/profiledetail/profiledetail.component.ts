@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from "../models/article";
 import {ArticleService} from "../services/article.service";
+import {User} from "../models/user";
+import {CookieBackendService} from "angular2-cookie/services/cookies.backend.service";
+import {CookieService} from 'ngx-cookie-service';
 
 
 @Component({
@@ -18,8 +21,17 @@ export class ProfiledetailComponent implements OnInit {
 
   public articleList: Article[] = [];
 
+  public getSessionUser(): User {
 
-  constructor(private articleService: ArticleService) {
+    let user: User = JSON.parse(this._cookieService.get('userCookie'));
+    //return user;
+
+    let sessionUser: User = new User();
+    sessionUser.id = 8;
+    return sessionUser;
+  }
+
+  constructor(private articleService: ArticleService, private _cookieService: CookieService) {
     // this.articleService.getPersonalArticles(1).subscribe((data: Article[]) => {
     //   this.articleList = data;
     // })
@@ -34,7 +46,7 @@ export class ProfiledetailComponent implements OnInit {
   }
 
   getArticles(){
-    this.articleService.getPersonalArticles(8).subscribe((result)=>{
+    this.articleService.getPersonalArticles(this.getSessionUser().id).subscribe((result)=>{
       this.articleList = result;
       this.articleList.forEach(item => {
         item.date = new Date();

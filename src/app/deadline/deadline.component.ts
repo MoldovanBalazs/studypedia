@@ -8,7 +8,7 @@ import DateTimeFormat = Intl.DateTimeFormat;
 import {copyObj} from "@angular/animations/browser/src/util";
 import {User} from "../models/user";
 import {constructDependencies} from "@angular/core/src/di/reflective_provider";
-
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-deadline',
@@ -24,19 +24,28 @@ export class DeadlineComponent implements OnInit {
   public t;
   public renderable: boolean = false;
 
-  public getUser(): User {
-    var user = new User();
-    user.id = 8;
-    return user;
+  public getSessionUser(): User {
+
+    let user: User = JSON.parse(this._cookieService.get('userCookie'));
+    //return user;
+
+    let sessionUser: User = new User();
+    sessionUser.id = 8;
+    return sessionUser;
   }
 
-  constructor(private deadlineService: DeadlineService) {
+  constructor(
+    private deadlineService: DeadlineService,
+    private _cookieService: CookieService) {
 
-    this.deadlineService.getUserDeadlines(this.getUser().id).subscribe((data: Deadline[]) => {
+
+
+    this.deadlineService.getUserDeadlines(this.getSessionUser().id).subscribe((data: Deadline[]) => {
       this.curricula = data;
       this.curricula.forEach(item => {
         item.timeRemaining = new Duration();
       });
+
       this.renderable = true;
     });
   }
@@ -48,7 +57,7 @@ export class DeadlineComponent implements OnInit {
 
   getDeadlines(): void{
 
-    this.deadlineService.getUserDeadlines(this.getUser().id).subscribe((data: Deadline[]) => {
+    this.deadlineService.getUserDeadlines(this.getSessionUser().id).subscribe((data: Deadline[]) => {
       this.curricula = data;
       this.curricula.forEach(item => {
         item.timeRemaining = new Duration();
@@ -62,7 +71,7 @@ export class DeadlineComponent implements OnInit {
     let deadline = new Deadline();
     deadline.name = name;
     deadline.date = date;
-    deadline.user = this.getUser();
+    deadline.user = this.getSessionUser();
     this.deadlineService.addDeadline(deadline, this.curricula);
   }
 
