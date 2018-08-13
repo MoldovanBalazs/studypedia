@@ -47,8 +47,8 @@ export class UniversityService {
 	  return this.http.get<Faculty[]>(`http://localhost:8080/getFacultiesByUniversityId?universityId=${universityId}`);
   }
   
-  addFaculty(newFaculty: Faculty): Observable<Faculty> {
-	  const url = 'http://localhost:8080/insertFaculty';
+  addFaculty(newFaculty: Faculty, universityId: number): Observable<Faculty> {
+	  const url = `http://localhost:8080/insertFaculty?universityId=${universityId}`;
 	  let body = JSON.stringify(newFaculty);
 	  return this.http.post<Faculty>(url, body, httpOptions);
   }

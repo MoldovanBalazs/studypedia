@@ -43,14 +43,10 @@ export class UniversitySearchComponent implements OnInit {
   }
 
   addFaculty(newFacultyName: string): void {
-	/*if(!this.currentUniversity){ return; }
-    const newFaculty = new Faculty();
-    newFaculty.name = newFacultyName;
-    newFaculty.id = this.getNewFacultyId();
-    this.currentUniversity.faculties.push(newFaculty);*/
 	const newFaculty = new Faculty();
 	newFaculty.name = newFacultyName;
-	this.universityService.addFaculty(newFaculty).subscribe();
+	this.universityService.addFaculty(newFaculty, this.currentUniversity.id).subscribe();
+	this.currentUniversity.faculties.push(newFaculty);
   }
 
   updateUniversity(): void {

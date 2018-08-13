@@ -44,8 +44,8 @@ export class AddUniversityComponent implements OnInit {
   addFaculty(facultyName: string): void {
     const newFaculty = new Faculty();
     newFaculty.name = facultyName;
+	//this.universityService.addFaculty(newFaculty, this.currentUniversity.id).subscribe();
     this.currentUniversity.faculties.push(newFaculty);
-	this.universityService.addFaculty(newFaculty).subscribe();
   }
 
   getUniversities(): void {
