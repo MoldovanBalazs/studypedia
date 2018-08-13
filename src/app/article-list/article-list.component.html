@@ -1,15 +1,11 @@
-<!--<div class="row">-->
-<!--<div style = "float:left;" class="column side">-->
-<!--<app-mainmenu></app-mainmenu>-->
-<!--</div>-->
-<div class="content">
+<div>
   <div class="card-header">
     {{pageTitle}}
   </div>
   <div class="card-body">
     <div class="row">
-      <div class="col-md-2">Type:</div>
-      <form>
+      <div class="col-md-2 requests">Type:</div>
+      <form class="requests">
         <input type="radio" name="type" value="notes" [(ngModel)]="btn_notes" (ngModelChange)="showTable('t01')"> Notes
         <input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (ngModelChange)="showTable('t011')"> Seminars
         <input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (ngModelChange)="showTable('t012')"> Labs
@@ -33,8 +29,8 @@
         <h4>Filtered by: {{listFilter}}</h4>
       </div>
     </div>
-    <div class="table-responsive" *ngIf="shownTable === 't01'">
-      <table id="t01" class="table" *ngIf="btn_notes && notes && notes.length">
+    <div *ngIf="shownTable === 't01'">
+      <table id="t01" class="table table-responsive" *ngIf="btn_notes && filteredNotes && filteredNotes.length">
         <thead>
         <tr>
           <th>Note</th>
@@ -44,15 +40,15 @@
         </thead>
         <tbody>
         <tr *ngFor="let article of filteredNotes">
-          <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td align="center">{{ article.title}}</td>
+          <td align="center">{{ article.author }}</td>
+          <td align="center">{{ article.releaseDate.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't011'">
-      <table id="t011" class="table" *ngIf="btn_seminars && seminars && seminars.length">
+      <table id="t011" class="table" *ngIf="btn_seminars && filteredSeminars && filteredSeminars.length">
         <thead>
         <tr>
           <th>Seminar</th>
@@ -70,7 +66,7 @@
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't012'">
-      <table id="t012" class="table" *ngIf="btn_labs && labs && labs.length">
+      <table id="t012" class="table" *ngIf="btn_labs && filteredLabs && filteredLabs.length">
         <thead>
         <tr>
           <th>Lab</th>
@@ -88,7 +84,7 @@
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't013'">
-      <table id="t013" class="table" *ngIf="btn_exams && exams && exams.length">
+      <table id="t013" class="table" *ngIf="btn_exams && filteredExams && filteredExams.length">
         <thead>
         <tr>
           <th>Exam</th>
@@ -106,7 +102,7 @@
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't02'">
-      <table id="t02" class="table" *ngIf="btn_users && users && users.length">
+      <table id="t02" class="table" *ngIf="btn_users && filteredUsers && filteredUsers.length">
         <thead>
         <tr>
           <th>Id</th>
@@ -124,7 +120,7 @@
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't03'">
-      <table id="t03" class="table" *ngIf="btn_subjects && subjects && subjects.length">
+      <table id="t03" class="table" *ngIf="btn_subjects && filteredSubjects && filteredSubjects.length">
         <thead>
         <tr>
           <th>Id</th>
@@ -143,4 +139,3 @@
     </div>
   </div>
 </div>
-<!--</div>-->

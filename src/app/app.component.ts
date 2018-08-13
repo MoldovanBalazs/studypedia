@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {logger} from 'codelyzer/util/logger';
+import { CookieService } from 'ngx-cookie-service'
 
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent {
   name = '';
   date;
   someValue;
-
+  constructor(private _cookieService: CookieService ) {}
   onCreate() {
 
   }

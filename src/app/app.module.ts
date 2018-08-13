@@ -15,7 +15,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { UniversityComponent } from './university/university.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
-
+import { CookieService } from 'ngx-cookie-service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
@@ -61,9 +61,11 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
       <div class="form-group">
         <label for="username">Username &nbsp;&nbsp;</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="modelLogin2.username" required name="username" #username="ngModel">
+        <input type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
         <div [hidden]="username.valid || username.untouched"
              class="alert alert-danger">
           Username can't be empty
@@ -20,7 +20,7 @@
 
       <div class="form-group">
         <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="modelLogin2.password" required name="password" #password="ngModel">
+        <input type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
         <div [hidden]="password.valid || password.untouched"
              class="alert alert-danger">
           Password can't be empty
