@@ -9,6 +9,8 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const URL: string = 'http://localhost:8080/';
+
 @Injectable({ providedIn: 'root'})
 export class DeadlineService {
 
@@ -28,17 +30,17 @@ export class DeadlineService {
   }
 
   getUserDeadlines(userId: number) : Observable<Deadline[]>{
-    const url = 'http://localhost:8080/user/' + userId + '/deadlines';
+   var url = URL + 'user/' + userId + '/deadlines';
     return this.http.get<Deadline[]>(url, {headers: this.headers}).pipe();
   }
 
   addDeadline(deadline: Deadline, deadlineList: Deadline[]): void{
 
     let body = JSON.stringify(deadline); console.log("BODY" + body);
-    const url = 'http://localhost:8080/insert/';
+    var url = URL + 'insert/';
     this.http.post<Deadline>(url, body, httpOptions)
       .subscribe((val) => {
-        console.log("Post successfully item" + val);
+        //console.log("Post successfully item" + val);
         val.timeRemaining = new Duration();
         deadlineList.push(val as Deadline);
         deadlineList.sort((a,b) => {
@@ -48,9 +50,18 @@ export class DeadlineService {
               return -1;
             }
           });
-        //calculateDuration(val);
-        console.log("LIST" + deadlineList);
+       // console.log("LIST" + deadlineList);
+        //let x={username : "abc", passwordlet x={test : "abc",};:"test"};
       });
+  }
+
+  deleteDeadline(deadline: Deadline): boolean {
+    let body = JSON.stringify(deadline);
+    var url = URL + 'deadline?deadlineId=' + deadline.id;
+    this.http.delete(url).subscribe(data => {
+      return true;
+    });
+    return false;
   }
 
   private handleError(error: any): Promise<any> {

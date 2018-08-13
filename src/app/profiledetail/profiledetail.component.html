@@ -6,6 +6,7 @@
 
   <div>
     <h2>{{ contributionHeader }}</h2>
+    <div style="overflow-y: scroll; height: 800px;">
     <table class='table'
            *ngIf="articleList && articleList.length">
       <thead>
@@ -25,5 +26,7 @@
       </tr>
       </tbody>
     </table>
+    </div>
+
   </div>
 </body>

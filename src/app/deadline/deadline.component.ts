@@ -7,6 +7,7 @@ import {s} from "@angular/core/src/render3";
 import DateTimeFormat = Intl.DateTimeFormat;
 import {copyObj} from "@angular/animations/browser/src/util";
 import {User} from "../models/user";
+import {constructDependencies} from "@angular/core/src/di/reflective_provider";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class DeadlineComponent implements OnInit {
 
   public getUser(): User {
     var user = new User();
-    user.id = 1;
+    user.id = 8;
     return user;
   }
 
@@ -114,6 +115,15 @@ export class DeadlineComponent implements OnInit {
         return -1;
       }
     });
+  }
+
+  deleteDeadline(deadline: Deadline) {
+    let index: number = this.curricula.indexOf(deadline);
+    console.log(deadline.id);
+    if( index != -1) {
+      this.deadlineService.deleteDeadline(deadline);
+      this.curricula.splice(index, 1);
+    }
   }
 
 }

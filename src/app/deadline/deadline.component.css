@@ -1,4 +1,16 @@
+html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 
+btn.noBack {
+  padding: 0;
+  border: none;
+  background: #f8f8fa;
+}
 p.ok {
  background-color: #f8f8fa   ;
   color: #58668b   ;
@@ -8,9 +20,9 @@ p.ok {
 
   font-family: "HP Simplified Light";
   font-size: x-large;
-  /*width: 900px;*/
   border: 10px solid #88d8b0;
   margin: 25px;
+  float: left;
 
   padding: 25px;
   border-radius: 50px / 15px;
@@ -22,6 +34,7 @@ p.isComing {
   color: #58668b   ;
   font-weight: 700;
   width: 60%;
+  float: left;
 
   margin-bottom: 30px;
 
@@ -40,6 +53,7 @@ p.urgent {
   color:#58668b  ;
   font-weight: 700;
   width: 60%;
+  float: left;
 
   margin-bottom: 30px;
   font-family: "HP Simplified Light";
