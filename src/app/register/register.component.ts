@@ -22,7 +22,15 @@ export class RegisterComponent implements OnInit {
   submitted = false;
 
   onSubmit() { this.submitted = true; }
-  constructor() { }
+  constructor() {
+    this.newUser.username = '';
+    this.newUser.password = '';
+    this.newUser.university = '';
+    this.newUser.faculty = '';
+    this.newUser.branch = '';
+    this.newUser.userType = '';
+    this.moderatorPass = '';
+  }
   ngOnInit() {
   }
   registerUser(event) {
