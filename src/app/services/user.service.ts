@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ARTICLES} from '../mock-data/mock-articles';
+;
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
 import {USERS} from '../mock-data/mock-users';

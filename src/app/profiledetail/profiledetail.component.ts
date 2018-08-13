@@ -37,7 +37,7 @@ export class ProfiledetailComponent implements OnInit {
     this.articleService.getPersonalArticles(8).subscribe((result)=>{
       this.articleList = result;
       this.articleList.forEach(item => {
-        item.releaseDate = new Date();
+        item.date = new Date();
       })
     })
   }
