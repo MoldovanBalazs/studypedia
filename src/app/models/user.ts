@@ -8,8 +8,6 @@ export class User {
   public branch: string;
   public userType?: any;
 
-
-
   constructor(id?: number, username?: string, password?: string, university?: string, faculty?: string, branch?: string, usertype?: any ) {
     this.id = id;
     this.username = username;
@@ -19,4 +17,6 @@ export class User {
     this.branch = branch;
     this.userType = usertype;
   }
+
+
 }

@@ -17,6 +17,7 @@ import { UniversityDetailComponent } from './university-detail/university-detail
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { AppRoutingModule } from './/app-routing.module';
+
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
 import {RequestsComponent} from './requests/requests.component';
@@ -26,19 +27,17 @@ import {AddSubjectComponent} from './add-subject/add-subject.component';
 
 
 const routes: Routes = [
-  {path : 'home', component: NewsfeedComponent},
-  {path: 'search', component: ArticleListComponent },
-  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  //{path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'mainmenu', component: MainmenuComponent, children: [
+      {path : 'home', component: NewsfeedComponent},
       {path: 'search', component: ArticleListComponent },
-      {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-      // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-  {path: 'requests', component: RequestsComponent },
-  {path: 'add-university', component: AddUniversityComponent},
-  {path: 'profile', component: ProfiledetailComponent},
-  {path: 'login', component: LoginComponent}
+      {path: 'requests', component: RequestsComponent },
+      {path: 'add-university', component: AddUniversityComponent},
+      {path: 'profile', component: ProfiledetailComponent},
+      {path: 'article', component: ArticlesComponent}
+    ]},
   ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +61,6 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     RouterModule.forRoot(routes),
     AppRoutingModule,
   ],

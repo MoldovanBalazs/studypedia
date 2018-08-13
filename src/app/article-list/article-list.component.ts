@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from '../models/article';
 import {Subject} from '../models/subject';
-import {User} from './user';
+import {User} from '../models/user';
+import {ArticleService} from '../services/article.service';
+import {SubjectService} from '../services/subject.service';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'pm-articles',
@@ -9,195 +12,12 @@ import {User} from './user';
   styleUrls: ['./article-list.component.css']
 })
 export class ArticleListComponent implements OnInit {
-  users: User[] = [
-    {
-      'id': 1,
-      'name': 'Gigel',
-      'university': 'UBB'
-    },
-    {
-      'id': 2,
-      'name': 'Maria',
-      'university': 'UTCN'
-    },
-    {
-      'id': 3,
-      'name': 'Bob',
-      'university': 'UBB'
-    },
-    {
-      'id': 4,
-      'name': 'Mariuca',
-      'university': 'UBB'
-    }
-  ];
-  subjects: Subject[] = [
-    {
-      'id': 1,
-      'name': 'F.P.',
-      'description': 'something'
-    },
-    {
-      'id': 2,
-      'name': 'M.A.P',
-      'description': 'something more'
-    },
-    {
-      'id': 3,
-      'name': 'B.D.',
-      'description': 'something with tables'
-    }
-  ];
 
-  notes: Article[] = [
-    {
-      'id': 1,
-      'title': 'OOP Basics',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'note',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 2,
-      'title': '+OOP Advanced',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'note',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 3,
-      'title': 'C++',
-      'author': 'Maria',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'note',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    }
-  ];
-
-  seminars: Article[] = [
-    {
-      'id': 1,
-      'title': 'OOP S1',
-      'author': 'Gigica',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'seminar',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 2,
-      'title': 'MAP S1',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'seminar',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 3,
-      'title': 'MAP S2',
-      'author': 'Maria',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'seminar',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    }
-  ];
-
-  labs: Article[] = [
-    {
-      'id': 1,
-      'title': 'OOP L1',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'lab',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 2,
-      'title': 'OOP L2',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'lab',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 3,
-      'title': 'MAP L1',
-      'author': 'Maria',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'lab',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    }
-  ];
-  // exams: IArticle[] = [
-  //   {
-  //     'articleId': 1,
-  //     'articleName': 'OOP 2017',
-  //     'articleAuthor': 'Gigel',
-  //     'articleType': 'exam',
-  //     'articleDate': '24.06.2017'
-  //   },
-  //   {
-  //     'articleId': 2,
-  //     'articleName': 'OOP 2016',
-  //     'articleAuthor': 'Gigel',
-  //     'articleType': 'exam',
-  //     'articleDate': '7.07.2016'
-  //   },
-  //   {
-  //     'articleId': 3,
-  //     'articleName': 'MAP 2018',
-  //     'articleAuthor': 'Maria',
-  //     'articleType': 'exam',
-  //     'articleDate': '30.07.2018'
-  //   }
-  // ];
-  exams: Article[] = [
-    {
-      'id': 1,
-      'title': 'OOP 2017',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'exam',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 2,
-      'title': 'OOP 2016',
-      'author': 'Gigel',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'exam',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    },
-    {
-      'id': 3,
-      'title': 'MAP 2018',
-      'author': 'Maria',
-      'releaseDate': new Date('2018-07-31T13:00:00-00:00'),
-      'type': 'exam',
-      'link': 'somelink',
-      'authorLink': 'somelink'
-    }
-  ];
   pageTitle = 'Search...';
   _listFilter: string;
-  filteredNotes: Article[];
-  filteredSeminars: Article[];
-  filteredLabs: Article[];
-  filteredExams: Article[];
-  filteredUsers: User[];
-  filteredSubjects: Subject[];
+  filteredArticles: Article[] = [];
+  filteredUsers: User[]= [];
+  filteredSubjects: Subject[]= [];
   btn_notes: boolean;
   btn_seminars: boolean;
   btn_labs: boolean;
@@ -205,100 +25,115 @@ export class ArticleListComponent implements OnInit {
   btn_users: boolean;
   btn_subjects: boolean;
   shownTable: string;
+  public articleList: Article[] = [];
+  public userList: User[] = [];
+  public subjectList: Subject[]= [];
 
   get listFilter(): string {
     return this._listFilter;
   }
 
+  getArticles(){
+    this.articleService.getArticles().subscribe((result) => {
+      this.articleList = result;
+    });
+  }
+
+  getUsers(){
+    this.userService.getUsers().subscribe((result) => {
+      this.userList = result;
+    });
+  }
+
+  getSubjects(){
+    this.subjectService.getSubjects().subscribe((result) => {
+      this.subjectList = result;
+    });
+  }
+
   set listFilter(value: string) {
     this._listFilter = value;
-    // this.filteredArticles = this.updateListFilter(this.listFilter);
-    this.filteredNotes = this.performFilterOnNotes(this.listFilter);
-    this.filteredSeminars = this.performFilterOnSeminars(this.listFilter);
-    this.filteredLabs = this.performFilterOnLabs(this.listFilter);
-    this.filteredExams = this.performFilterOnExams(this.listFilter);
+    this.filteredArticles = this.performFilterOnArticles(this.listFilter);
     this.filteredUsers = this.performFilterOnUsers(this.listFilter);
     this.filteredSubjects = this.performFilterOnSubjects(this.listFilter);
   }
 
-  constructor() {
-    this.filteredNotes = this.notes;
-    this.filteredSeminars = this.seminars;
-    this.filteredLabs = this.labs;
-    this.filteredExams = this.exams;
-    this.filteredUsers = this.users;
-    this.filteredSubjects = this.subjects;
+  constructor(private articleService : ArticleService, private userService : UserService, private subjectService : SubjectService) {
+    this.articleService.getArticles().subscribe((result) => {
+      this.articleList = result;
+    });
+    this.userService.getUsers().subscribe((result) => {
+      this.userList = result;
+      // this.filteredUsers = this.performFilterOnUsers('');
+    });
+    this.subjectService.getSubjects().subscribe((result) => {
+      this.subjectList = result;
+      // this.filteredSubjects = this.performFilterOnSubjects('');
+    });
+
     this.listFilter = '';
     this.shownTable = 't01';
   }
 
-  showTable(id): void {
+   showTable(id): void {
     this.shownTable = id;
-    this.updateListFilter(this.listFilter);
-
+    var type = this.findType(id);
+    this.articleService.getArticleByType(type).subscribe((result) => {
+      this.articleList = result;
+    });
+    this.userService.getUsers().subscribe((result) => {
+      this.userList = result;
+    });
+     this.subjectService.getSubjects().subscribe((result) => {
+       this.subjectList = result;
+     });
+     this.updateListFilter(this.listFilter);
   }
 
   public updateListFilter(value: string) {
-    // console.log('LOG');
-    // this._listFilter = value;
-    if (this.btn_notes) {
-      return this.listFilter ? this.performFilterOnNotes(value) : this.notes;
-    } else if (this.btn_seminars) {
-      return this.listFilter ? this.performFilterOnSeminars(value) : this.seminars;
-    } else if (this.btn_labs) {
-      return this.listFilter ? this.performFilterOnLabs(value) : this.labs;
-    } else if (this.btn_exams) {
-      return this.listFilter ? this.performFilterOnExams(value) : this.exams;
+    if (this.btn_notes || this.btn_seminars || this.btn_labs || this.btn_exams) {
+      return this.listFilter ? this.performFilterOnArticles(value) : this.articleList;
     } else if (this.btn_users) {
-      return this.listFilter ? this.performFilterOnUsers(value) : this.users;
+      return this.listFilter ? this.performFilterOnUsers(value) : this.userList;
     } else if (this.btn_subjects) {
-      return this.listFilter ? this.performFilterOnSubjects(value) : this.subjects;
+      return this.listFilter ? this.performFilterOnSubjects(value) : this.subjectList;
     }
   }
 
-  performFilterOnNotes(filterBy: string): Article[] {
+  performFilterOnArticles(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.notes.filter((article: Article) =>
+    return this.articleList.filter((article: Article) => (
       article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1);
-
-  }
-
-  performFilterOnSeminars(filterBy: string): Article[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.seminars.filter((article: Article) =>
-      article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
-
-  performFilterOnLabs(filterBy: string): Article[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.labs.filter((article: Article) =>
-      article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
-
-  performFilterOnExams(filterBy: string): Article[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.exams.filter((article: Article) =>
-      article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      || article.user.username.toLocaleLowerCase().indexOf(filterBy) !== -1));
   }
   performFilterOnUsers(filterBy: string): User[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.users.filter((user: User) =>
-      user.name.toLocaleLowerCase().indexOf(filterBy) !== -1
+    return this.userList.filter((user: User) =>
+      user.username.toLocaleLowerCase().indexOf(filterBy) !== -1
       || user.university.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   performFilterOnSubjects(filterBy: string): Subject[] {
     filterBy = filterBy.toLocaleLowerCase();
-    return this.subjects.filter((subject: Subject) =>
+    return this.subjectList.filter((subject: Subject) =>
       subject.name.toLocaleLowerCase().indexOf(filterBy) !== -1
       || subject.description.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   ngOnInit(): void {
     console.log('In OnInit');
+    this.getArticles();
+    this.getUsers();
+    this.getSubjects();
+    }
+
+  findType(id: any): number {
+    switch (id) {
+      case 't01' : return 0;
+      case 't011' : return 1;
+      case 't012' : return 2;
+      case 't013' : return 3;
+      default: return 0;
+    }
   }
 }
