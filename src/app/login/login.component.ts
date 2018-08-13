@@ -1,5 +1,7 @@
 import {Component, NgModule, OnInit, NgZone, Injector, Injectable} from '@angular/core';
 import { User } from 'src/app/models/user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {CookieService} from 'ngx-cookie-service';
 import { AppComponent } from 'src/app/app.component';
 import {Declaration} from '@angular/compiler/src/i18n/serializers/xml_helper';
 import {DeadlineComponent} from '../deadline/deadline.component';
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   pageTitle = 'Login';
   router: Router;
+  cookieValue = 'UNKNOWN';
   registerButton = false;
   injector: Injector;
 
@@ -43,23 +46,30 @@ export class LoginComponent implements OnInit {
   ];
 
   submitted = false;
+  // modelLogin2 = new User(1, '', '',  '',  '', '', '');
+  loggedUser = new User(2, 'virginica', 'root',  'UBB',  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
+  onSubmit() { this.submitted = true; }
 
-  onSubmit() {
-    this.submitted = true;
-  }
-
-  constructor(router: Router) {
-    this.router = router;
+  constructor(private _cookieService: CookieService ) {
+    this.loggedUser.username = '';
+    this.loggedUser.password = '';
   }
 
   ngOnInit() {
+  }
+  loginUser(event) {
+    this.loggedUser = new User(2, this.loggedUser.username, this.loggedUser.password,  'UBB',
+                              'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
+    this._cookieService.set( 'userCookie', JSON.stringify(this.loggedUser));
+    // this.cookieValue = this._cookieService.get('userCookie');
+    this.router.navigateByUrl('/mainmenu');
   }
 
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
   }
 
-  loginClick() {
+  /*loginClick() {
 
     // const ngZone = this.injector.get(NgZone);
     // const routerService = this.injector.get(Router);
@@ -68,5 +78,5 @@ export class LoginComponent implements OnInit {
     //   });
     console.log('test');
     this.router.navigateByUrl('/mainmenu');
-  }
+  }*/
 }

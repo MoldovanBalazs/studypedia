@@ -33,8 +33,8 @@ export const USERS: User[] = [
     'username': 'Mariuca',
     'password' : 'user',
     'university': 'UTCN',
-    'faculty' : 'Automatica',
-    'branch' : '-',
+    'faculty' : 'Facultatea de Automatica si Calculatoare',
+    'branch' : 'Automatica',
     'userType' : 1
   }
 ];

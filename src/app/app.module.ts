@@ -15,7 +15,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { UniversityComponent } from './university/university.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
-
+import { CookieService } from 'ngx-cookie-service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryUniversityDataService } from './services/in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
@@ -39,6 +39,7 @@ const routes: Routes = [
       {path: 'article', component: ArticlesComponent}
     ]},
   ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ const routes: Routes = [
     AddUniversityComponent,
     AddSubjectComponent,
     ArticleListComponent,
+
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
@@ -63,13 +65,11 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryUniversityDataService, {dataEncapsulation: false}
-    ),
-    RouterModule.forRoot(routes),
-    AppRoutingModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

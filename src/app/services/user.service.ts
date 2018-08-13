@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
 import {USERS} from '../mock-data/mock-users';
 import {User} from '../models/user';
+import {OnInit} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class UserService {
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
