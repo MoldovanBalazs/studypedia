@@ -48,5 +48,13 @@ export class University {
   getName(): string {
     return this.name;
   }
+  
+  setFaculties(faculties: Faculty[]): void{
+	  this.faculties = faculties;
+  }
+  
+  getFaculties(): Faculty[] {
+	  return this.faculties;
+  }
 
 }

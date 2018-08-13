@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UniversityComponent } from '../university/university.component';
-import { University } from '../models/university';
+import { University, Faculty } from '../models/university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -18,6 +18,7 @@ export class UniversityService {
   private universitiesUrl = 'http://localhost:8080/university/all';
   existentUniversity: boolean;
   newUniversity: boolean;
+  faculties: Faculty[];
 
   constructor(private http: HttpClient) {
   }
@@ -37,14 +38,28 @@ export class UniversityService {
   getUniversities(): Observable<University[]> {
     return this.http.get<University[]>(this.universitiesUrl);
   }
-
+  
+  getFacultiesByUniversity(universityId): Observable<Faculty[]> {
+	  //const url = 'http://localhost:8080/getFacultiesByUniversityId?universityId=' + universityId;
+	  if(!universityId){
+		  return of([]);
+	  }
+	  return this.http.get<Faculty[]>(`http://localhost:8080/getFacultiesByUniversityId?universityId=${universityId}`);
+  }
+  
+  addFaculty(newFaculty: Faculty): Observable<Faculty> {
+	  const url = 'http://localhost:8080/insertFaculty';
+	  let body = JSON.stringify(newFaculty);
+	  return this.http.post<Faculty>(url, body, httpOptions);
+  }
+  
   searchUniversities(term: string): Observable<University[]> {
     if (!term.trim()) {
       return of([]);
     }
     return this.http.get<University[]>(`${this.universitiesUrl}?param=${term}`);
   }
-
+  
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

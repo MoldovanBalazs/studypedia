@@ -16,7 +16,8 @@ export class UniversitySearchComponent implements OnInit {
   universities$: Observable<University[]>;
   private searchTerms = new Subject<string>();
   currentUniversity: University;
-  currentFaculty: string;
+  currentFaculty: Faculty;
+  faculties$: Observable<Faculty[]>;
 
   constructor(private universityService: UniversityService) { }
 
@@ -26,7 +27,7 @@ export class UniversitySearchComponent implements OnInit {
 
   ngOnInit() {
     this.universities$ = this.searchTerms.pipe(
-      debounceTime(300),
+      debounceTime(50),
       distinctUntilChanged(),
       switchMap((term: string) => this.universityService.searchUniversities(term)),
     );
@@ -35,7 +36,6 @@ export class UniversitySearchComponent implements OnInit {
   onSelect(university: University): void {
     if (!university) {return; }
     this.currentUniversity = university;
-    this.currentFaculty = '';
   }
 
   getNewFacultyId(): number {
@@ -43,14 +43,18 @@ export class UniversitySearchComponent implements OnInit {
   }
 
   addFaculty(newFacultyName: string): void {
+	/*if(!this.currentUniversity){ return; }
     const newFaculty = new Faculty();
     newFaculty.name = newFacultyName;
     newFaculty.id = this.getNewFacultyId();
-    this.currentUniversity.faculties.push(newFaculty);
+    this.currentUniversity.faculties.push(newFaculty);*/
+	const newFaculty = new Faculty();
+	newFaculty.name = newFacultyName;
+	this.universityService.addFaculty(newFaculty).subscribe();
   }
 
   updateUniversity(): void {
-    this.universityService.updateUniversity(this.currentUniversity).subscribe();
+    this.universityService.updateUniversity(this.currentUniversity);
   }
 
 }
