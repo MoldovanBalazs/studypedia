@@ -5,7 +5,7 @@
   }
 </style>
 <body>
-<div class="content">
+<div  class="content">
   <div class="container">
     <h2>Login</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
@@ -29,15 +29,18 @@
   <!--
   <a routerLink="/profile" routerLinkActive="active">
   -->
-      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid">Login</button>
+      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid ">Login</button>
 
 
   <!--
   </a>
   <router-outlet></router-outlet>
   -->
-
     </form>
+    <!--  <a  >
+        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
+      </a>-->
+
 
     <app-register></app-register>
   </div>
@@ -46,3 +49,7 @@
 
 </div>
 </body>
+
+
+<!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
+
