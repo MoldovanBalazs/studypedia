@@ -5,7 +5,7 @@
   }
 </style>
 <body>
-<div  class="content">
+<div class="content">
   <div class="container">
     <h2>Login</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
@@ -25,17 +25,21 @@
              class="alert alert-danger">
           Password can't be empty
         </div>
-      </div>
+      </div><!--
+      <a  >
+        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
+      </a>-->
   <!--
   <a routerLink="/profile" routerLinkActive="active">
   -->
-      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid ">Login</button>
+      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid">Login</button>
 
 
   <!--
   </a>
   <router-outlet></router-outlet>
   -->
+
     </form>
     <!--  <a  >
         <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
@@ -48,8 +52,9 @@
 
 
 </div>
-</body>
-
 
 <!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
+
+
+</body>
 

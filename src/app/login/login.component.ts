@@ -31,13 +31,10 @@ import {Router} from '@angular/router';
 @Injectable()
 export class LoginComponent implements OnInit {
 
-  cookieValue = 'UNKNOWN';
   pageTitle = 'Login';
   router: Router;
+  cookieValue = 'UNKNOWN';
   registerButton = false;
-  submitted = false;
-  // modelLogin2 = new User(1, '', '',  '',  '', '', '');
-  loggedUser = new User(2, 'virginica', 'root',  'UBB',  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
   injector: Injector;
 
   model = new User(18, 'admin', 'admin');
@@ -47,6 +44,10 @@ export class LoginComponent implements OnInit {
       'password': 'admin2'
     }
   ];
+
+  submitted = false;
+  // modelLogin2 = new User(1, '', '',  '',  '', '', '');
+  loggedUser = new User(2, 'virginica', 'root',  'UBB',  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
   onSubmit() { this.submitted = true; }
 
 
