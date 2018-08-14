@@ -30,7 +30,7 @@ export class DeadlineService {
   }
 
   getUserDeadlines(userId: number) : Observable<Deadline[]>{
-   var url = URL + 'user/' + userId + '/deadlines';
+   var url = URL + 'user/' + userId.toString() + '/deadlines';
     return this.http.get<Deadline[]>(url, {headers: this.headers}).pipe();
   }
 
@@ -40,7 +40,6 @@ export class DeadlineService {
     var url = URL + 'insert/';
     this.http.post<Deadline>(url, body, httpOptions)
       .subscribe((val) => {
-        //console.log("Post successfully item" + val);
         val.timeRemaining = new Duration();
         deadlineList.push(val as Deadline);
         deadlineList.sort((a,b) => {
@@ -50,8 +49,6 @@ export class DeadlineService {
               return -1;
             }
           });
-       // console.log("LIST" + deadlineList);
-        //let x={username : "abc", passwordlet x={test : "abc",};:"test"};
       });
   }
 

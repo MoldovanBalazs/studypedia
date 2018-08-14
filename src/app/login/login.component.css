@@ -1,8 +1,25 @@
 /*@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');*/
+
+
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #42A948; /* green */
 }
-
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+h2 {
+  color: #1C705C;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+
+  border-bottom: 3px solid #ff6f69;
+  margin: 25px;
+  padding: 25px;
+  //border-radius:  30px;
+
 }

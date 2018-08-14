@@ -26,17 +26,17 @@ export class DeadlineComponent implements OnInit {
 
   public getSessionUser(): User {
 
-    // let user: User = JSON.parse(this._cookieService.get('userCookie'));
-    //return user;
+    let user: User = JSON.parse(this._cookieService.get('userCookie')) as User;
+    return user;
 
-    let sessionUser: User = new User();
-    sessionUser.id = 8;
-    return sessionUser;
+    // let sessionUser: User = new User();
+    // sessionUser.id = 8;
+    // return sessionUser;
   }
 
   constructor(
-    private deadlineService: DeadlineService)
-    //private _cookieService: CookieService)
+    private deadlineService: DeadlineService,
+    private _cookieService: CookieService)
     {
     this.deadlineService.getUserDeadlines(this.getSessionUser().id).subscribe((data: Deadline[]) => {
       this.curricula = data;
@@ -69,7 +69,9 @@ export class DeadlineComponent implements OnInit {
     let deadline = new Deadline();
     deadline.name = name;
     deadline.date = date;
-    deadline.user = this.getSessionUser();
+    let user: User = new User();
+    user.id = this.getSessionUser().id;
+    deadline.user = user;
     this.deadlineService.addDeadline(deadline, this.curricula);
   }
 

@@ -16,29 +16,22 @@ export class ProfiledetailComponent implements OnInit {
   public pageTitle: string = "My profile";
   public contributionHeader : string = "My contributions"
 
-  public name: string = "Muresan Daniel";
-  public university: string = "UBB";
+  public name: string;
+  public university: string;
 
   public articleList: Article[] = [];
 
   public getSessionUser(): User {
 
-    // let user: User = JSON.parse(this._cookieService.get('userCookie'));
-    //return user;
-
-    let sessionUser: User = new User();
-    sessionUser.id = 8;
-    return sessionUser;
+    let user: User = JSON.parse(this._cookieService.get('userCookie'));
+    return user;
   }
 
-   // private _cookieService: CookieService;
-
-  constructor(private articleService: ArticleService) {
-    // this.articleService.getPersonalArticles(1).subscribe((data: Article[]) => {
-    //   this.articleList = data;
-    // })
 
 
+  constructor(private articleService: ArticleService,private _cookieService: CookieService) {
+    this.name = this.getSessionUser().username;
+    this.university = this.getSessionUser().university;
   }
 
   ngOnInit() {

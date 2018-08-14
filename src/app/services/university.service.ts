@@ -32,7 +32,7 @@ export class UniversityService {
   }
 
   searchUniversities(term: string): Observable<University[]> {
-    if(!term.trim()){
+    if (!term.trim()) {
       return of([]);
     }
     return this.http.get<University[]>(`${this.universitiesUrl}/?name=${term}`);

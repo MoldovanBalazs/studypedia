@@ -41,7 +41,7 @@ export class ArticleService {
   }
 
   public getPersonalArticles(userId: number): Observable<Article[]> {
-    const url = URL + 'user/' + userId + '/articles';
+    const url = URL + 'user/' + userId.toString() + '/articles';
     return this.http.get<Article[]>(url, {headers: this.headers}).pipe();
   }
 }
