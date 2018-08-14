@@ -30,9 +30,15 @@
   <p>Faculties:</p>
   <div>
     <ul>
-      <li *ngFor="let faculty of this.currentUniversity.faculties">
+      <li *ngFor="let faculty of this.currentUniversity.faculties" (click)="onFacultySelect(faculty)">
         {{faculty.name}} {{faculty.id}}
       </li>
     </ul>
   </div>
+  <p>Branches:</p>
+	<ul>
+	 <li *ngFor="let branch of this.currentFaculty.branches" (click)="onBranchSelect(branch)">
+		{{branch.name}} {{branch.id}}
+	 </li>
+	</ul>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UniversityComponent } from '../university/university.component';
-import { University, Faculty } from '../models/university';
+import { University, Faculty, Branch, Article, SubjectA } from '../models/university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -77,5 +77,11 @@ export class UniversityService {
 	let body = JSON.stringify(university);
     return this.http.put(url, body, httpOptions).pipe();
   }*/
+  
+  addBranch(newBranch: Branch, facultyId: number): Observable<Branch> {
+	const url = `http://localhost:8080/insertBranch?facultyId=${facultyId}`;
+	let body = JSON.stringify(newBranch);
+	return this.http.post<Branch>(url, body, httpOptions);
+  }
 
 }

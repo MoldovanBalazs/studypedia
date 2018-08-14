@@ -9,23 +9,23 @@ export class Article {
   articleType: any;
 }
 
-export class Subject {
+export class SubjectA {
   id: number;
   name: string;
-  articles: Article[];
+  articles: Article[] = [];
 }
 
 export class Branch {
   id: number;
   name: string;
-  subjects: Subject[];
+  subjects: SubjectA[] = [];
 }
 
 export class Faculty {
   name: string;
   id: number;
   idUniv: number;
-  // branches: Branch[];
+  branches: Branch[] = [];
 }
 
 export class University {
