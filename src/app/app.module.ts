@@ -15,6 +15,7 @@ import { ArticleListComponent } from './article-list/article-list.component';
 import { UniversityComponent } from './university/university.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
+
 import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
@@ -23,6 +24,7 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import {SubmitentryComponent} from './submitentry/submitentry.component';
 
 
 const routes: Routes = [
@@ -37,7 +39,6 @@ const routes: Routes = [
       {path: 'article', component: ArticlesComponent}
     ]},
   ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,14 +57,16 @@ const routes: Routes = [
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
-    UniversitySearchComponent
+    UniversitySearchComponent,
+    UniversityComponent,
+    SubmitentryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     CookieService

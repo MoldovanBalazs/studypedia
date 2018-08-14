@@ -1,6 +1,10 @@
 <!-- home, my page, submit,  -->
 
-<div >
+<form >
+  <div style="text-align:center">
+    <h1>studypedia</h1>
+  </div>
+
   <div style = "display:inline-block;vertical-align: top">
     <a routerLink="home" routerLinkActive="active">
       <button class = "menubutton">Home</button>
@@ -19,8 +23,14 @@
     <a routerLink="requests" routerLinkActive="active">
       <button class = "menubutton">Requests</button>
     </a>
+    <br>
+    <a routerLink="/login" routerLinkActive="active">
+      <button class = "menubutton">Log Out</button>
+    </a>
   </div>
-  <div style = "display:inline-block;vertical-align: top">
+  <div style = "display:inline-block; vertical-align: top">
+  <!--<div style="flex-grow: 1; display: inline-flex; flex-direction: column; vertical-align: top">-->
     <router-outlet></router-outlet>
   </div>
-</div>
+</form>
+<!--<div style="flex-grow: 1; display: inline-flex; flex-direction: column; vertical-align: top">-->

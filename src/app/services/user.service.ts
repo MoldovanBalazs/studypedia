@@ -2,8 +2,12 @@ import { Injectable } from '@angular/core';
 import {ARTICLES} from '../mock-data/mock-articles';
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
-import {User} from '../models/user';
+// import {USERS} from '../mock-data/mock-users';
+import {User, UserLog} from '../models/user';
+import {HttpClient} from '@angular/common/http';
 import {OnInit} from '@angular/core';
+
+const URL = 'http://localhost:8080/';
 
 @Injectable({
   providedIn: 'root'
@@ -18,15 +22,17 @@ export class UserService implements OnInit {
 
   username = 'none';
   usertype = this.moderator;
+  allUsersUrl = 'http://localhost:8080/user/all';
 
-  constructor() {
+
+  constructor(public http: HttpClient) {
+
 
   }
 
   ngOnInit() {
 
   }
-
   getUsername(): string {
     return this.username;
   }
@@ -36,7 +42,7 @@ export class UserService implements OnInit {
   }
 
   getUsers(): Observable<User[]> {
-    return of();
+    return this.http.get<User[]>(this.allUsersUrl);
   }
 
 }
