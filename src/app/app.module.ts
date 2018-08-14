@@ -49,7 +49,6 @@ const routes: Routes = [
     ProfiledetailComponent,
     LoginComponent,
     RegisterComponent,
-    /*Adrian's part:*/
     RequestsComponent,
     RequestDetailComponent,
     AddUniversityComponent,

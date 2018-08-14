@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DeadlineService} from "../services/deadline.service";
+import {DeadlineService} from '../services/deadline.service';
 import * as angular from 'angular';
-import {Deadline, Duration} from "../models/deadline";
-import {s} from "@angular/core/src/render3";
+import {Deadline, Duration} from '../models/deadline';
+import {s} from '@angular/core/src/render3';
 import DateTimeFormat = Intl.DateTimeFormat;
+
 
 
 @Component({
@@ -15,17 +16,17 @@ export class DeadlineComponent implements OnInit {
 
   curricula: Deadline[];
 
-  private countDownDate : any;
+  private countDownDate: any;
   public now;
   private distance;
   public t;
-  public renderable: boolean = false;
+  public renderable = false;
 
   constructor(private curriculaService: DeadlineService) { }
 
   ngOnInit() {
     this.getCurricula();
-    for(let curriculaObj of this.curricula){
+    for (const curriculaObj of this.curricula) {
       curriculaObj.date.setHours(curriculaObj.date.getHours() - 3);
     }
     this.sortDeadlines();
@@ -34,15 +35,15 @@ export class DeadlineComponent implements OnInit {
     this.renderable = true;
   }
 
-  getCurricula(){
-    this.curriculaService.getCurricula().subscribe((result)=>{
+  getCurricula() {
+    this.curriculaService.getCurricula().subscribe((result) => {
       this.curricula = result;
-    })
+    });
   }
 
   addCurricula(name: string, deadline: Date): void {
 
-    let curricula = new Deadline();
+    const curricula = new Deadline();
     curricula.name = name;
     curricula.date = deadline;
     curricula.timeRemaining = new Duration();
@@ -53,10 +54,10 @@ export class DeadlineComponent implements OnInit {
       });
   }
 
-  calculateDuration(curricula:Deadline):void{
+  calculateDuration(curricula: Deadline): void {
     this.countDownDate = curricula.date.getTime();
 
-    this.now = new Date().getTime();//now
+    this.now = new Date().getTime(); //now
     this.distance = this.countDownDate - this.now; //difference from now
 
     curricula.timeRemaining.days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
@@ -66,8 +67,8 @@ export class DeadlineComponent implements OnInit {
   }
 
   displayCountDown() {
-    setInterval(()=>{
-      for(let curriculaObj of this.curricula){
+    setInterval(() => {
+      for (const curriculaObj of this.curricula) {
         this.deleteOutdatedDeadlines();
         this.calculateDuration(curriculaObj);
       }
@@ -75,11 +76,11 @@ export class DeadlineComponent implements OnInit {
   }
 
   deleteOutdatedDeadlines(): void {
-    for(let curriculaObj of this.curricula) {
+    for (const curriculaObj of this.curricula) {
 
-      if( curriculaObj.date.getTime()< this.now ) {
-        let index: number = this.curricula.indexOf(curriculaObj);
-        if( index != -1){ //object is in the array
+      if ( curriculaObj.date.getTime() < this.now ) {
+        const index: number = this.curricula.indexOf(curriculaObj);
+        if ( index !== -1) { // object is in the array
           this.curricula.splice(index, 1);
         }
       }
@@ -87,16 +88,16 @@ export class DeadlineComponent implements OnInit {
   }
 
   checkValidInput(name: string, date: string): boolean {
-    let aux = new Date(date);
-    if((name.trim() != '') && (aux.getTime() > Date.now())){
+    const aux = new Date(date);
+    if ((name.trim() != '') && (aux.getTime() > Date.now())) {
       return true;
     }
     return false;
   }
 
   sortDeadlines(): void {
-    this.curricula.sort((a,b) => {
-      if(a.date.getTime() >= b.date.getTime()) {
+    this.curricula.sort((a, b) => {
+      if (a.date.getTime() >= b.date.getTime()) {
         return 1;
       } else {
         return -1;

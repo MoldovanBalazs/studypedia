@@ -4,10 +4,10 @@
   <form>
     <div class="form-group">
 
-      <input type="text" placeholder="University" class="form-control" id="university" required [(ngModel)]="universityName" name="universityName">
-      <input type="text" placeholder="Faculty" class="form-control" id="faculty" required [(ngModel)]="facultyName" name="facultyName">
-      <input type="text" placeholder="Branch" class="form-control" id="branch" required [(ngModel)]="branchName" name="branchName">
-      <input type="text" placeholder="Subject" class="form-control" id="subject" required [(ngModel)]="subjectName" name="subjectName">
+      <input type="text" placeholder="University" class="form-control" id="university" [(ngModel)]="universityName" required name="universityName">
+      <input type="text" placeholder="Faculty" class="form-control" id="faculty"  [(ngModel)]="facultyName" required name="facultyName">
+      <input type="text" placeholder="Branch" class="form-control" id="branch" [(ngModel)]="branchName" required name="branchName">
+      <input type="text" placeholder="Subject" class="form-control" id="subject" [(ngModel)]="subjectName" required name="subjectName">
 
 
     <form>
@@ -20,7 +20,7 @@
     </div>
 
     <div>
-    <input type="text" placeholder="Title" class="form-control" id="title" required [(ngModel)]="titleName" name="titleName">
+    <input type="text" placeholder="Title" class="form-control" id="title" [(ngModel)]="titleName" required name="titleName">
     <!--<input type="text" placeholder="Description" class="form-control" id="description" required [(ngModel)]="descriptionName" name="descriptionName">-->
       <!--<textarea placeholder="Description" class="form-control" id="description" required [(ngModel)]="descriptionName" name="descriptionName"></textarea>-->
 

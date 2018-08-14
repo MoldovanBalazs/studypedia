@@ -4,7 +4,7 @@ import {NgForm} from '@angular/forms';
 import {Category} from '../models/category';
 import {FormControl, FormGroup} from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
-import {SubmitentryService} from '../submitentry.service';
+import {SubmitentryService} from '../services/submitentry.service';
 import {debounce, debounceTime, throttleTime} from 'rxjs/operators';
 
 

@@ -13,7 +13,7 @@ export class RequestsComponent implements OnInit {
 
   selectedRequest: Request;
   requests: Request[];
-  username : string;
+  username: string;
   usertype: number;
 
   constructor(
