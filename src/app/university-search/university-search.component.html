@@ -8,7 +8,7 @@
   </ul>
 </div>
 
-<div *ngIf="this.currentUniversity">
+<div *ngIf="this.currentUniversity" class="university_detail">
   <div>
     <!--<button (click)="updateUniversity()">Update University</button>-->
   </div>
@@ -20,7 +20,8 @@
     <div>
 	 Faculty: 
 	 <input #facultyName placeholder="faculty"/>
-     <button (click)="addFaculty(facultyName.value, element)">Add Faculty</button>
+     <button (click)="addFaculty(facultyName.value, element)">Add</button>
+	 <button (click)="decrementFaculties(element)">-</button>
 	</div>
 	</li>
 	<div><button (click)="incrementFaculties()">+</button></div>

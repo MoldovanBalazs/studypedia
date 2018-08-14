@@ -1,4 +1,5 @@
-<h1>Add new University or add a new Faculty to an existent University</h1>
+<h1>Add new University or add a</h1>
+<h1>new Faculty to an existent University</h1>
 
 <div *ngIf="!this.currentUniversity">
   <app-university-search></app-university-search>
@@ -16,6 +17,7 @@
 	 Faculty: 
 	 <input #facultyName placeholder="element.value"/>
      <button (click)="addFaculty(facultyName.value, element)">Add Faculty</button>
+	 <button (click)="decrementFaculties(element)">-</button>
 	</div>
 	</li>
 	<div><button (click)="incrementFaculties()">+</button></div>

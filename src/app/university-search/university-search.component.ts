@@ -62,5 +62,10 @@ export class UniversitySearchComponent implements OnInit {
 	this.counter++;
 	this.faculties.push(this.counter);
   }
+  
+  decrementFaculties(counter: number): void {
+	/*erase the current record from the faculties list:*/
+	this.faculties = this.faculties.filter(r => r !== counter);
+  }
 
 }
