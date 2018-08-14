@@ -64,41 +64,43 @@ export class ArticleListComponent implements OnInit {
     });
     this.userService.getUsers().subscribe((result) => {
       this.userList = result;
-      // this.filteredUsers = this.performFilterOnUsers('');
     });
     this.subjectService.getSubjects().subscribe((result) => {
       this.subjectList = result;
-      // this.filteredSubjects = this.performFilterOnSubjects('');
     });
 
     this.listFilter = '';
     this.shownTable = 't01';
   }
 
-   showTable(id): void {
+  showTable(id): void {
     this.shownTable = id;
-    var type = this.findType(id);
+    const type = this.findType(id);
+
     this.articleService.getArticleByType(type).subscribe((result) => {
       this.articleList = result;
+      this.filteredArticles = this.performFilterOnArticles(this.listFilter);
     });
     this.userService.getUsers().subscribe((result) => {
       this.userList = result;
+      this.filteredUsers = this.performFilterOnUsers(this.listFilter);
     });
-     this.subjectService.getSubjects().subscribe((result) => {
-       this.subjectList = result;
-     });
-     this.updateListFilter(this.listFilter);
+    this.subjectService.getSubjects().subscribe((result) => {
+      this.subjectList = result;
+      this.filteredSubjects = this.performFilterOnSubjects(this.listFilter);
+    });
+    // this.updateListFilter(this.listFilter);
   }
 
-  public updateListFilter(value: string) {
-    if (this.btn_notes || this.btn_seminars || this.btn_labs || this.btn_exams) {
-      return this.listFilter ? this.performFilterOnArticles(value) : this.articleList;
-    } else if (this.btn_users) {
-      return this.listFilter ? this.performFilterOnUsers(value) : this.userList;
-    } else if (this.btn_subjects) {
-      return this.listFilter ? this.performFilterOnSubjects(value) : this.subjectList;
-    }
-  }
+  // public updateListFilter(value: string) {
+  //   if (this.btn_notes || this.btn_seminars || this.btn_labs || this.btn_exams) {
+  //     return this.listFilter ? this.performFilterOnArticles(value) : this.articleList;
+  //   } else if (this.btn_users) {
+  //     return this.listFilter ? this.performFilterOnUsers(value) : this.userList;
+  //   } else if (this.btn_subjects) {
+  //     return this.listFilter ? this.performFilterOnSubjects(value) : this.subjectList;
+  //   }
+  // }
 
   performFilterOnArticles(filterBy: string): Article[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -125,7 +127,7 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
     this.getUsers();
     this.getSubjects();
-    }
+  }
 
   findType(id: any): number {
     switch (id) {
