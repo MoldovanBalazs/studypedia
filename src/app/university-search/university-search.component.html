@@ -2,13 +2,14 @@
   <h4>University Search</h4>
   <input #searchBox (keyup)="search(searchBox.value)"/>
   <ul>
-    <li *ngFor="let university of universities$ | async " (click)="onSelect(university);">
+    <li *ngFor="let university of universities$ | async ">
         {{university.name}} {{university.id}}
+      <button (click)="onSelect(university);">Edit</button>
     </li>
   </ul>
 </div>
 
-<div *ngIf="this.currentUniversity" class="university_detail">
+<div *ngIf="this.currentUniversity">
   <div>
     <!--<button (click)="updateUniversity()">Update University</button>-->
   </div>

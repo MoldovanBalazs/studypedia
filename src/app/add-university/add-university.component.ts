@@ -25,6 +25,8 @@ export class AddUniversityComponent implements OnInit {
   subjects: number[] = [this.subjectCounter];
   currentSubject: SubjectA;
 
+  currentFacultyName: string = "";
+
   constructor(private universityService: UniversityService) {
   }
 
@@ -33,11 +35,12 @@ export class AddUniversityComponent implements OnInit {
   }
 
   addUniversity(): void {
-    if (!this.currentUniversity) {return; }
+    if (!this.currentUniversity || this.currentUniversity.name.length == 0) {return; }
     this.universityService.addUniversity(this.currentUniversity)
-        .subscribe(university => {
-          this.universities.push(this.currentUniversity);
-        });
+      .subscribe(university => {
+        this.universities.push(this.currentUniversity);
+      });
+    this.currentUniversity = null;
   }
 
   createNewUniversity(): void {
@@ -53,13 +56,15 @@ export class AddUniversityComponent implements OnInit {
     return 0;
   }
 
-  addFaculty(facultyName: string, counter: number): void {
+  addFaculty(): void {
+    if(this.currentFacultyName.length == 0){
+      return;
+    }
     const newFaculty = new Faculty();
-    newFaculty.name = facultyName;
-	//this.universityService.addFaculty(newFaculty, this.currentUniversity.id).subscribe();
+    newFaculty.name = this.currentFacultyName;
+
     this.currentUniversity.faculties.push(newFaculty);
-	/*erase the current record from the faculties list:*/
-	this.faculties = this.faculties.filter(r => r !== counter);
+    this.currentFacultyName = "";
   }
 
   getUniversities(): void {
@@ -72,7 +77,6 @@ export class AddUniversityComponent implements OnInit {
   }
   
   incrementFaculties(): void {
-	  this.facultyCounter++;
 	  this.faculties.push(this.facultyCounter);
   }
   
@@ -124,4 +128,7 @@ export class AddUniversityComponent implements OnInit {
 	  this.subjects = this.subjects.filter(r => r != counter);
   }
 
+  deleteFaculty(name: string) {
+    this.currentUniversity.faculties = this.currentUniversity.faculties.filter(f =>f.name !== name);
+  }
 }
