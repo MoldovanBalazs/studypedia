@@ -25,25 +25,13 @@
              class="alert alert-danger">
           Password can't be empty
         </div>
-      </div><!--
-      <a  >
-        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
-      </a>-->
-  <!--
-  <a routerLink="/profile" routerLinkActive="active">
-  -->
+      </div>
       <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid">Login</button>
 
-
-  <!--
-  </a>
-  <router-outlet></router-outlet>
-  -->
-
     </form>
-    <!--  <a  >
-        <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
-      </a>-->
+    <div *ngIf = '!userIsValid' class="alert alert-danger">
+      <p style = 'color: red'> *Username or password invalid</p>
+    </div>
 
 
     <app-register></app-register>
@@ -52,9 +40,5 @@
 
 
 </div>
-
-<!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
-
-
 </body>
 

@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import {ARTICLES} from '../mock-data/mock-articles';
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
-import {USERS} from '../mock-data/mock-users';
 import {User} from '../models/user';
 import {OnInit} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnInit {
 
   /*used for access control;*/
   moderator = 2;
@@ -37,7 +36,7 @@ export class UserService {
   }
 
   getUsers(): Observable<User[]> {
-    return of(USERS);
+    return of();
   }
 
 }

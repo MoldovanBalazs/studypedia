@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {User} from 'src/app/models/user';
+import {University} from '../models/university';
+import {UniversityService} from '../services/university.service';
+import {Deadline} from '../models/deadline';
+import {Faculty} from '../models/faculty';
 
 @Component({
   selector: 'app-register',
@@ -16,22 +20,50 @@ export class RegisterComponent implements OnInit {
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
-  newUser = new User(17, '', '',  '',  '', '', '');
+  newUser = new User(17, '', '',  '',  new University(), new Faculty(), "1");
   modPass = false;
+  public universityList: University[] = [];
+  public facultyList: Faculty[] = [];
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
-  constructor() {
-    this.newUser.username = '';
-    this.newUser.password = '';
-    this.newUser.university = '';
-    this.newUser.faculty = '';
-    this.newUser.branch = '';
-    this.newUser.userType = '';
-    this.moderatorPass = '';
+  onSubmit() {
+    this.submitted = true;
+  }
+
+  constructor(public universityService: UniversityService) {
+    this.universityService.getUniversityList().subscribe((data: University[]) => {
+      // this.universityList = data as University[];
+      data.forEach(item => {
+        let uni = new University();
+        uni = item;
+        this.universityList.push(item as University);
+        console.log(item);
+      });
+    });
+
+    this.universityService.getUniversityFaculties(this.newUser.university.id).subscribe((data: Faculty[]) => {
+        // this.universityList = data as University[];
+        data.forEach(item => {
+          let uni = new Faculty();
+          uni = item;
+          this.facultyList.push(item as Faculty);
+          console.log(item);
+        });
+      }
+    );
+
+    // this.newUser.name = '';
+    // this.newUser.username = '';
+    // this.newUser.password = '';
+    // this.newUser.university = '';
+    // this.newUser.faculty = '';
+    // this.newUser.branch = '';
+    // this.newUser.userType = '';
+    // this.moderatorPass = '';
   }
   ngOnInit() {
+
   }
   registerUser(event) {
     if (this.modPass) {
@@ -39,8 +71,8 @@ export class RegisterComponent implements OnInit {
     } else {
       this.newUser.userType = 0;
     }
-    this.newUser = new User(17, this.newUser.username, this.newUser.password,  this.newUser.university,  this.newUser.faculty,
-                             this.newUser.branch, this.newUser.userType);
+    this.newUser = new User(17, this.newUser.name, this.newUser.username, this.newUser.password,  this.newUser.university,
+                                    this.newUser.faculty, this.newUser.branch, this.newUser.userType);
   }
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
@@ -54,6 +86,7 @@ export class RegisterComponent implements OnInit {
     if (this.moderatorPass === 'moderator') {
         this.modPass = true;
     /*} else if (this.moderatorPass === '') {
+
       return false;*/
     /*} else {;*/
     }

@@ -1,5 +1,5 @@
 import {Component, NgModule, OnInit, NgZone, Injector, Injectable} from '@angular/core';
-import { User } from 'src/app/models/user';
+import {User, UserLog} from 'src/app/models/user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {CookieService} from 'ngx-cookie-service';
 import { AppComponent } from 'src/app/app.component';
@@ -18,6 +18,9 @@ import {NewsfeedComponent} from '../newsfeed/newsfeed.component';
 import {UniversityDetailComponent} from '../university-detail/university-detail.component';
 import {UniversitySearchComponent} from '../university-search/university-search.component';
 import {Router} from '@angular/router';
+import {AuthorizationService} from '../services/authorization.service';
+import {University} from '../models/university';
+import {Faculty} from '../models/faculty';
 
 @Component({
   selector: 'app-login',
@@ -36,6 +39,9 @@ export class LoginComponent implements OnInit {
   cookieValue = 'UNKNOWN';
   registerButton = false;
   injector: Injector;
+  cookieData = '';
+  public user: User;
+  userIsValid = true;
 
   model = new User(18, 'admin', 'admin');
   users: any[] = [
@@ -46,12 +52,12 @@ export class LoginComponent implements OnInit {
   ];
 
   submitted = false;
-  // modelLogin2 = new User(1, '', '',  '',  '', '', '');
-  loggedUser = new User(2, 'virginica', 'root',  'UBB',  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
+  loggedUser = new User(2, 'My Name', 'virginica', 'root', new University(), new Faculty(),'bla');
   onSubmit() { this.submitted = true; }
 
 
-  constructor(private _cookieService: CookieService, router: Router ) {
+  constructor(private _cookieService: CookieService, router: Router, private authorizationService: AuthorizationService ) {
+    this.loggedUser.name = '';
     this.loggedUser.username = '';
     this.loggedUser.password = '';
     this.router = router;
@@ -60,26 +66,25 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+
   loginUser(event) {
-    this.loggedUser = new User(2, this.loggedUser.username, this.loggedUser.password,  'UBB',
-                              'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
-    this._cookieService.set( 'userCookie', JSON.stringify(this.loggedUser));
-    // this.cookieValue = this._cookieService.get('userCookie');
-    this.router.navigateByUrl('/mainmenu');
+    const loggedUser = new UserLog(this.loggedUser.username, this.loggedUser.password);
+    const obj = this.authorizationService.validateUser(loggedUser).subscribe((data: User) => {
+      console.log('Data is' + data);
+      this.user = data as User;
+      if ( this.user === null) {
+        console.log('null user');
+        this.userIsValid = false;
+      } else {
+        console.log('Validation log ' + this.user.name);
+        this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+        this.router.navigateByUrl('/mainmenu');
+      }
+
+    });
   }
 
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
   }
-
-  /*loginClick() {
-
-    // const ngZone = this.injector.get(NgZone);
-    // const routerService = this.injector.get(Router);
-    // ngZone.run(() => {
-    //   routerService.navigate(['/mainmenu'], {skipLocationChange: true});
-    //   });
-    console.log('test');
-    this.router.navigateByUrl('/mainmenu');
-  }*/
 }

@@ -2,7 +2,7 @@ export class University {
 
   name: string;
   faculties: string[] = [];
-  id: number;
+  public id: number;
 
   constructor(
   ) {}
@@ -17,6 +17,9 @@ export class University {
 
   getName(): string {
     return this.name;
+  }
+  getId(): number {
+    return this.id;
   }
 
 }

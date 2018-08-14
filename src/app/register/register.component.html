@@ -18,12 +18,21 @@
 <form (ngSubmit)="onSubmit()" #registerForm="ngForm" method = "post" (submit) = registerUser($event)>
 <div class="container">
     <div class="form-group">
+
+      <label for="name">Full Name &nbsp;</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="newUser.name" name="name"  #name="ngModel" autocomplete="off">
+      <div [hidden]="name.valid || name.untouched"
+           class="alert alert-danger">
+        Name can't be empty
+      </div>
+<div>
       <label for="username">Username &nbsp;&nbsp;</label>
       <input type="text" class="form-control" id="username" required [(ngModel)]="newUser.username" name="username"  #username="ngModel" autocomplete="off">
       <div [hidden]="username.valid || username.untouched"
            class="alert alert-danger">
         Username can't be empty
       </div>
+</div>
     </div>
 
     <div class="form-group">
@@ -41,7 +50,7 @@
       <label for="university">University &nbsp;&nbsp;</label>
       <select class="form-control" id="university" required [(ngModel)]="newUser.university" name="university" (change)="firstDropDownChanged($event.target.value)">
         <!--<option>Select</option>-->
-        <option *ngFor="let uni of universities" [value]="uni">{{uni}}</option>
+        <option *ngFor="let uni of universityList" [value]="uni">{{uni.name}}</option>
       </select>
     </div>
 
