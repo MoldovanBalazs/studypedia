@@ -8,11 +8,16 @@ import {User} from 'src/app/models/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   modButton = false;
+  moderatorPass: string;
+  registerButton = false;
   universities = ['UTCN', 'UBB',
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
+  newUser = new User(17, '', '',  '',  '', '', '');
+  modPass = false;
 
   submitted = false;
 
@@ -20,28 +25,31 @@ export class RegisterComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-
-  //
-  /*
-  isModerator(): boolean {
-    return form.controls['mod'].value;
-  }
-*/
-/*
-  toggleMod(event) {
-    if ( event.target.checked ) {
-      this.isMod = true;
+  registerUser(event) {
+    if (this.modPass) {
+      this.newUser.userType = 1;
+    } else {
+      this.newUser.userType = 0;
     }
+    this.newUser = new User(17, this.newUser.username, this.newUser.password,  this.newUser.university,  this.newUser.faculty,
+                             this.newUser.branch, this.newUser.userType);
   }
-  */
+  toggleRegister(): void {
+    this.registerButton = !this.registerButton;
+  }
 
 
   toggleMod(): void {
     this.modButton = !this.modButton;
   }
-
-
-
+  isModerator(): void {
+    if (this.moderatorPass === 'moderator') {
+        this.modPass = true;
+    /*} else if (this.moderatorPass === '') {
+      return false;*/
+    /*} else {;*/
+    }
+  }
   firstDropDownChanged(universities: any) {
     console.log(universities);
 

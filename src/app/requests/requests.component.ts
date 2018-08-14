@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { REQUESTS } from '../mock-requests';
-import { RequestService } from '../request.service';
-import { Request } from '../request';
-import { UserinfoService } from '../userinfo.service';
+import { REQUESTS } from '../mock-data/mock-requests';
+import { RequestService } from '../services/request.service';
+import { Request } from '../models/request';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-requests',
@@ -13,12 +13,12 @@ export class RequestsComponent implements OnInit {
 
   selectedRequest: Request;
   requests: Request[];
-  username: string;
+  username : string;
   usertype: number;
 
   constructor(
     private requestService: RequestService,
-    private userInfoService: UserinfoService
+    private userInfoService: UserService
   ) {
   }
 
@@ -48,6 +48,6 @@ export class RequestsComponent implements OnInit {
 
   onSelect(request: Request): void {
     this.selectedRequest = request;
-}
+  }
 
 }

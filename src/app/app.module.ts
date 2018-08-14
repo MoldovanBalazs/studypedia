@@ -3,21 +3,23 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DeadlineComponent } from './deadline/deadline.component';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
+
+
+import {RouterModule, Routes} from '@angular/router';
+import { ArticleListComponent } from './article-list/article-list.component';
+
+import { UniversityDetailComponent } from './university-detail/university-detail.component';
+import { UniversitySearchComponent } from './university-search/university-search.component';
 import {SubmitentryComponent} from './submitentry/submitentry.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {RouterModule, Routes} from '@angular/router';
-import { ArticleListComponent } from './article-list/article-list.component';
 import { UniversityComponent } from './university/university.component';
-import { UniversityDetailComponent } from './university-detail/university-detail.component';
-import { UniversitySearchComponent } from './university-search/university-search.component';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryUniversityDataService } from './in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
@@ -25,29 +27,34 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
-
+import { CookieService } from 'ngx-cookie-service';
 
 const routes: Routes = [
-  {path : 'home', component: NewsfeedComponent},
-  {path: 'search', component: ArticleListComponent },
-  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  // {path: 'showcase', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-  {path: 'search', component: ArticleListComponent },
-  {path: '', redirectTo: 'webcontent', pathMatch: 'full'},
-  // {path: 'deadline', loadChildren: './showcase/showcase.module#ShowcaseModule'},
-  {path: 'requests', component: RequestsComponent },
-  {path: 'add-university', component: AddUniversityComponent},
-  {path: 'profile', component: ProfiledetailComponent},
+  {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'submit', component: SubmitentryComponent}
-];
-
+  {path: 'mainmenu', component: MainmenuComponent, children: [
+      {path : 'home', component: NewsfeedComponent},
+      {path: 'search', component: ArticleListComponent },
+      {path: 'requests', component: RequestsComponent },
+      {path: 'add-university', component: AddUniversityComponent},
+      {path: 'profile', component: ProfiledetailComponent},
+      {path: 'article', component: ArticlesComponent}
+    ]},
+  ];
 @NgModule({
   declarations: [
     AppComponent,
     DeadlineComponent,
     MainmenuComponent,
     ProfiledetailComponent,
+    LoginComponent,
+    RegisterComponent,
+    /*Adrian's part:*/
+    RequestsComponent,
+    RequestDetailComponent,
+    AddUniversityComponent,
+    AddSubjectComponent,
+    ArticleListComponent,
     SubmitentryComponent,
     LoginComponent,
     RegisterComponent,
@@ -63,22 +70,31 @@ const routes: Routes = [
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
+    UniversitySearchComponent,
+    UniversityComponent,
+    SubmitentryComponent,
+    ArticlesComponent,
+    NewsfeedComponent,
+    UniversityDetailComponent,
     UniversitySearchComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryUniversityDataService, {dataEncapsulation: false}
-    ),
     RouterModule.forRoot(routes),
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

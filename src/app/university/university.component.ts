@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { University } from '../university';
-import { UniversityService } from '../university.service';
+import { University } from '../models/university';
+import { UniversityService } from '../services/university.service';
 
 @Component({
   selector: 'app-university',

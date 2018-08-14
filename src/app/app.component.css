@@ -16,11 +16,11 @@
 }
 
 .row:after {
+  content: "";
   display: table;
   clear: both;
 }
-body {
-}
+
 h1 {
   background-color: #f8f8fa;
   text-align: center;
@@ -32,7 +32,6 @@ h1 {
 
   font-family: "HP Simplified Light";
   font-size: x-large;
-
 
   margin: 25px;
 

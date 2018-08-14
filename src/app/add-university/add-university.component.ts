@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UniversityService } from '../university.service';
-import { University } from '../university';
-
-import { IPageState } from './IPageState';
-import { BeginningState } from './BeginningState';
+import { UniversityService } from '../services/university.service';
+import { University } from '../models/university';
 
 @Component({
   selector: 'app-add-university',

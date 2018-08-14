@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonalService} from "./personal.service";
-import {Article} from "../article-list/article";
+import { PersonalService} from "../services/personal.service";
+import {Article} from "../models/article";
 
 
 @Component({
