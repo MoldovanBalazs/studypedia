@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
+
   model = new User(17, 'admin', 'admin',  'UBB',  'Facultatea de Matematica si Informatica', 'Informatica', true);
 
   submitted = false;
