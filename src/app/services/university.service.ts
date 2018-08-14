@@ -72,10 +72,10 @@ export class UniversityService {
   }
 
   /**PUT: update a university;*/
-  updateUniversity(university: University): Observable<any> {
+ /* updateUniversity(university: University): Observable<any> {
 	const url = 'http://localhost:8080';
 	let body = JSON.stringify(university);
     return this.http.put(url, body, httpOptions).pipe();
-  }
+  }*/
 
 }

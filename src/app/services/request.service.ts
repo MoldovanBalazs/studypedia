@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Request } from '../models/request';
+ import { Request } from '../models/request';
+
 import { REQUESTS } from '../mock-data/mock-requests';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -10,12 +11,11 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class RequestService {
 
-  private requestsUrl = 'api/requests';
-
   constructor(private http: HttpClient) { }
 
   getRequests(): Observable<Request[]> {
-    return this.http.get<Request[]>(this.requestsUrl);
+	const url = 'http://localhost:8080/article/all';
+    return this.http.get<Request[]>(url);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

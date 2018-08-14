@@ -17,7 +17,9 @@ export class UniversitySearchComponent implements OnInit {
   private searchTerms = new Subject<string>();
   currentUniversity: University;
   currentFaculty: Faculty;
-  faculties$: Observable<Faculty[]>;
+  
+  counter: number = 1;
+  faculties: number[] = [this.counter];
 
   constructor(private universityService: UniversityService) { }
 
@@ -42,15 +44,23 @@ export class UniversitySearchComponent implements OnInit {
     return 0;
   }
 
-  addFaculty(newFacultyName: string): void {
+  addFaculty(newFacultyName: string, counter: number): void {
 	const newFaculty = new Faculty();
 	newFaculty.name = newFacultyName;
 	this.universityService.addFaculty(newFaculty, this.currentUniversity.id).subscribe();
 	this.currentUniversity.faculties.push(newFaculty);
+	/*erase the current record from the faculties list:*/
+	this.faculties = this.faculties.filter(r => r !== counter);
   }
 
+  /*
   updateUniversity(): void {
     this.universityService.updateUniversity(this.currentUniversity);
+  }*/
+  
+  incrementFaculties(): void {
+	this.counter++;
+	this.faculties.push(this.counter);
   }
 
 }

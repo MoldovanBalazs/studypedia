@@ -12,6 +12,9 @@ export class AddUniversityComponent implements OnInit {
 
   currentUniversity: University;
   universities: University[] = [];
+  
+  counter: number = 1;
+  faculties: number[] = [this.counter];
 
   constructor(private universityService: UniversityService) {
   }
@@ -41,11 +44,13 @@ export class AddUniversityComponent implements OnInit {
     return 0;
   }
 
-  addFaculty(facultyName: string): void {
+  addFaculty(facultyName: string, counter: number): void {
     const newFaculty = new Faculty();
     newFaculty.name = facultyName;
 	//this.universityService.addFaculty(newFaculty, this.currentUniversity.id).subscribe();
     this.currentUniversity.faculties.push(newFaculty);
+	/*erase the current record from the faculties list:*/
+	this.faculties = this.faculties.filter(r => r !== counter);
   }
 
   getUniversities(): void {
@@ -55,6 +60,11 @@ export class AddUniversityComponent implements OnInit {
 
   switchExistentUniversity(): void {
     this.currentUniversity = null;
+  }
+  
+  incrementFaculties(): void {
+	  this.counter++;
+	  this.faculties.push(this.counter);
   }
 
 }

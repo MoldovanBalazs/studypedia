@@ -11,8 +11,14 @@
   <div><button (click)="addUniversity()">Add University</button></div>
   <div>University name: <input [(ngModel)]="this.currentUniversity.name"/></div>
   <div>
-    <input #facultyName placeholder="faculty"/>
-    <button (click)="addFaculty(facultyName.value)">Add Faculty</button>
+	<li *ngFor="let element of faculties">
+    <div>
+	 Faculty: 
+	 <input #facultyName placeholder="element.value"/>
+     <button (click)="addFaculty(facultyName.value, element)">Add Faculty</button>
+	</div>
+	</li>
+	<div><button (click)="incrementFaculties()">+</button></div>
   </div>
   <div>Faculties:</div>
   <div>

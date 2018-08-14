@@ -10,13 +10,21 @@
 
 <div *ngIf="this.currentUniversity">
   <div>
-    <button (click)="updateUniversity()">Update University</button>
+    <!--<button (click)="updateUniversity()">Update University</button>-->
   </div>
   <div>University name: {{currentUniversity.name}}</div>
   <div>University id: {{currentUniversity.id}}</div>
   <div>
-    <input [(ngModel)]="this.currentFaculty" placeholder="faculty name"/>
-    <button (click)="addFaculty(this.currentFaculty);">Add Faculty</button>
+    <div>
+	<li *ngFor="let element of faculties">
+    <div>
+	 Faculty: 
+	 <input #facultyName placeholder="faculty"/>
+     <button (click)="addFaculty(facultyName.value, element)">Add Faculty</button>
+	</div>
+	</li>
+	<div><button (click)="incrementFaculties()">+</button></div>
+  </div>
   </div>
   <p>Faculties:</p>
   <div>
