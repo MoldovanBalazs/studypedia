@@ -105,6 +105,7 @@ export class ArticleListComponent implements OnInit {
     } else if (this.btn_users) {
       return this.listFilter ? this.performFilterOnUsers(value) : this.performFilterOnUsers('');
     } else if (this.btn_subjects) {
+
       return this.listFilter ? this.performFilterOnSubjects(value) : this.performFilterOnSubjects('');
     }
   }
@@ -137,12 +138,12 @@ export class ArticleListComponent implements OnInit {
       article.title.toLocaleLowerCase().indexOf(filterBy) !== -1
       || article.author.toLocaleLowerCase().indexOf(filterBy) !== -1));
   }
-  performFilterOnUsers(filterBy: string): User[] {
-    filterBy = filterBy.toLocaleLowerCase();
-    return this.userList.filter((user: User) =>
-      user.username.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || user.university.toLocaleLowerCase().indexOf(filterBy) !== -1);
-  }
+  // performFilterOnUsers(filterBy: string): User[] {
+  //   filterBy = filterBy.toLocaleLowerCase();
+  //   return this.userList.filter((user: User) =>
+  //     user.username.toLocaleLowerCase().indexOf(filterBy) !== -1
+  //     || user.university.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  // }
 
   performFilterOnSubjects(filterBy: string): Subject[] {
     filterBy = filterBy.toLocaleLowerCase();
@@ -155,6 +156,7 @@ export class ArticleListComponent implements OnInit {
     console.log('In OnInit');
     this.getArticles();
     this.getUsers();
+
     this.getSubjects();
   }
 }
