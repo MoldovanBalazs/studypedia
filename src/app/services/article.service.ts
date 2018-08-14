@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
-import {ARTICLES} from '../mock-data/mock-articles';
+
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'

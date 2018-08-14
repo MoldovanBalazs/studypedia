@@ -17,8 +17,6 @@ import { UniversityDetailComponent } from './university-detail/university-detail
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { CookieService } from 'ngx-cookie-service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryUniversityDataService } from './services/in-memory-university-data.service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
@@ -40,7 +38,6 @@ const routes: Routes = [
       {path: 'article', component: ArticlesComponent}
     ]},
   ];
-
 @NgModule({
   declarations: [
     AppComponent,
