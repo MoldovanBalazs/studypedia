@@ -30,7 +30,7 @@
       </div>
     </div>
     <div *ngIf="shownTable === 't01'">
-      <table id="t01" class="table table-responsive" *ngIf="btn_notes && filteredNotes && filteredNotes.length">
+      <table id="t01" class="table table-responsive" *ngIf="btn_notes && articleList && articleList.length">
         <thead>
         <tr>
           <th>Note</th>
@@ -39,16 +39,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of filteredNotes">
+        <tr *ngFor="let article of articleList">
           <td align="center">{{ article.title}}</td>
-          <td align="center">{{ article.author }}</td>
-          <td align="center">{{ article.releaseDate.toLocaleString() }}</td>
+          <td align="center">{{ article.user.username }}</td>
+          <td align="center">{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't011'">
-      <table id="t011" class="table" *ngIf="btn_seminars && filteredSeminars && filteredSeminars.length">
+      <table id="t011" class="table" *ngIf="btn_seminars && articleList && articleList.length">
         <thead>
         <tr>
           <th>Seminar</th>
@@ -57,16 +57,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of filteredSeminars">
+        <tr *ngFor="let article of articleList">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't012'">
-      <table id="t012" class="table" *ngIf="btn_labs && filteredLabs && filteredLabs.length">
+      <table id="t012" class="table" *ngIf="btn_labs && articleList && articleList.length">
         <thead>
         <tr>
           <th>Lab</th>
@@ -75,16 +75,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of filteredLabs">
+        <tr *ngFor="let article of articleList">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't013'">
-      <table id="t013" class="table" *ngIf="btn_exams && filteredExams && filteredExams.length">
+      <table id="t013" class="table" *ngIf="btn_exams && articleList && articleList.length">
         <thead>
         <tr>
           <th>Exam</th>
@@ -93,16 +93,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let article of filteredExams">
+        <tr *ngFor="let article of articleList">
           <td>{{ article.title }}</td>
-          <td>{{ article.author }}</td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td>{{ article.user.username }}</td>
+          <td>{{ article.date.toLocaleString() }}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't02'">
-      <table id="t02" class="table" *ngIf="btn_users && filteredUsers && filteredUsers.length">
+      <table id="t02" class="table" *ngIf="btn_users && userList && userList.length">
         <thead>
         <tr>
           <th>Id</th>
@@ -111,16 +111,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of filteredUsers">
+        <tr *ngFor="let user of userList">
           <td>{{user.id}}</td>
-          <td>{{user.name}}</td>
+          <td>{{user.username}}</td>
           <td>{{user.university}}</td>
         </tr>
         </tbody>
       </table>
     </div>
     <div class="table-responsive" *ngIf="shownTable === 't03'">
-      <table id="t03" class="table" *ngIf="btn_subjects && filteredSubjects && filteredSubjects.length">
+      <table id="t03" class="table" *ngIf="btn_subjects && subjectList && subjectList.length">
         <thead>
         <tr>
           <th>Id</th>
@@ -129,7 +129,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let subject of filteredSubjects">
+        <tr *ngFor="let subject of subjectList">
           <td>{{ subject.id }}</td>
           <td>{{ subject.name }}</td>
           <td>{{ subject.description }}</td>

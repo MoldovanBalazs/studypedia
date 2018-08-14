@@ -17,4 +17,11 @@ export class User {
     this.branch = branch;
     this.userType = usertype;
   }
+
+
+}
+
+export class UserLog {
+  public username: string;
+  public password: string;
 }

@@ -18,7 +18,7 @@
 
         <td> <a routerLink="/article" routerLinkActive="active"> {{article.title}} </a> </td>
 
-        <td>{{ article.releaseDate.toLocaleString() }}</td>
+        <td>{{ article.date.toLocaleString() }}</td>
 
       </tr>
       </tbody>
@@ -26,26 +26,5 @@
   </div>
   </div>
 
-  <div>
-    <h2>{{ contributionHeader }}</h2>
-    <table class='table'
-           *ngIf="articleList && articleList.length">
-      <thead>
-      <tr>
-        <th>Title</th>
-        <th>Date</th>
-      </tr>
-      </thead>
 
-      <tbody>
-      <tr *ngFor='let article of articleList'>
-
-        <td> <a href={{article.link}}> {{article.title}} </a> </td>
-
-        <td>{{ article.releaseDate.toLocaleString() }}</td>
-
-      </tr>
-      </tbody>
-    </table>
-  </div>
 </body>

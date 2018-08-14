@@ -22,8 +22,8 @@
         <tr *ngFor='let article of articleList'>
 
           <td> <a routerLink="/article" routerLinkActive="active" > {{article.title}} </a> </td>
-          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.author}} </a> </td>
-          <td>{{ article.releaseDate.toLocaleString() }}</td>
+          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.user}} </a> </td>
+          <td>{{ article.date.toLocaleString() }}</td>
 
         </tr>
         </tbody>
