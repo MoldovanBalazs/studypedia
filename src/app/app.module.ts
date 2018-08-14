@@ -24,6 +24,7 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import {SubmitentryComponent} from './submitentry/submitentry.component';
 
 
 const routes: Routes = [
@@ -56,7 +57,9 @@ const routes: Routes = [
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
-    UniversitySearchComponent
+    UniversitySearchComponent,
+    UniversityComponent,
+    SubmitentryComponent
   ],
   imports: [
     BrowserModule,
