@@ -24,6 +24,7 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import { ProfilepageComponent } from './profilepage/profilepage.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
       {path: 'search', component: ArticleListComponent },
       {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent},
-      {path: 'profile', component: ProfiledetailComponent},
+      {path: 'profilepage', component: ProfilepageComponent},
       {path: 'article', component: ArticlesComponent}
     ]},
   ];
@@ -55,7 +56,8 @@ const routes: Routes = [
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
-    UniversitySearchComponent
+    UniversitySearchComponent,
+    ProfilepageComponent
   ],
   imports: [
     BrowserModule,

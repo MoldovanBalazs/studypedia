@@ -23,7 +23,7 @@ export class ProfiledetailComponent implements OnInit {
 
   public getSessionUser(): User {
 
-    let user: User = JSON.parse(this._cookieService.get('userCookie'));
+    // let user: User = JSON.parse(this._cookieService.get('userCookie'));
     //return user;
 
     let sessionUser: User = new User();
@@ -31,7 +31,9 @@ export class ProfiledetailComponent implements OnInit {
     return sessionUser;
   }
 
-  constructor(private articleService: ArticleService, private _cookieService: CookieService) {
+   // private _cookieService: CookieService;
+
+  constructor(private articleService: ArticleService) {
     // this.articleService.getPersonalArticles(1).subscribe((data: Article[]) => {
     //   this.articleList = data;
     // })
@@ -46,6 +48,7 @@ export class ProfiledetailComponent implements OnInit {
   }
 
   getArticles(){
+    console.log("session user id is: " + this.getSessionUser().id);
     this.articleService.getPersonalArticles(this.getSessionUser().id).subscribe((result)=>{
       this.articleList = result;
       this.articleList.forEach(item => {

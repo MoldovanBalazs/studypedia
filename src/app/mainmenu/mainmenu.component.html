@@ -1,12 +1,14 @@
 <!-- home, my page, submit,  -->
 
-<div >
-  <div style = "display:inline-block;vertical-align: top">
+0
+
+<div style="display: flex" >
+  <div style="flex-grow: 0">
     <a routerLink="home" routerLinkActive="active">
       <button class = "menubutton">Home</button>
     </a>
     <br>
-      <a routerLink="profile" routerLinkActive="active">
+      <a routerLink="profilepage" routerLinkActive="active" style = "display: flex">
         <button class = "menubutton">My profile</button>
       </a>
     <br>
@@ -20,7 +22,7 @@
       <button class = "menubutton">Requests</button>
     </a>
   </div>
-  <div style = "display:inline-block;vertical-align: top">
+  <div style = "flex-grow : 1; vertical-align: top;">
     <router-outlet></router-outlet>
   </div>
 </div>
