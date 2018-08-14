@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import {FormControl, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 import { DeadlineComponent } from './deadline/deadline.component';
 import { MainmenuComponent } from './mainmenu/mainmenu.component';
 import { ProfiledetailComponent } from './profiledetail/profiledetail.component';
@@ -29,6 +30,8 @@ import {AddUniversityComponent} from './add-university/add-university.component'
 import {AddSubjectComponent} from './add-subject/add-subject.component';
 import { CookieService } from 'ngx-cookie-service';
 
+
+
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
@@ -38,7 +41,8 @@ const routes: Routes = [
       {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent},
       {path: 'profile', component: ProfiledetailComponent},
-      {path: 'article', component: ArticlesComponent}
+      {path: 'article', component: ArticlesComponent},
+      {path: 'submit', component: SubmitentryComponent}
     ]},
   ];
 @NgModule({
@@ -57,25 +61,12 @@ const routes: Routes = [
     SubmitentryComponent,
     LoginComponent,
     RegisterComponent,
-    /*Adrian's part:*/
-    RequestsComponent,
-    RequestDetailComponent,
-    AddUniversityComponent,
-    AddSubjectComponent,
-    ArticleListComponent,
-    ArticlesComponent,
-    NewsfeedComponent,
-
-    ArticlesComponent,
-    NewsfeedComponent,
-    UniversityDetailComponent,
-    UniversitySearchComponent,
     UniversityComponent,
-    SubmitentryComponent,
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
     UniversitySearchComponent
+
   ],
   imports: [
     BrowserModule,
@@ -84,12 +75,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
-    RouterModule.forRoot(routes),
     AppRoutingModule,
-    FormsModule
   ],
   providers: [
     CookieService
