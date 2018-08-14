@@ -22,3 +22,8 @@ export class User {
 
 
 }
+
+export class UserLog {
+  public username: string;
+  public password: string;
+}

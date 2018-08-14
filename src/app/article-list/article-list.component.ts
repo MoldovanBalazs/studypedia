@@ -33,19 +33,19 @@ export class ArticleListComponent implements OnInit {
     return this._listFilter;
   }
 
-  getArticles(){
+  getArticles() {
     this.articleService.getArticles().subscribe((result) => {
       this.articleList = result;
     });
   }
 
-  getUsers(){
+  getUsers() {
     this.userService.getUsers().subscribe((result) => {
       this.userList = result;
     });
   }
 
-  getSubjects(){
+  getSubjects() {
     this.subjectService.getSubjects().subscribe((result) => {
       this.subjectList = result;
     });
