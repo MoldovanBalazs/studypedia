@@ -110,7 +110,7 @@ export class ArticleListComponent implements OnInit {
     filterBy = filterBy.toLocaleLowerCase();
     return this.userList.filter((user: User) =>
       user.username.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || user.university.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      || user.university.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   performFilterOnSubjects(filterBy: string): Subject[] {
