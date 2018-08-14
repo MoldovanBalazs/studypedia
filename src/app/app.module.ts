@@ -16,7 +16,7 @@ import { UniversityComponent } from './university/university.component';
 import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
-import { InMemoryUniversityDataService } from './services/in-memory-university-data.service';
+import { CookieService } from 'ngx-cookie-service';
 import { AppRoutingModule } from './/app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
@@ -24,6 +24,7 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import {SubmitentryComponent} from './submitentry/submitentry.component';
 
 
 const routes: Routes = [
@@ -52,10 +53,13 @@ const routes: Routes = [
     AddUniversityComponent,
     AddSubjectComponent,
     ArticleListComponent,
+
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
-    UniversitySearchComponent
+    UniversitySearchComponent,
+    UniversityComponent,
+    SubmitentryComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

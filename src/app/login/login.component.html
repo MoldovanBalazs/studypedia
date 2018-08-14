@@ -5,34 +5,44 @@
   }
 </style>
 
-<div  class="content">
+<body>
+<div class="content">
   <div class="container">
     <h2>Login</h2>
-    <form>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
       <div class="form-group">
         <label for="username">Username &nbsp;&nbsp;</label>
-        <input type="text" class="form-control" id="username" required>
+        <input type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
+        <div [hidden]="username.valid || username.untouched"
+             class="alert alert-danger">
+          Username can't be empty
+        </div>
       </div>
 
       <div class="form-group">
         <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
-        <input type="password" class="form-control" id="password" required>
-      </div>
+        <input type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
+        <div [hidden]="password.valid || password.untouched"
+             class="alert alert-danger">
+          Password can't be empty
+        </div>
+      </div><!--
       <a  >
         <button type="submit" class = "btn btn-primary" (click) = "loginClick()">Login </button>
-      </a>
+      </a>-->
+  <!--
+  <a routerLink="/profile" routerLinkActive="active">
+  -->
+      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid">Login</button>
+
+  <!--
+  </a>
+  <router-outlet></router-outlet>
+  -->
+
     </form>
-  </div>
-  <div>
-    <h4>New user?
-      <button type="button"
-              (click) = 'toggleRegister()'>
-        {{ registerButton ? 'Nevermind' : 'Register here!'}}
-      </button>
-      <div *ngIf = 'registerButton'>
-        <app-register></app-register>
-      </div>
-    </h4>
+
+    <app-register></app-register>
   </div>
 
 
@@ -40,3 +50,5 @@
 
 <!--class="btn btn-success"(onclick)="this.appComp.toogle()"-->
 
+
+</body>
