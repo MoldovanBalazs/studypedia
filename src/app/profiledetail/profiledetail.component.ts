@@ -28,6 +28,8 @@ export class ProfiledetailComponent implements OnInit {
     return user;
   }
 
+
+
   getArticles() {
     this.articleService.getPersonalArticles(this.getSessionUser().id).subscribe((result) => {
       this.articleList = result;

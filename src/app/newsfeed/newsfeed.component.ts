@@ -41,7 +41,7 @@ export class NewsfeedComponent implements OnInit {
   }
 
   userClick(user: User) {
-    this._cookieService.set( 'userCookie', JSON.stringify(user));
-    this.router.navigate(['/mainmenu/', user.id]);
+    this._cookieService.set( 'otherUserCookie', JSON.stringify(user));
+    this.router.navigate(['/mainmenu/otherProfile', user.id]);
   }
 }
