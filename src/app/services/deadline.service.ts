@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
 
-import { Deadline} from "../models/deadline";
-import { DEADLINES} from "../mock-data/mock-deadline";
+import { Deadline} from '../models/deadline';
+import { DEADLINES} from '../mock-data/mock-deadline';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
