@@ -29,3 +29,40 @@ p{
   font-family: "Roboto-Regular";
 
 }
+#ok {
+  /*margin: 2%;*/
+  padding: 0.75rem 1rem;
+  border:  #1C735E 3px solid;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  #1C735E;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+#ok:disabled {
+
+  padding: 0.75rem 1rem;
+  border: solid 3px grey;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}

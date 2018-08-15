@@ -16,8 +16,8 @@
     <hr>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
       <div class="form-group" style="margin: 4%;">
-        <label for="username">username </label> <!-- &nbsp;&nbsp; -->
-        <input type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
+        <!--<label for="username">username </label> &lt;!&ndash; &nbsp;&nbsp; &ndash;&gt;-->
+        <input placeholder="username" type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
         <div [hidden]="username.valid || username.untouched" style="font-family: Roboto-Regular; font-weight: bold; font-size: 80%"
              class="alert alert-danger">
           username can't be empty
@@ -25,14 +25,14 @@
       </div>
 
       <div class="form-group" style="margin: 4%;">
-        <label for="password">password</label> <!-- &nbsp;&nbsp; -->
-        <input type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
+        <!--<label for="password">password</label> &lt;!&ndash; &nbsp;&nbsp; &ndash;&gt;-->
+        <input placeholder="password" type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
         <div [hidden]="password.valid || password.untouched " style="font-family: Roboto-Regular; font-weight: bold; font-size: 80%;"
              class="alert alert-danger">
           password can't be empty
         </div>
       </div>
-      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid" style="font-family: Roboto-Regular; font-weight: bold">Login</button>
+      <button id = 'ok' type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid" style="font-family: Roboto-Regular; font-weight: bold">Login</button>
 
     </form>
     <div *ngIf = '!userIsValid' class="alert alert-danger">
