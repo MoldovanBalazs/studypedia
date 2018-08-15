@@ -5,9 +5,9 @@ import {Category} from '../models/category';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {SubmitentryService} from '../services/submitentry.service';
-import {debounce, debounceTime, throttleTime} from 'rxjs/operators';
 import {Article} from '../models/article';
-import {DeadlineService} from '../services/deadline.service';
+import {Subject} from '../models/subject';
+import {SubjectService} from '../services/subject.service';
 
 
 export interface Category {
@@ -29,6 +29,7 @@ export interface Category {
     FormGroup,
     HttpClient,
     SubmitentryService,
+    SubjectService
   ]
 })
 export class SubmitentryComponent implements OnInit {
@@ -40,12 +41,12 @@ export class SubmitentryComponent implements OnInit {
   subjectName: string;
   facultyName: string;
   selectedCat: string;
-
   titleName: string;
   descriptionName: string;
 
+  public subjectList: Subject[] = [];
 
-  constructor(private submitentryService: SubmitentryService) {
+  constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService) {
   }
 
   uploadForm = new FormGroup({
@@ -57,6 +58,12 @@ export class SubmitentryComponent implements OnInit {
   fileEvent(e) {
     this.filedata = e.target.files[0];
     console.log(e);
+  }
+
+  getSubjects() {
+    this.subjectService.getSubjects().subscribe((result) => {
+      this.subjectList = result;
+    });
   }
 
   onSubmit() {
@@ -76,6 +83,7 @@ export class SubmitentryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getSubjects();
   }
 
 }
