@@ -2,8 +2,6 @@
   <div>
     <h1> {{ name }} - {{university}}</h1>
 
-  </div>
-
   <div>
     <h2>{{ contributionHeader }}</h2>
     <table class='table'
@@ -18,12 +16,15 @@
       <tbody>
       <tr *ngFor='let article of articleList'>
 
-        <td> <a href={{article.link}}> {{article.title}} </a> </td>
+        <td> <a routerLink="/article" routerLinkActive="active"> {{article.title}} </a> </td>
 
-        <td>{{ article.releaseDate.toLocaleString() }}</td>
+        <td>{{ article.date.toLocaleString() }}</td>
 
       </tr>
       </tbody>
     </table>
   </div>
+  </div>
+
+
 </body>

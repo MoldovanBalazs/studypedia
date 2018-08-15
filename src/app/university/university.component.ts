@@ -9,7 +9,7 @@ import { UniversityService } from '../services/university.service';
 })
 export class UniversityComponent implements OnInit {
 
-  university : University;
+  university: University;
 
   constructor(private universityService: UniversityService) {
 

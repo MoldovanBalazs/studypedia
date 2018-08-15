@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { REQUESTS } from '../mock-data/mock-requests';
 import { RequestService } from '../services/request.service';
 import { Request } from '../models/request';
-
-import { UserinfoService } from '../services/userinfo.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-requests',
@@ -12,20 +11,14 @@ import { UserinfoService } from '../services/userinfo.service';
 })
 export class RequestsComponent implements OnInit {
 
-  /*used for access control;*/
-  moderator = 2;
-  none = 0;
-  simple = 1;
-  admin = 3;
-
   selectedRequest: Request;
   requests: Request[];
-  username: string;
+  username : string;
   usertype: number;
 
   constructor(
     private requestService: RequestService,
-    private userInfoService: UserinfoService
+    private userInfoService: UserService
   ) {
   }
 

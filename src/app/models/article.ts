@@ -1,9 +1,11 @@
+import {User} from './user';
+
 export class Article {
   public id: number;
   public title: string;
-  public author: string;
-  public releaseDate: Date;
-  public type: string;
+  public user: User;
+  public date: Date;
+  public articleType: number;
   public link: string;
-  public authorLink: string;
+  public description: string;
 }
