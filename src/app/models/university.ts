@@ -1,32 +1,4 @@
-export class Article {
-  id: number;
-  title: string;
-  date: Date;
-  author: string;
-  proposerName: string;
-  description: string;
-  articleStatus: any;
-  articleType: any;
-}
-
-export class SubjectA {
-  id: number;
-  name: string;
-  articles: Article[] = [];
-}
-
-export class Branch {
-  id: number;
-  name: string;
-  subjects: SubjectA[] = [];
-}
-
-export class Faculty {
-  name: string;
-  id: number;
-  idUniv: number;
-  branches: Branch[] = [];
-}
+import {Faculty} from './faculty';
 
 export class University {
 
@@ -48,11 +20,11 @@ export class University {
   getName(): string {
     return this.name;
   }
-  
+
   setFaculties(faculties: Faculty[]): void{
 	  this.faculties = faculties;
   }
-  
+
   getFaculties(): Faculty[] {
 	  return this.faculties;
   }
