@@ -42,16 +42,7 @@ export class RegisterComponent implements OnInit {
       });
     });
 
-    this.universityService.getUniversityFaculties(this.newUser.university.id).subscribe((data: Faculty[]) => {
-        // this.universityList = data as University[];
-        data.forEach(item => {
-          let uni = new Faculty();
-          uni = item;
-          this.facultyList.push(item as Faculty);
-          console.log(item);
-        });
-      }
-    );
+
 
     // this.newUser.name = '';
     // this.newUser.username = '';
@@ -108,6 +99,18 @@ export class RegisterComponent implements OnInit {
     if (universities === 'USAMV') {
       this.faculties = ['Facultatea de Agricultura', 'Facultatea de Medicina Veterinara'];
     }
+
+    this.universityService.getUniversityFaculties(this.newUser.university.id).subscribe((data: Faculty[]) => {
+        // this.universityList = data as University[];
+        data.forEach(item => {
+          let uni = new Faculty();
+          uni = item;
+          this.facultyList.push(item as Faculty);
+          console.log(item);
+        });
+      }
+    );
+
   }
 
   secondDropDownChanged(faculties: any) {

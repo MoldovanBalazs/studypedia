@@ -70,18 +70,21 @@ export class LoginComponent implements OnInit {
   loginUser(event) {
     const loggedUser = new UserLog(this.loggedUser.username, this.loggedUser.password);
     const obj = this.authorizationService.validateUser(loggedUser).subscribe((data: User) => {
-      console.log('Data is' + data);
-      this.user = data as User;
-      if ( this.user === null) {
-        console.log('null user');
-        this.userIsValid = false;
-      } else {
-        console.log('Validation log ' + this.user.name);
-        this._cookieService.set( 'userCookie', JSON.stringify(this.user));
-        this.router.navigateByUrl('/mainmenu');
-      }
+      // console.log('Data is' + data);
+      // this.user = data as User;
+      // if ( this.user === null) {
+      //   console.log('null user');
+      //   this.userIsValid = true;
+      //   this.router.navigateByUrl('/mainmenu');
+      // } else {
+      //   console.log('Validation log ' + this.user.name);
+      //   this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+      //   this.router.navigateByUrl('/mainmenu');
+      // }
+      this.router.navigateByUrl('/mainmenu');
 
     });
+    this.router.navigateByUrl('/mainmenu');3
   }
 
   toggleRegister(): void {

@@ -1,8 +1,12 @@
 /*@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');*/
 
-
+@font-face { font-family: "Roboto-Regular"; src: url("../../assets/nixieone.ttf"); }
 .ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
+  border-left: 5px solid #1C735E; /* green */
+}
+label{
+  font-family: "Roboto-Regular" ;
+  font-weight: bold;
 }
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
@@ -10,4 +14,18 @@
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
+}
+h2{
+  font-family: "Roboto-Regular";
+  color: #1C735E;
+
+}
+hr{
+  margin: 5%;
+  border-bottom: 2px solid  #a94442;
+  margin-top: 5%;
+}
+p{
+  font-family: "Roboto-Regular";
+
 }
