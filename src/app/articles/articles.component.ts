@@ -10,15 +10,10 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class ArticlesComponent implements OnInit {
 
-  article: Article = JSON.parse(this._cookieService.get('userCookie')) as Article;
-  id: number;
+  article: Article = JSON.parse(this._cookieService.get('articleCookie')) as Article;
 
-
-  constructor(private newsfeed: NewsfeedComponent, private _cookieService: CookieService) {
-    this.id = this.newsfeed.id;
+  constructor(private _cookieService: CookieService) {
     console.log(this.article.id);
-    //this.article = this.newsfeed.getArticleById(this.id);
-
   }
   ngOnInit() {
   }

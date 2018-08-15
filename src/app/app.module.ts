@@ -24,6 +24,7 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import {CookieService} from 'ngx-cookie-service';
 
 
 const routes: Routes = [
@@ -64,7 +65,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

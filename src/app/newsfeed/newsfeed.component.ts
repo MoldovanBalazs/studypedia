@@ -4,9 +4,6 @@ import {ArticleService} from '../services/article.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 
-@Injectable({
-  providedIn: 'root'
-})
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
@@ -14,9 +11,7 @@ import {CookieService} from 'ngx-cookie-service';
 })
 export class NewsfeedComponent implements OnInit {
 
-  pageTitle = 'Welcome, user';
   subscribed = 2;
-  user = 'Ion';
   router: Router;
   public id: number;
 
@@ -24,9 +19,7 @@ export class NewsfeedComponent implements OnInit {
   articleList: Article[];
 
   /*getArticleById(id: number): Article {
-    this.articleService.getArticleById(id).subscribe((result) => {
-      this.article = result;
-    });
+    this.articleList.forEach( (articol: Article) => {if (articol.id === id) { this.article = articol; }} );
     return this.article;
   }*/
 
@@ -44,13 +37,12 @@ export class NewsfeedComponent implements OnInit {
   }
   ngOnInit() {
       this.getArticles();
-
   }
 
   articleClick(article: Article) {
 
-    this.id = article.id;
+    this.article = article;
     this._cookieService.set( 'articleCookie', JSON.stringify(this.article));
-    this.router.navigate(['/mainmenu/article', this.id]);
+    this.router.navigate(['/mainmenu/article', this.article.id]);
   }
 }
