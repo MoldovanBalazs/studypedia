@@ -12,8 +12,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
-// import { UniversityComponent } from './university/university.component';
-// import { UniversityDetailComponent } from './university-detail/university-detail.component';
 import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -56,9 +54,7 @@ const routes: Routes = [
 
     ArticlesComponent,
     NewsfeedComponent,
-    //UniversityDetailComponent,
     UniversitySearchComponent,
-    //UniversityComponent,
     SubmitentryComponent
   ],
   imports: [
