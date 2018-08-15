@@ -8,7 +8,7 @@ h1{
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 }
 
@@ -18,7 +18,7 @@ h2{
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 }
 .center {
@@ -35,6 +35,6 @@ table, th, td {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 }

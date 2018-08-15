@@ -3,6 +3,7 @@
 @font-face { font-family: "Roboto-Regular"; src: url("../../assets/nixieone.ttf"); }
 .ng-valid[required], .ng-valid.required  {
   border-left: 5px solid #1C735E; /* green */
+  border-right: 5px solid #1C735E; /* green */
 }
 label{
   font-family: "Roboto-Regular" ;
@@ -10,6 +11,7 @@ label{
 }
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
+  border-right: 5px solid #a94442; /* red */
 }
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
@@ -65,4 +67,25 @@ p{
   cursor: pointer;
   -webkit-appearance: none;
   -webkit-font-smoothing: antialiased;
+}
+
+input{
+  padding: 0.75rem 1rem;
+  border-right: transparent;
+  border-bottom: transparent;
+  border-top: transparent;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  #1C735E;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+}
+
+#inputField{
+
 }

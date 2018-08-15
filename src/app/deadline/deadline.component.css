@@ -6,7 +6,7 @@ p.ok {
 
   margin-bottom: 30px;
 
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
   /*width: 900px;*/
   border: 10px solid #88d8b0;
@@ -25,7 +25,7 @@ p.isComing {
 
   margin-bottom: 30px;
 
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
   /*width: 900px;*/
   border: 10px solid #ffcc5c ;
@@ -42,7 +42,7 @@ p.urgent {
   width: 60%;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
   /*width: 900px;*/
   border: 10px solid #ff6f69  ;
@@ -57,7 +57,7 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
   border: 5px solid #355C7D ;
@@ -71,7 +71,7 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
   border: 5px solid #355C7D  ;
@@ -86,7 +86,7 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
 
@@ -98,7 +98,7 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
   width: 20%;
@@ -114,7 +114,7 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
   width: 20%;

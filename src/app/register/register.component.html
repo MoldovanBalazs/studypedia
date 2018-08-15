@@ -48,48 +48,53 @@
 
     <div class="form-group">
       <!--<label for="university">University &nbsp;&nbsp;</label>-->
-      <select title="Univ"  class="form-control" id="university" required [(ngModel)]="newUser.university" name="university" (change)="firstDropDownChanged($event.target.value)">
+      <select  class="form-control" id="university" required [(ngModel)]="newUser.university" name="university" (change)="firstDropDownChanged($event.target.value)">
         <!--<option>Select</option>-->
-        <option selected>Choose here</option>
-        <option *ngFor="let uni of universityList" [value]="uni">{{uni.name}}</option>
+        <option value = "choose here" selected ="selected">choose here</option>
+        <option *ngFor="let university of universityList" [ngValue]="university">{{university.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="faculty">faculty</label>
+      <!--<label for="faculty">faculty</label>-->
       <select class = 'form-control' id="faculty" required  [(ngModel)]="newUser.faculty" name="faculty"(change)="secondDropDownChanged($event.target.value)">
         <!--<option>Select</option>-->
-      <option *ngFor='let fc of faculties'>{{ fc }}</option>
+        <option disabled value = "choose here" selected ="selected">choose here</option>
+      <option *ngFor='let faculty of facultyList' [ngValue] = faculty>{{ faculty.name }}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="branch">branch</label>
+      <!--<label for="branch">branch</label>-->
       <select class = 'form-control' id="branch" required [(ngModel)]="newUser.branch" name="branch">
        <!-- <option>Select</option>-->
-        <option *ngFor='let br of branches'>{{ br }}</option>
+        <option *ngFor='let branch of branchList' [ngValue] = branch>{{ branch.name }}</option>
 
       </select>
     </div>
 </div>
-  <h4>
-    <button type="button"
-            (click) = 'toggleMod()'>
-      {{ modButton ? 'I lied' : "Click here if you're a moderator"}}
-    </button>
-  </h4>
-  <div *ngIf = 'modButton'>
-    <div class = "input">
-      <label> Prove it &nbsp; </label>
-      <input type = 'password' id="moderatorPass"  [(ngModel)]="moderatorPass">
-      <!--<div [hidden]="!this.modAlert"
-           class="alert alert-danger">
-        You're no moderator.
-      </div>-->
-    </div>
+  <!--<h4>-->
+    <!--<button type="button"-->
+            <!--(click) = 'toggleMod()'>-->
+      <!--{{ modButton ? 'I lied' : "Click here if you're a moderator"}}-->
+    <!--</button>-->
+  <!--</h4>-->
+  <!--<div *ngIf = 'modButton'>-->
+    <!--<div class = "input">-->
+      <!--<label> Prove it &nbsp; </label>-->
+      <!--<input type = 'password' id="moderatorPass"  [(ngModel)]="moderatorPass">-->
+    <!--</div>-->
+  <!--</div>-->
+  <div>
+    <input type = "password" placeholder="* for moderators" #moderatorPassword />
   </div>
+  <div>
 
-    <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid">Register</button>
+  </div>
+   <div>
+     <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid" (click)="validateModerator(moderatorPassword.value);registerNewUser(newUser)">Register</button>
+   </div>
+
 
 
   </form>
@@ -98,9 +103,9 @@
 
 <div [hidden]="!submitted">
   <div *ngIf="modPass===false">
-    <h1>You've succesfully registered!</h1>
+    <h2>Not uccessful registration!</h2>
   </div>
   <div *ngIf="modPass===true">
-    <h1>You've succesfully registered as a moderator!</h1>
+    <h2>Successful registration!</h2>
   </div>
 </div>
