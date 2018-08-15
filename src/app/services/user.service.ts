@@ -24,7 +24,6 @@ export class UserService {
   allUsersUrl = 'http://localhost:8080/user/all';
 
 
-
   constructor(public http: HttpClient) {
 
 
@@ -47,4 +46,5 @@ export class UserService {
     const url = URL + 'authentication/';
     return this.http.get<UserLog>(url, body).pipe();
   }*/
+
 }

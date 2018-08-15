@@ -12,9 +12,10 @@ const URL: string = 'http://localhost:8080/';
 })
 export class ArticleService {
 
-  articleInsertUrl: string = "/insertArticle";
-  articleGetByTypeUrl : string = "http://localhost:8080/article/type";
-  allArticlesUrl : string = "http://localhost:8080/article/all";
+  articleInsertUrl = '/insertArticle';
+  articleGetByTypeUrl = 'http://localhost:8080/article/type';
+  allArticlesUrl = 'http://localhost:8080/article/all';
+  articleByIdUrl = 'http://localhost:8080/article/id';
 
   public headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -34,7 +35,7 @@ export class ArticleService {
     this.http.post(this.articleInsertUrl, {params});
   }
 
-  getArticleByType(type: number): Observable<Article[]>{
+  getArticleByType(type: number): Observable<Article[]> {
     const params = new HttpParams()
       .set('type', type.toString());
     return this.http.get<Article[]>(this.articleGetByTypeUrl, {params});

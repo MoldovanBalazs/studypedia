@@ -25,6 +25,7 @@ import {RequestDetailComponent} from './request-detail/request-detail.component'
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import {SubmitentryComponent} from './submitentry/submitentry.component';
 
 
 const routes: Routes = [
@@ -35,8 +36,8 @@ const routes: Routes = [
       {path: 'search', component: ArticleListComponent },
       {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent},
+      {path: 'article/:id', component: ArticlesComponent},
       {path: 'profilepage', component: ProfilepageComponent},
-      {path: 'article', component: ArticlesComponent}
     ]},
   ];
 @NgModule({
@@ -58,7 +59,9 @@ const routes: Routes = [
     NewsfeedComponent,
     UniversityDetailComponent,
     UniversitySearchComponent,
-    ProfilepageComponent
+    ProfilepageComponent,
+    UniversityComponent,
+    SubmitentryComponent
   ],
   imports: [
     BrowserModule,
