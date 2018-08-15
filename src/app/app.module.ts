@@ -38,6 +38,7 @@ const routes: Routes = [
       {path: 'add-university', component: AddUniversityComponent},
       {path: 'article/:id', component: ArticlesComponent},
       {path: 'profilepage', component: ProfilepageComponent},
+      {path: 'otherProfile/:id', component: ProfiledetailComponent}
     ]},
   ];
 @NgModule({

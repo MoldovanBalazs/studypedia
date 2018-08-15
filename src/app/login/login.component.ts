@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit {
   }
   loginUser(event) {
 
-    this.loggedUser = new User(8, this.loggedUser.username, this.loggedUser.password,  'UBB',
+    this.loggedUser = new User(1, this.loggedUser.username, this.loggedUser.password,  'UBB',
                               'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
     this._cookieService.set( 'userCookie', JSON.stringify(this.loggedUser));
-    let loginner: UserLog = new UserLog();
+    const loginner: UserLog = new UserLog();
     loginner.username = this.loggedUser.username;
     loginner.password = this.loggedUser.password;
 

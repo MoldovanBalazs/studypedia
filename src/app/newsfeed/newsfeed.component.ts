@@ -3,6 +3,7 @@ import { Article} from '../models/article';
 import {ArticleService} from '../services/article.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
+import {User} from '../models/user';
 
 @Component({
   selector: 'app-newsfeed',
@@ -17,11 +18,6 @@ export class NewsfeedComponent implements OnInit {
 
   article: Article;
   articleList: Article[];
-
-  /*getArticleById(id: number): Article {
-    this.articleList.forEach( (articol: Article) => {if (articol.id === id) { this.article = articol; }} );
-    return this.article;
-  }*/
 
   getArticles() {
     this.articleService.getArticles().subscribe((result) => {
@@ -40,9 +36,12 @@ export class NewsfeedComponent implements OnInit {
   }
 
   articleClick(article: Article) {
+    this._cookieService.set( 'articleCookie', JSON.stringify(article));
+    this.router.navigate(['/mainmenu/article', article.id]);
+  }
 
-    this.article = article;
-    this._cookieService.set( 'articleCookie', JSON.stringify(this.article));
-    this.router.navigate(['/mainmenu/article', this.article.id]);
+  userClick(user: User) {
+    this._cookieService.set( 'userCookie', JSON.stringify(user));
+    this.router.navigate(['/mainmenu/', user.id]);
   }
 }

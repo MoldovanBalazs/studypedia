@@ -4,7 +4,7 @@ import {Article} from '../models/article';
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Deadline} from "../models/deadline";
 
-const URL: string = 'http://localhost:8080/';
+const URL = 'http://localhost:8080/';
 
 
 @Injectable({
