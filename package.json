@@ -27,6 +27,7 @@
     "ng2-cookies": "^1.0.12",
     "ngx-cookie-service": "^1.0.10",
     "ionic-angular": "^3.6.1",
+    "ngx-cookie-service": "^1.0.10",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

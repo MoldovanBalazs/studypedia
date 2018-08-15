@@ -36,7 +36,7 @@ const routes: Routes = [
       {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent},
       {path: 'profile', component: ProfiledetailComponent},
-      {path: 'article', component: ArticlesComponent}
+      {path: 'article/:id', component: ArticlesComponent}
     ]},
   ];
 @NgModule({
@@ -53,7 +53,6 @@ const routes: Routes = [
     AddUniversityComponent,
     AddSubjectComponent,
     ArticleListComponent,
-
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
