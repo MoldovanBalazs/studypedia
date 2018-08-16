@@ -1,11 +1,14 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {DeadlineService} from '../services/deadline.service';
+///<reference path="../../../node_modules/@types/jasmine/index.d.ts"/>
+import {AfterViewInit, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {DeadlineService} from "../services/deadline.service";
 import * as angular from 'angular';
-import {Deadline, Duration} from '../models/deadline';
-import {s} from '@angular/core/src/render3';
+import {Deadline, Duration} from "../models/deadline";
+import {s} from "@angular/core/src/render3";
 import DateTimeFormat = Intl.DateTimeFormat;
-
-
+import {copyObj} from "@angular/animations/browser/src/util";
+import {User} from "../models/user";
+import {constructDependencies} from "@angular/core/src/di/reflective_provider";
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-deadline',
@@ -14,51 +17,69 @@ import DateTimeFormat = Intl.DateTimeFormat;
 })
 export class DeadlineComponent implements OnInit {
 
-  curricula: Deadline[];
-
-  private countDownDate: any;
+  curricula: Deadline[] = [];
+  private countDownDate : any;
   public now;
   private distance;
   public t;
-  public renderable = false;
+  public renderable: boolean = false;
 
-  constructor(private curriculaService: DeadlineService) { }
+  public getSessionUser(): User {
 
-  ngOnInit() {
-    this.getCurricula();
-    for (const curriculaObj of this.curricula) {
-      curriculaObj.date.setHours(curriculaObj.date.getHours() - 3);
-    }
-    this.sortDeadlines();
-    this.displayCountDown();
-    // this.now = new Date().getTime();
-    this.renderable = true;
+    let user: User = JSON.parse(this._cookieService.get('userCookie')) as User;
+    return user;
+
+    // let sessionUser: User = new User();
+    // sessionUser.id = 8;
+    // return sessionUser;
   }
 
-  getCurricula() {
-    this.curriculaService.getCurricula().subscribe((result) => {
-      this.curricula = result;
+  constructor(
+    private deadlineService: DeadlineService,
+    private _cookieService: CookieService)
+    {
+    this.deadlineService.getUserDeadlines(this.getSessionUser().id).subscribe((data: Deadline[]) => {
+      this.curricula = data;
+      this.curricula.forEach(item => {
+        item.timeRemaining = new Duration();
+      });
+
+      this.renderable = true;
     });
   }
 
-  addCurricula(name: string, deadline: Date): void {
-
-    const curricula = new Deadline();
-    curricula.name = name;
-    curricula.date = deadline;
-    curricula.timeRemaining = new Duration();
-
-    this.curriculaService.addCurricula(curricula)
-      .subscribe(curricula => {
-        this.curricula.push(curricula);
-      });
+  ngOnInit() {
+    this.now = new Date().getTime();
+    this.displayCountDown();
   }
 
-  calculateDuration(curricula: Deadline): void {
-    this.countDownDate = curricula.date.getTime();
+  getDeadlines(): void{
 
-    this.now = new Date().getTime(); //now
-    this.distance = this.countDownDate - this.now; //difference from now
+    this.deadlineService.getUserDeadlines(this.getSessionUser().id).subscribe((data: Deadline[]) => {
+      this.curricula = data;
+      this.curricula.forEach(item => {
+        item.timeRemaining = new Duration();
+      });
+    });
+  }
+
+
+  addCurricula(name: string, date: Date): void {
+
+    let deadline = new Deadline();
+    deadline.name = name;
+    deadline.date = date;
+    let user: User = new User();
+    user.id = this.getSessionUser().id;
+    deadline.user = user;
+    this.deadlineService.addDeadline(deadline, this.curricula);
+  }
+
+  calculateDuration(curricula:Deadline):void{
+    this.countDownDate = new Date(curricula.date).getTime();
+
+    this.now = new Date().getTime();
+    this.distance = this.countDownDate - this.now;
 
     curricula.timeRemaining.days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
     curricula.timeRemaining.hours = Math.floor((this.distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -67,20 +88,19 @@ export class DeadlineComponent implements OnInit {
   }
 
   displayCountDown() {
-    setInterval(() => {
-      for (const curriculaObj of this.curricula) {
-        this.deleteOutdatedDeadlines();
+    setInterval(()=>{
+      for(let curriculaObj of this.curricula){
         this.calculateDuration(curriculaObj);
       }
     }, 1000);
   }
 
   deleteOutdatedDeadlines(): void {
-    for (const curriculaObj of this.curricula) {
+    for(let curriculaObj of this.curricula) {
 
-      if ( curriculaObj.date.getTime() < this.now ) {
-        const index: number = this.curricula.indexOf(curriculaObj);
-        if ( index !== -1) { // object is in the array
+      if( curriculaObj.date< this.now ) {
+        let index: number = this.curricula.indexOf(curriculaObj);
+        if( index != -1){ //object is in the array
           this.curricula.splice(index, 1);
         }
       }
@@ -88,20 +108,31 @@ export class DeadlineComponent implements OnInit {
   }
 
   checkValidInput(name: string, date: string): boolean {
-    const aux = new Date(date);
-    if ((name.trim() != '') && (aux.getTime() > Date.now())) {
+    let aux = new Date(date);
+    if((name.trim() != '') && (aux.getTime() > Date.now())){
       return true;
     }
     return false;
   }
 
-  sortDeadlines(): void {
-    this.curricula.sort((a, b) => {
-      if (a.date.getTime() >= b.date.getTime()) {
+  sortDeadlines(): Deadline[] {
+    let list: Deadline[] = this.curricula;
+    return list.sort((a,b) => {
+      if(a.date >= b.date) {
         return 1;
       } else {
         return -1;
       }
     });
   }
+
+  deleteDeadline(deadline: Deadline) {
+    let index: number = this.curricula.indexOf(deadline);
+    console.log(deadline.id);
+    if( index != -1) {
+      this.deadlineService.deleteDeadline(deadline);
+      this.curricula.splice(index, 1);
+    }
+  }
+
 }

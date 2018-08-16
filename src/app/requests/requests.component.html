@@ -2,9 +2,13 @@
 <div *ngIf = "userInfoService.moderator === userInfoService.getUsertype(); else nonModeratorBlock;">
   <ul class="requests">
     <li *ngFor="let request of requests" [class.selected]="request === selectedRequest" (click)="onSelect(request)">
-      hashcode: {{request.hash}}, article name: {{request.documentName}}, proposer: {{request.proposerName}}, author: {{request.authorName}}
-      <button class="accept" title="accept request" (click)="accept(request)">Accept</button>
-      <button class="deny" title="delete request" (click)="deny(request)">Deny</button>
+      <div>
+
+        <div style="float: left; text-align: center"> {{request.documentName}}, author: {{request.authorName}}</div>
+        <div><button class="accept" title="accept request" (click)="accept(request)">Accept</button></div>
+        <div> <button class="deny" title="delete request" (click)="deny(request)">Deny</button></div>
+      </div>
+
     </li>
   </ul>
 </div>

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import {Observable, of} from 'rxjs';
 import {Subject} from '../models/subject';
+
+import {User} from '../models/user';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({

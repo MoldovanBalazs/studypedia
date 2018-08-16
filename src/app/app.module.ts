@@ -28,6 +28,8 @@ import {RequestsComponent} from './requests/requests.component';
 import {RequestDetailComponent} from './request-detail/request-detail.component';
 import {AddUniversityComponent} from './add-university/add-university.component';
 import {AddSubjectComponent} from './add-subject/add-subject.component';
+import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { OtherProfileComponent } from './other-profile/other-profile.component';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -40,8 +42,9 @@ const routes: Routes = [
       {path: 'search', component: ArticleListComponent },
       {path: 'requests', component: RequestsComponent },
       {path: 'add-university', component: AddUniversityComponent},
-      {path: 'profile', component: ProfiledetailComponent},
-      {path: 'article', component: ArticlesComponent},
+      {path: 'article/:id', component: ArticlesComponent},
+      {path: 'profilepage', component: ProfilepageComponent},
+      {path: 'otherProfile/:id', component: OtherProfileComponent},
       {path: 'submit', component: SubmitentryComponent}
     ]},
   ];
@@ -65,8 +68,11 @@ const routes: Routes = [
     ArticlesComponent,
     NewsfeedComponent,
     UniversityDetailComponent,
-    UniversitySearchComponent
-
+    UniversitySearchComponent,
+    ProfilepageComponent,
+    UniversityComponent,
+    SubmitentryComponent,
+    OtherProfileComponent
   ],
   imports: [
     BrowserModule,

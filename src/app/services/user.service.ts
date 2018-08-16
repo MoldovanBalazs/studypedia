@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
-import {ARTICLES} from '../mock-data/mock-articles';
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
-import {USERS} from '../mock-data/mock-users';
 import {User, UserLog} from '../models/user';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {OnInit} from '@angular/core';
 
 const URL = 'http://localhost:8080/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class UserService implements OnInit {
 
   /*used for access control;*/
   moderator = 2;
@@ -26,10 +29,11 @@ export class UserService {
 
 
   constructor(public http: HttpClient) {
-
-
   }
 
+  ngOnInit() {
+
+  }
   getUsername(): string {
     return this.username;
   }
@@ -41,10 +45,19 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.allUsersUrl);
   }
-  /*getUser(userLog: UserLog): Observable<UserLog> {
-    // this.http.get<User>()
-    const body = JSON.stringify(userLog)
-    const url = URL + 'authentication/';
-    return this.http.get<UserLog>(url, body).pipe();
-  }*/
+
+  public addUser(user: User): void {
+    let body = JSON.stringify(user);
+    var url = URL + 'insert/user/';
+    this.http.post<User>(url, body, httpOptions)
+      .subscribe(data => {
+        data;
+      });
+  }
+
+  public checkValidUsername(username: string): Observable<boolean> {
+    const url = URL + 'valid/' + username;
+    return this.http.get<boolean>(url);
+  }
+
 }

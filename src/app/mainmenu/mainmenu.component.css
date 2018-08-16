@@ -8,6 +8,29 @@ body {
 }
 
 .menubutton {
+
+  width: 100%;
+  margin-bottom: 5%;
+  vertical-align: center;
+  padding: 0.75rem 1rem;
+  border:  grey 3px solid;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  align-items: left;
+
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.menuMainbutton {
   background-color: #f8f8fa  ;
   color:#58668b  ;
   font-weight: 700;
@@ -15,7 +38,7 @@ body {
   vertical-align: center;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
   border: 5px solid #355C7D   ;
@@ -32,4 +55,25 @@ body {
   left: 50%;
 
   top: 0;
+}
+
+
+
+h1 {
+  background-color: #f8f8fa;
+  text-align: center;
+  color: #58668b   ;
+  font-weight: 700;
+  margin: 0 auto;
+  width: 100%;
+  margin-bottom: 30px;
+
+  font-family: "Roboto-Regular";
+  font-size: x-large;
+
+
+  margin: 25px;
+
+  padding: 25px;
+  border-radius: 0.317rem;
 }

@@ -4,7 +4,7 @@ export class Deadline {
   public id: number;
   public name: string;
   public date: Date;
-  public user: User;
+   public user: User;
   public timeRemaining: Duration;
 }
 

@@ -1,4 +1,16 @@
+html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 
+btn.noBack {
+  padding: 0;
+  border: none;
+  background: #f8f8fa;
+}
 p.ok {
  background-color: #f8f8fa   ;
   color: #58668b   ;
@@ -6,14 +18,14 @@ p.ok {
 
   margin-bottom: 30px;
 
-  font-family: "HP Simplified Light";
-  font-size: x-large;
-  /*width: 900px;*/
-  border: 10px solid #88d8b0;
+  font-family: "Roboto-Regular";
+  font-size: large;
+  border: 3px solid #88d8b0;
   margin: 25px;
+  float: left;
 
   padding: 25px;
-  border-radius: 50px / 15px;
+  border-radius: 0.317rem;
   width: 60%;
 }
 
@@ -22,33 +34,55 @@ p.isComing {
   color: #58668b   ;
   font-weight: 700;
   width: 60%;
+  float: left;
 
   margin-bottom: 30px;
 
-  font-family: "HP Simplified Light";
-  font-size: x-large;
+  font-family: "Roboto-Regular";
+  font-size: large;
   /*width: 900px;*/
-  border: 10px solid #ffcc5c ;
+  border: 3px solid #ffcc5c ;
   margin: 25px;
 
   padding: 25px;
-  border-radius:  50px / 15px;;
+  border-radius: 0.317rem;
 }
+
+/*width: 100%;*/
+/*margin-bottom: 5%;*/
+/*vertical-align: center;*/
+/*padding: 0.75rem 1rem;*/
+/*border:  grey 3px solid;*/
+/*border-radius: 0.317rem;*/
+/*min-width: 40%;*/
+/*background-color: white;*/
+/*color:  grey;*/
+/*text-decoration: none;*/
+/*font-weight: 700;*/
+/*font-size: 1.3rem;*/
+/*line-height: 1.5;*/
+/*font-family: "Roboto-Regular";*/
+/*align-items: left;*/
+
+/*cursor: pointer;*/
+/*-webkit-appearance: none;*/
+/*-webkit-font-smoothing: antialiased;*/
 
 p.urgent {
   background-color: #f8f8fa  ;
   color:#58668b  ;
   font-weight: 700;
   width: 60%;
+  float: left;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
-  font-size: x-large;
+  font-family: "Roboto-Regular";
+  font-size: large;
   /*width: 900px;*/
-  border: 10px solid #ff6f69  ;
+  border: 3px solid #ff6f69  ;
   margin: 25px;
   padding: 25px;
-  border-radius:  50px / 15px;;
+  border-radius: 0.317rem;
 }
 
 .inputstyle {
@@ -57,27 +91,31 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
+  width: 70%;
 
-  border: 5px solid #355C7D ;
+  border: 3px solid grey ;
   margin: 12px;
   padding: 5px;
-  border-radius:  50px / 15px;
+  border-radius: 0.317rem;
+
 }
+
 .inputstyle_date{
   background-color: #f8f8fa  ;
   color:#58668b  ;
   font-weight: 700;
 
-  margin-bottom: 30px;
-  font-family: "HP Simplified Light";
-  font-size: x-large;
 
-  border: 5px solid #355C7D  ;
-  margin: 8px;
+  font-family: "Roboto-Regular";
+  font-size: x-large;
+  width: 70%;
+
+  border: 3px solid grey  ;
+  margin: 12px 12px 12px 12px;
   padding: 1px;
-  border-radius:  50px / 15px;
+  border-radius: 0.317rem;
 }
 
 .paragraphInput{
@@ -86,8 +124,8 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
-  font-size: x-large;
+  font-family: "Roboto-Regular";
+  font-size: large;
 
 
 }
@@ -98,14 +136,15 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
-  width: 20%;
-  border: 5px solid #355C7D  ;
+  /*width: 20%;*/
+  width: 70%;
+  border: 3px solid grey  ;
   margin: 12px;
   padding: 5px;
-  border-radius: 50px / 15px;;
+  border-radius: 0.317rem;
 }
 
 .cantAddButton {
@@ -114,13 +153,13 @@ p.urgent {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "HP Simplified Light";
+  font-family: "Roboto-Regular";
   font-size: x-large;
 
-  width: 20%;
-  border: 5px solid #94a1b5;
+  width: 70%;
+  border: 3px solid grey;
   margin: 12px;
   padding: 5px;
-  border-radius: 50px / 15px;;
+  border-radius: 0.317rem;
 }
 

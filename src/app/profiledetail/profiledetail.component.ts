@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonalService} from "../services/personal.service";
-import {Article} from "../models/article";
-
+import {Article} from '../models/article';
+import {ArticleService} from '../services/article.service';
+import {User} from '../models/user';
+import {CookieBackendService} from 'angular2-cookie/services/cookies.backend.service';
+import {CookieService} from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profiledetail',
@@ -10,25 +13,50 @@ import {Article} from "../models/article";
 })
 export class ProfiledetailComponent implements OnInit {
 
-  public pageTitle: string = "My profile";
-  public contributionHeader : string = "My contributions"
+  public pageTitle = 'My profile';
+  public contributionHeader = 'My contributions';
+  article: Article;
+  router: Router;
 
-  public name: string = "Muresan Daniel";
-  public university: string = "UBB";
+  public name: string;
+  public university: string;
 
-  articleList: Article[];
+  public articleList: Article[] = [];
+
+  public getSessionUser(): User {
+    const user: User = JSON.parse(this._cookieService.get('userCookie'));
+    return user;
+  }
 
 
-  constructor(private articleService: PersonalService) { }
+
+  getArticles() {
+    this.articleService.getPersonalArticles(this.getSessionUser().id).subscribe((result) => {
+      this.articleList = result;
+      this.articleList.forEach(item => {
+        item.date = new Date();
+      });
+    });
+  }
+
+  constructor(private articleService: ArticleService, private _cookieService: CookieService, router: Router) {
+    this.router = router;
+    this.name = this.getSessionUser().username;
+    this.university = this.getSessionUser().university.name;
+
+  }
 
   ngOnInit() {
-    this.getPersonalArticles();
+
+    this.getArticles();
   }
 
-  getPersonalArticles(){
-    this.articleService.getCurricula().subscribe((result)=>{
-      this.articleList = result;
-    })
+  articleClick(article: Article) {
+    console.log(article.title);
+    this._cookieService.set( 'articleCookie', JSON.stringify(article));
+    this.router.navigate(['/mainmenu/article', article.id]);
   }
+
+
 
 }
