@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { UniversityComponent } from '../university/university.component';
-import { University, Faculty, Branch, Article, SubjectA } from '../models/university';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {University} from '../models/university';
+import {Faculty} from '../models/faculty';
+import {Branch} from '../models/branch';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -29,7 +31,7 @@ export class UniversityService {
 	let body = JSON.stringify(newUniversity);
     return this.http.post<University>(url, body, httpOptions);
   }
-  
+
   getUniversity(universityId: number): Observable<University> {
 	  const url = 'http://localhost:8080/university/' + universityId;
 	  return this.http.get<University>(url);
@@ -38,7 +40,7 @@ export class UniversityService {
   getUniversities(): Observable<University[]> {
     return this.http.get<University[]>(this.universitiesUrl);
   }
-  
+
   getFacultiesByUniversity(universityId): Observable<Faculty[]> {
 	  //const url = 'http://localhost:8080/getFacultiesByUniversityId?universityId=' + universityId;
 	  if(!universityId){
@@ -46,20 +48,20 @@ export class UniversityService {
 	  }
 	  return this.http.get<Faculty[]>(`http://localhost:8080/getFacultiesByUniversityId?universityId=${universityId}`);
   }
-  
+
   addFaculty(newFaculty: Faculty, universityId: number): Observable<Faculty> {
 	  const url = `http://localhost:8080/insertFaculty?universityId=${universityId}`;
 	  let body = JSON.stringify(newFaculty);
 	  return this.http.post<Faculty>(url, body, httpOptions);
   }
-  
+
   searchUniversities(term: string): Observable<University[]> {
     if (!term.trim()) {
       return of([]);
     }
     return this.http.get<University[]>(`${this.universitiesUrl}?param=${term}`);
   }
-  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
@@ -77,7 +79,7 @@ export class UniversityService {
 	let body = JSON.stringify(university);
     return this.http.put(url, body, httpOptions).pipe();
   }*/
-  
+
   addBranch(newBranch: Branch, facultyId: number): Observable<Branch> {
 	const url = `http://localhost:8080/insertBranch?facultyId=${facultyId}`;
 	let body = JSON.stringify(newBranch);

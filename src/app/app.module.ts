@@ -12,10 +12,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {RouterModule, Routes} from '@angular/router';
 import { ArticleListComponent } from './article-list/article-list.component';
-import { UniversitySearchComponent } from './university-search/university-search.component';
+// import { UniversityComponent } from './university/university.component';
+// import { UniversityDetailComponent } from './university-detail/university-detail.component';
+// import { UniversitySearchComponent } from './university-search/university-search.component';
 
 import { CookieService } from 'ngx-cookie-service';
-import { AppRoutingModule } from './/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import {NewsfeedComponent} from './newsfeed/newsfeed.component';
 import {ArticlesComponent} from './articles/articles.component';
 import {RequestsComponent} from './requests/requests.component';
@@ -54,7 +56,7 @@ const routes: Routes = [
 
     ArticlesComponent,
     NewsfeedComponent,
-    UniversitySearchComponent,
+    // UniversitySearchComponent,
     SubmitentryComponent
   ],
   imports: [

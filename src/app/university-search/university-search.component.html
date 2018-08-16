@@ -1,44 +1,45 @@
-<div>
-  <h4>University Search</h4>
-  <input #searchBox (keyup)="search(searchBox.value)"/>
-  <ul>
-    <li *ngFor="let university of universities$ | async " (click)="onSelect(university);">
-        {{university.name}} {{university.id}}
-    </li>
-  </ul>
-</div>
+<!--<div>-->
+  <!--<h4>University Search</h4>-->
+  <!--<input #searchBox (keyup)="search(searchBox.value)"/>-->
+  <!--<ul>-->
+    <!--<li *ngFor="let university of universities$ | async ">-->
+        <!--{{university.name}} {{university.id}}-->
+      <!--<button (click)="onSelect(university);">Edit</button>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->
 
-<div *ngIf="this.currentUniversity" class="university_detail">
-  <div>
-    <!--<button (click)="updateUniversity()">Update University</button>-->
-  </div>
-  <div>University name: {{currentUniversity.name}}</div>
-  <div>University id: {{currentUniversity.id}}</div>
-  <div>
-    <div>
-	<li *ngFor="let element of faculties">
-    <div>
-	 Faculty: 
-	 <input #facultyName placeholder="faculty"/>
-     <button (click)="addFaculty(facultyName.value, element)">Add</button>
-	 <button (click)="decrementFaculties(element)">-</button>
-	</div>
-	</li>
-	<div><button (click)="incrementFaculties()">+</button></div>
-  </div>
-  </div>
-  <p>Faculties:</p>
-  <div>
-    <ul>
-      <li *ngFor="let faculty of this.currentUniversity.faculties" (click)="onFacultySelect(faculty)">
-        {{faculty.name}} {{faculty.id}}
-      </li>
-    </ul>
-  </div>
-  <p>Branches:</p>
-	<ul>
-	 <li *ngFor="let branch of this.currentFaculty.branches" (click)="onBranchSelect(branch)">
-		{{branch.name}} {{branch.id}}
-	 </li>
-	</ul>
-</div>
+<!--<div *ngIf="this.currentUniversity">-->
+  <!--<div>-->
+    <!--&lt;!&ndash;<button (click)="updateUniversity()">Update University</button>&ndash;&gt;-->
+  <!--</div>-->
+  <!--<div>University name: {{currentUniversity.name}}</div>-->
+  <!--<div>University id: {{currentUniversity.id}}</div>-->
+  <!--<div>-->
+    <!--<div>-->
+	<!--<li *ngFor="let element of faculties">-->
+    <!--<div>-->
+	 <!--Faculty: -->
+	 <!--<input #facultyName placeholder="faculty"/>-->
+     <!--<button (click)="addFaculty(facultyName.value, element)">Add</button>-->
+	 <!--<button (click)="decrementFaculties(element)">-</button>-->
+	<!--</div>-->
+	<!--</li>-->
+	<!--<div><button (click)="incrementFaculties()">+</button></div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<p>Faculties:</p>-->
+  <!--<div>-->
+    <!--<ul>-->
+      <!--<li *ngFor="let faculty of this.currentUniversity.faculties" (click)="onFacultySelect(faculty)">-->
+        <!--{{faculty.name}} {{faculty.id}}-->
+      <!--</li>-->
+    <!--</ul>-->
+  <!--</div>-->
+  <!--<p>Branches:</p>-->
+	<!--<ul>-->
+	 <!--<li *ngFor="let branch of this.currentFaculty.branches" (click)="onBranchSelect(branch)">-->
+		<!--{{branch.name}} {{branch.id}}-->
+	 <!--</li>-->
+	<!--</ul>-->
+<!--</div>-->
