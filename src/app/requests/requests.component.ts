@@ -17,8 +17,8 @@ export class RequestsComponent implements OnInit {
   usertype: number;
 
   constructor(
-    private requestService: RequestService,
-    private userInfoService: UserService
+    public requestService: RequestService,
+    public userInfoService: UserService
   ) {
   }
 
