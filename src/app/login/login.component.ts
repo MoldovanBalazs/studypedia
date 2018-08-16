@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _cookieService: CookieService, router: Router, private authorizationService: AuthorizationService ) {
 
-    if(this._cookieService.get('userCookie') !== "") {
+    if(this._cookieService.get('userCookie') !== '') {
       console.log(this._cookieService.get('userCookie'));
       let user: User = JSON.parse(this._cookieService.get('userCookie')) as User;
       const loggedUser = new UserLog(user.username, user.password);
