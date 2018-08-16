@@ -5,32 +5,38 @@
   }
 </style>
 <body>
+
+<div style= "text-align: center" >
+
+
+<img src="../../assets/studypedia.png" height="221" width="242">
 <div class="content">
   <div class="container">
     <h2>Login</h2>
+    <hr>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm" (submit) = loginUser($event)>
-      <div class="form-group">
-        <label for="username">Username &nbsp;&nbsp;</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
-        <div [hidden]="username.valid || username.untouched"
+      <div class="form-group" style="margin: 4%;">
+        <!--<label for="username">username </label> &lt;!&ndash; &nbsp;&nbsp; &ndash;&gt;-->
+        <input placeholder="username" type="text" class="form-control" id="username" [(ngModel)]="loggedUser.username" required name="username" #username="ngModel" autocomplete="off">
+        <div [hidden]="username.valid || username.untouched" style="font-family: Roboto-Regular; font-weight: bold; font-size: 80%"
              class="alert alert-danger">
-          Username can't be empty
+          username can't be empty
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
-        <div [hidden]="password.valid || password.untouched"
+      <div class="form-group" style="margin: 4%;">
+        <!--<label for="password">password</label> &lt;!&ndash; &nbsp;&nbsp; &ndash;&gt;-->
+        <input placeholder="password" type="password" class="form-control" id="password" [(ngModel)]="loggedUser.password" required name="password" #password="ngModel">
+        <div [hidden]="password.valid || password.untouched " style="font-family: Roboto-Regular; font-weight: bold; font-size: 80%;"
              class="alert alert-danger">
-          Password can't be empty
+          password can't be empty
         </div>
       </div>
-      <button type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid">Login</button>
+      <button id = 'ok' type="submit" class="btn btn-success"  [disabled]="!loginForm.form.valid" style="font-family: Roboto-Regular; font-weight: bold">Login</button>
 
     </form>
     <div *ngIf = '!userIsValid' class="alert alert-danger">
-      <p style = 'color: red'> *Username or password invalid</p>
+      <p style = 'color: red'> *invalid username or password</p>
     </div>
 
 
@@ -39,7 +45,7 @@
     <!--</app-register>-->
   </div>
 
-
+</div>
 
 </div>
 </body>

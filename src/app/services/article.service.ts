@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {Article} from '../models/article';
-
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Deadline} from '../models/deadline';
 import {User} from '../models/user';
 
 
@@ -11,18 +11,18 @@ import {User} from '../models/user';
 })
 export class ArticleService {
 
-  articleInsertUrl: string = '/insertArticle';
-  articleGetByTypeUrl: string = 'http://localhost:8080/article/type';
-  allArticlesUrl: string = 'http://localhost:8080/article/all';
+  articleInsertUrl: '/insertArticle';
+  articleGetByTypeUrl = 'http://localhost:8080/article/type';
+  allArticlesUrl = 'http://localhost:8080/article/all';
   articlePutStatusUrl = 'http://localhost:8080/article';
   articleGetByStatusUrl = 'http://localhost:8080/article/status';
+  articleByIdUrl = 'http://localhost:8080/article/id';
 
   constructor(private http: HttpClient)  { }
 
   public headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
-
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.allArticlesUrl);
   }
@@ -54,4 +54,9 @@ export class ArticleService {
     return this.http.put<Article>(this.articlePutStatusUrl, {params});
   }
 
+
+  public getPersonalArticles(userId: number): Observable<Article[]> {
+    const url = URL + 'user/' + userId.toString() + '/articles';
+    return this.http.get<Article[]>(url, {headers: this.headers}).pipe();
+  }
 }

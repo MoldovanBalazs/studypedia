@@ -1,10 +1,10 @@
 
 
 <div [hidden]="submitted">
-  <h4>New user?
+  <h4>
     <button type="button"
             (click) = 'toggleRegister()'>
-      {{ registerButton ? 'Nevermind' : 'Register here!'}}
+      {{ registerButton ? 'Nevermind' : 'Register'}}
     </button><!--
       <div *ngIf = 'registerButton'>
         <app-register></app-register>
@@ -19,15 +19,15 @@
 <div class="container">
     <div class="form-group">
 
-      <label for="name">Full Name &nbsp;</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="newUser.name" name="name"  #name="ngModel" autocomplete="off">
+      <!--<label for="name">Your name</label>-->
+      <input placeholder="name" type="text" class="form-control" id="name" required [(ngModel)]="newUser.name" name="name"  #name="ngModel" autocomplete="off">
       <div [hidden]="name.valid || name.untouched"
            class="alert alert-danger">
         Name can't be empty
       </div>
 <div>
-      <label for="username">Username &nbsp;&nbsp;</label>
-      <input type="text" class="form-control" id="username" required [(ngModel)]="newUser.username" name="username"  #username="ngModel" autocomplete="off">
+      <!--<label for="username">Username &nbsp;&nbsp;</label>-->
+      <input  placeholder="username" type="text" class="form-control" id="username" required [(ngModel)]="newUser.username" name="username"  #username="ngModel" autocomplete="off">
       <div [hidden]="username.valid || username.untouched"
            class="alert alert-danger">
         Username can't be empty
@@ -36,8 +36,8 @@
     </div>
 
     <div class="form-group">
-      <label for="password">Password &nbsp;&nbsp;&nbsp;</label>
-      <input type="password" class="form-control" id="password" required [(ngModel)]="newUser.password" name="password" #password="ngModel">
+      <!--<label for="password">Password &nbsp;&nbsp;&nbsp;</label>-->
+      <input  placeholder="password" type="password" class="form-control" id="password" required [(ngModel)]="newUser.password" name="password" #password="ngModel">
       <div [hidden]="password.valid || password.untouched"
            class="alert alert-danger">
         Password can't be empty
@@ -47,48 +47,54 @@
     <br/>
 
     <div class="form-group">
-      <label for="university">University &nbsp;&nbsp;</label>
-      <select class="form-control" id="university" required [(ngModel)]="newUser.university" name="university" (change)="firstDropDownChanged($event.target.value)">
+      <!--<label for="university">University &nbsp;&nbsp;</label>-->
+      <select  class="form-control" id="university" required [(ngModel)]="newUser.university" name="university" (change)="firstDropDownChanged($event.target.value)">
         <!--<option>Select</option>-->
-        <option *ngFor="let uni of universityList" [value]="uni">{{uni.name}}</option>
+        <option value = "choose here" selected ="selected">choose here</option>
+        <option *ngFor="let university of universityList" [ngValue]="university">{{university.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="faculty">Faculty &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <!--<label for="faculty">faculty</label>-->
       <select class = 'form-control' id="faculty" required  [(ngModel)]="newUser.faculty" name="faculty"(change)="secondDropDownChanged($event.target.value)">
         <!--<option>Select</option>-->
-      <option *ngFor='let fc of faculties'>{{ fc }}</option>
+        <option disabled value = "choose here" selected ="selected">choose here</option>
+      <option *ngFor='let faculty of facultyList' [ngValue] = faculty>{{ faculty.name }}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="branch">Branch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+      <!--<label for="branch">branch</label>-->
       <select class = 'form-control' id="branch" required [(ngModel)]="newUser.branch" name="branch">
        <!-- <option>Select</option>-->
-        <option *ngFor='let br of branches'>{{ br }}</option>
+        <option *ngFor='let branch of branchList' [ngValue] = branch>{{ branch.name }}</option>
 
       </select>
     </div>
 </div>
-  <h4>
-    <button type="button"
-            (click) = 'toggleMod()'>
-      {{ modButton ? 'I lied' : "Click here if you're a moderator"}}
-    </button>
-  </h4>
-  <div *ngIf = 'modButton'>
-    <div class = "input">
-      <label> Prove it &nbsp; </label>
-      <input type = 'password' id="moderatorPass"  [(ngModel)]="moderatorPass">
-      <!--<div [hidden]="!this.modAlert"
-           class="alert alert-danger">
-        You're no moderator.
-      </div>-->
-    </div>
+  <!--<h4>-->
+    <!--<button type="button"-->
+            <!--(click) = 'toggleMod()'>-->
+      <!--{{ modButton ? 'I lied' : "Click here if you're a moderator"}}-->
+    <!--</button>-->
+  <!--</h4>-->
+  <!--<div *ngIf = 'modButton'>-->
+    <!--<div class = "input">-->
+      <!--<label> Prove it &nbsp; </label>-->
+      <!--<input type = 'password' id="moderatorPass"  [(ngModel)]="moderatorPass">-->
+    <!--</div>-->
+  <!--</div>-->
+  <div>
+    <input type = "password" placeholder="* for moderators" #moderatorPassword />
   </div>
+  <div>
 
-    <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid">Register</button>
+  </div>
+   <div>
+     <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid" (click)="validateModerator(moderatorPassword.value);registerNewUser(newUser)">Register</button>
+   </div>
+
 
 
   </form>
@@ -96,10 +102,11 @@
 
 
 <div [hidden]="!submitted">
+
   <div *ngIf="modPass===false">
-    <h1>You've succesfully registered!</h1>
+    <h2>Not successful registration!</h2>
   </div>
   <div *ngIf="modPass===true">
-    <h1>You've succesfully registered as a moderator!</h1>
+    <h2>Successful registration!</h2>
   </div>
 </div>

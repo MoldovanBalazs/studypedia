@@ -1,33 +1,56 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+  .material-icons {float: right; color : #58668b; font-size: 20px; background-color: transparent}
+</style>
 
-<div class = "container" style = "float:right">
-  <div *ngIf = "(renderable)">
+<div  *ngIf = "(renderable)">
 
-    <div class = "centered">
-      <div *ngFor="let curriculaObj of curricula">
+  <div class = "container" style = "float:right">
+      <div style="overflow-y: scroll; background: transparent; height: 400px;" class = "centered">
+        <div *ngFor="let curriculaObj of curricula">
 
-        <p  *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
-          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-        <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
-          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
-        <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
-          {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}</p>
+          <div class = "panel" class = "container">
+            <p   *ngIf="!(curriculaObj.timeRemaining.days >= 5)" class = "urgent" >{{curriculaObj.name}}:
+              {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
+              <button style="float: right; background-color: #f8f8fa;   padding: 0;
+  border: none; " (click) = "deleteDeadline(curriculaObj)">
+                <i style = ""class="material-icons">delete</i>
+              </button>
+            </p>
+            <p  *ngIf="!(curriculaObj.timeRemaining.days < 5 || curriculaObj.timeRemaining.days > 10 )" class = "isComing" >{{curriculaObj.name}}:
+              {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
+              <button style="float: right;  background-color: #f8f8fa;   padding: 0;
+  border: none; "  (click) = "deleteDeadline(curriculaObj)">
+                <i style = ""class="material-icons">delete</i>
+              </button>
+            </p>
+            <p  *ngIf="!(curriculaObj.timeRemaining.days <= 10)" class = "ok" >{{curriculaObj.name}}:
+              {{ curriculaObj.timeRemaining.days }}:{{ curriculaObj.timeRemaining.hours}}:{{ curriculaObj.timeRemaining.minutes}}:{{curriculaObj.timeRemaining.seconds}}
+              <button style="float: right; background-color: #f8f8fa ;   padding: 0;
+  border: none;" (click) = "deleteDeadline(curriculaObj)">
+                <i style = ""class="material-icons">delete</i>
+              </button>
+            </p>
+          </div>
+
+        </div>
       </div>
-    </div>
   </div>
-  <hr>
+
+  <hr style="color:#58668b">
 
   <div title="add deadline">
-    <p class = "paragraphInput"> Register your assignment
-    </p>
-    <input #curriculaName class = "inputstyle"  style = "float:left">
-    <br>
-    <input #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
-    <br>
+    <div class="inline-block">
+    <p class = "paragraphInput" style="text-align: left; margin-top:12px "> Register your assignment</p>
+      <div><input id = "01" #curriculaName class = "inputstyle"  style = "float:left"></div>
+      <div><input id = '02' #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center"></div>
+      <div>
+        <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = "((checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton')" >Add</button>
+      </div>
+
+    </div>
   </div>
 
-  <div>
-    <br>
-    <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = " (checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton' " style = "float:right">Add</button>
-  </div>
+
 </div>
 

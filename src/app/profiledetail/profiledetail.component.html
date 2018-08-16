@@ -1,11 +1,16 @@
-<body>
+<!--style="overflow-y: scroll; height: 800px; "-->
+<div style="flex-grow: 1; display: flex; flex-direction: column">
+
+
   <div>
     <h1> {{ name }} - {{university}}</h1>
 
-  <div>
+  </div>
+
+  <div style="flex-grow: 1">
     <h2>{{ contributionHeader }}</h2>
-    <table class='table'
-           *ngIf="articleList && articleList.length">
+    <div >
+    <table *ngIf="articleList && articleList.length">
       <thead>
       <tr>
         <th>Title</th>
@@ -23,8 +28,7 @@
       </tr>
       </tbody>
     </table>
-  </div>
-  </div>
+    </div>
 
-
-</body>
+  </div>
+</div>
