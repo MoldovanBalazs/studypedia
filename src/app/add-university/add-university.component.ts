@@ -81,6 +81,17 @@ export class AddUniversityComponent implements OnInit {
     });
   }
 
+  getBranchesStringBySubject(subjectId: number): string {
+    let branchesString = '';
+    // let branchesList = [];
+    // this.branchService.getBranchesBySubjectId(subjectId).subscribe((branches) => {
+    //   branchesList = branches;
+    // });
+    // branchesList.forEach(branch => branchesString = branchesString + branch.name + ', ');
+
+    return branchesString;
+  }
+
   showTable(id): void {
     this.shownTable = id;
     this.getBranches();

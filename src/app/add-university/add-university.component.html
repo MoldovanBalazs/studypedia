@@ -90,34 +90,17 @@
       <table id="t04" class="table" *ngIf="btn_subject">
         <thead>
         <tr>
-          <th>Branch</th>
           <th>Subject</th>
+          <th>Branches</th>
         </tr>
         </thead>
         <tbody>
-        <div *ngFor = "let subject of subject">
-        <!--{% for subject in subjects %}-->
-        <tr >
-          <td align="center">
-            <div *ngFor = "let branch of subject.branches">
-            <!--{ % for branch in subject.branches % }-->
-            {{branch.name}}
-            </div>
-            <!--{% endFor %}--></td>
-          <td align="center">{{ subject.name }}</td>
-        </tr>
-        </div>
-        <!--{% endFor %}-->
+          <tr *ngFor="let subject of subjects">
+            <td align="center">{{subject.name}}</td>
+            <td align="center">{{getBranchesStringBySubject(subject.id)}}</td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<!--{% for objective in objectives %}-->
-<!--<tr>-->
-  <!--<td>{{ objective.learningObjectives }}</td>-->
-  <!--<td>{% for topic in objective.topic_set.all %}-->
-    <!--{{ topic.topic }}{% if forloop.last %},{% endif %}-->
-    <!--{% endfor %}</td>-->
-<!--</tr>-->
-<!--{% endfor %}-->

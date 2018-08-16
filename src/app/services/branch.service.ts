@@ -16,4 +16,10 @@ export class BranchService {
   getBranches(): Observable<Branch[]> {
     return this.http.get<Branch[]>(this.allBranchesUrl);
   }
+
+  getBranchesBySubjectId(subjectId: number): Observable<Branch[]> {
+    const url = 'http://localhost:8080/getBranchesBySubjectId?subjectId=' + subjectId;
+    return this.http.get<Branch[]>(url);
+  }
+
 }
