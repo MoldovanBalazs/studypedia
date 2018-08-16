@@ -15,8 +15,7 @@ import {AddSubjectComponent} from '../add-subject/add-subject.component';
 import {ArticleListComponent} from '../article-list/article-list.component';
 import {ArticlesComponent} from '../articles/articles.component';
 import {NewsfeedComponent} from '../newsfeed/newsfeed.component';
-import {UniversityDetailComponent} from '../university-detail/university-detail.component';
-import {UniversitySearchComponent} from '../university-search/university-search.component';
+
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../services/authorization.service';
 import {University} from '../models/university';

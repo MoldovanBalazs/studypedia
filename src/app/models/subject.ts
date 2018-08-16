@@ -6,4 +6,5 @@ export class Subject {
   public name: string;
   public branches: Branch[] = [];
   public articles: Article[] = [];
+  public branchesAsString: string;
 }

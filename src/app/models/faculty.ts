@@ -1,4 +1,5 @@
 import {University} from './university';
+import {Branch} from './branch';
 
 export class Faculty {
   //

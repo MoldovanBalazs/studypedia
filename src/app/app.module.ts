@@ -59,10 +59,7 @@ const routes: Routes = [
 
     ArticlesComponent,
     NewsfeedComponent,
-    UniversityDetailComponent,
-    UniversitySearchComponent,
     ProfilepageComponent,
-    UniversityComponent,
     SubmitentryComponent,
     OtherProfileComponent
   ],

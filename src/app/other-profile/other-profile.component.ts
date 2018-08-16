@@ -26,7 +26,7 @@ export class OtherProfileComponent implements OnInit {
   constructor(private articleService: ArticleService, router: Router, private _cookieService: CookieService) {
     this.router = router;
     this.name = this.getSessionUser().username;
-    this.university = this.getSessionUser().university;
+    this.university = this.getSessionUser().university.name;
   }
 
   getArticles() {

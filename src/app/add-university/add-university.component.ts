@@ -21,12 +21,16 @@ export class AddUniversityComponent implements OnInit {
   btn_branch: boolean;
   btn_subject: boolean;
 
+  btn_add: boolean;
+
   universities: University[] = [];
   faculties: Faculty[] = [];
   branches: Branch[] = [];
   subjects: Subject[] = [];
 
   shownTable: string;
+
+  shownActions: string;
 
  /* currentUniversity: University;
   universities: University[] = [];
@@ -55,6 +59,8 @@ export class AddUniversityComponent implements OnInit {
     this.getFaculties();
     this.getUniversities();
     this.getSubjects();
+
+    this.shownActions = null;
   }
 
   getUniversities() {
@@ -78,9 +84,15 @@ export class AddUniversityComponent implements OnInit {
   getSubjects() {
     this.subjectService.getSubjects().subscribe((result) => {
       this.subjects = result;
+      this.subjects.forEach(subject => {
+        this.branchService.getBranchesBySubjectId(subject.id).subscribe(data => {
+          subject.branches = data;
+          subject.branchesAsString = this.getBranchesBySubject(subject);
+        });
+      })
     });
   }
-  
+
   getBranchesBySubject(subject: Subject): string {
 	let branchesString = '';
   subject.branches.forEach(branch => {branchesString += branch.name + '; ';});
@@ -98,12 +110,16 @@ export class AddUniversityComponent implements OnInit {
     return branchesString;
   }
 
-  showTable(id): void {
+  showTable(id: string): void {
     this.shownTable = id;
     this.getBranches();
     this.getFaculties();
     this.getUniversities();
     this.getSubjects();
+  }
+
+  showActions(id: string): void {
+    this.shownActions = id;
   }
 
   ngOnInit() {
