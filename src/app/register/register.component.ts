@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {User} from 'src/app/models/user';
+import {University} from "../models/university";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class RegisterComponent implements OnInit {
     'UMF', 'USAMV'];
   faculties = [];
   branches = [];
-  newUser = new User(17, '', '',  '',  '', '', '');
+  newUser = new User(17, '', '',  new University(),  '', '', '');
   modPass = false;
 
   submitted = false;

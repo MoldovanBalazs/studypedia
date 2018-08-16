@@ -4,6 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 import { AppComponent } from 'src/app/app.component';
 import {Router} from '@angular/router';
 import {UserService} from '../services/user.service';
+import {University} from "../models/university";
 
 @Component({
   selector: 'app-login',
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
   // modelLogin2 = new User(1, '', '',  '',  '', '', '');
-  loggedUser = new User(2, 'virginica', 'root',  'UBB',  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
+  loggedUser = new User(2, 'virginica', 'root',  new University(),  'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
   onSubmit() { this.submitted = true; }
 
   constructor(private _cookieService: CookieService, router: Router, private userService: UserService ) {
@@ -53,7 +54,7 @@ export class LoginComponent implements OnInit {
   }
   loginUser(event) {
 
-    this.loggedUser = new User(2, this.loggedUser.username, this.loggedUser.password,  'UBB',
+    this.loggedUser = new User(2, this.loggedUser.username, this.loggedUser.password,  new University(),
                               'Facultatea de Arhitectura si Urbanism', 'Arhitectura', 1);
     this._cookieService.set( 'userCookie', JSON.stringify(this.loggedUser));
     let loginner: UserLog = new UserLog();
