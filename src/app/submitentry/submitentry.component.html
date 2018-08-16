@@ -33,7 +33,7 @@
 
     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
       Select file to upload:
-      <input type="file" name="avatar" id="fileToUpload" formControlName="file1" (change)="fileEvent($event)">
+      <input type="file" name="file" id="fileToUpload" formControlName="file1" (change)="selectFile($event)">
 
 
       <input type="submit" value="SUBMIT" name="submit">

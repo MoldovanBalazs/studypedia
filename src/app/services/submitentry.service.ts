@@ -16,13 +16,25 @@ const httpOptions = {
 export class SubmitentryService {
 
 
-  addArticle(article: Article): void {
+  addArticle(article: Article, items: FileList): void {
+
     const uploadUrl = 'http://localhost:8080/submit_entry';
     const body = JSON.stringify(article);
     console.log('BODY' + body);
     this.http.post<Article>(uploadUrl, body, httpOptions)
       .subscribe((val) => {
         console.log('Post successfully item' + val);
+        if (typeof items !== 'undefined') {
+          const formdata: FormData = new FormData();
+          formdata.append('file', items.item(0));
+
+          this.http.post('http://localhost:8080/submit_file/' + val, formdata,
+            {headers: new HttpHeaders({})})
+            .subscribe(
+              (response) => {
+                console.log('we received the response : ' + response);
+              });
+        }
       });
   }
 

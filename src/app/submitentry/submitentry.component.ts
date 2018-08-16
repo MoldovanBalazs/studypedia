@@ -43,8 +43,10 @@ export class SubmitentryComponent implements OnInit {
   selectedCat: string;
   titleName: string;
   descriptionName: string;
+  selectedFiles: FileList;
 
   public subjectList: Subject[] = [];
+
   constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService) {
   }
 
@@ -54,9 +56,8 @@ export class SubmitentryComponent implements OnInit {
   });
   filedata: any;
 
-  fileEvent(e) {
-    this.filedata = e.target.files[0];
-    console.log(e);
+  selectFile(event) {
+    this.selectedFiles = event.target.files;
   }
 
   getSubjects() {
@@ -66,9 +67,7 @@ export class SubmitentryComponent implements OnInit {
   }
 
   onSubmit() {
-    const formdata = new FormData();
     console.log(this.uploadForm);
-    formdata.append('avatar', this.filedata);
 
     const article = new Article();
     article.articleType = this.selectedCat;
@@ -77,7 +76,7 @@ export class SubmitentryComponent implements OnInit {
     article.title = this.titleName;
     article.subject = this.subjectName;
     article.userId = 1;
-    this.submitentryService.addArticle(article);
+    this.submitentryService.addArticle(article, this.selectedFiles);
 
   }
 

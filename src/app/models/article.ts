@@ -9,5 +9,6 @@ export class Article {
   public description: string;
   public articleType: string;
   public subject: string;
+  public file: string|any;
 
 }
