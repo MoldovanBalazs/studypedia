@@ -4,6 +4,7 @@ import {ArticleService} from '../services/article.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {User} from '../models/user';
+import {University} from "../models/university";
 
 @Component({
   selector: 'app-other-profile',
@@ -19,7 +20,7 @@ export class OtherProfileComponent implements OnInit {
   public contributionHeader = this.getSessionUser().username + ' contributions';
 
   public name: string;
-  public university: string;
+  public university: University;
 
   public articleList: Article[] = [];
 
