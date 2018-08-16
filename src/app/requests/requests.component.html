@@ -1,16 +1,10 @@
 <h2>Requests</h2>
-<div *ngIf = "userInfoService.moderator === userInfoService.getUsertype(); else nonModeratorBlock;">
+<div>
   <ul class="requests">
-    <li *ngFor="let request of requests" [class.selected]="request === selectedRequest" (click)="onSelect(request)">
-      <div>
-
-        <div style="float: left; text-align: center"> {{request.documentName}}, author: {{request.authorName}}</div>
-        <div><button class="accept" title="accept request" (click)="accept(request)">Accept</button></div>
-        <div> <button class="deny" title="delete request" (click)="deny(request)">Deny</button></div>
-      </div>
-
+    <li *ngFor="let article of pendingArticlesList">
+      Title: {{article.title}}, Author: {{article.user.username}}, Subject: {{article.subject.name}}, Date: {{article.date}}
+      <button class="accept" title="accept request" (click)="accept(article)">Accept</button>
+      <button class="deny" title="delete request" (click)="deny(article)">Deny</button>
     </li>
   </ul>
 </div>
-<ng-template #nonModeratorBlock>You must be logged in as a Moderator to see this page</ng-template>
-<app-request-detail [request]="selectedRequest"></app-request-detail>

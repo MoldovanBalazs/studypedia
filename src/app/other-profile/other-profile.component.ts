@@ -20,7 +20,7 @@ export class OtherProfileComponent implements OnInit {
   public contributionHeader = this.getSessionUser().username + ' contributions';
 
   public name: string;
-  public university: string;
+  public university: University;
 
   public articleList: Article[] = [];
 

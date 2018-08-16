@@ -118,15 +118,14 @@ export class ArticleListComponent implements OnInit {
   performFilterOnSubjects(filterBy: string): Subject[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.subjectList.filter((subject: Subject) =>
-      subject.name.toLocaleLowerCase().indexOf(filterBy) !== -1
-      || subject.description.toLocaleLowerCase().indexOf(filterBy) !== -1);
+      subject.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
   }
 
   ngOnInit(): void {
     console.log('In OnInit');
     this.getArticles();
     this.getUsers();
-    this.getSubjects();
+    this.getSubjects(); 
   }
 
   findType(id: any): number {

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Article} from '../models/article';
 import {ArticleService} from '../services/article.service';
 import {User} from '../models/user';
-import {CookieBackendService} from 'angular2-cookie/services/cookies.backend.service';
 import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
 

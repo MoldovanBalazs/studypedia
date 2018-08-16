@@ -3,6 +3,8 @@ import { REQUESTS } from '../mock-data/mock-requests';
 import { RequestService } from '../services/request.service';
 import { Request } from '../models/request';
 import { UserService } from '../services/user.service';
+import {ArticleService} from '../services/article.service';
+import {Article} from '../models/article';
 
 @Component({
   selector: 'app-requests',
@@ -11,43 +13,52 @@ import { UserService } from '../services/user.service';
 })
 export class RequestsComponent implements OnInit {
 
-  selectedRequest: Request;
-  requests: Request[];
-  username: string;
-  usertype: number;
+  // selectedRequest: Article;
+  // requests: Article[];
+  // username: string;
+  // usertype: number;
+  pendingArticlesList: Article[] = [];
 
-  constructor(
-    public requestService: RequestService,
-    public userInfoService: UserService
-  ) {
+  constructor( private requestService: RequestService, private articleService: ArticleService) {
   }
 
   ngOnInit() {
-    this.getRequests();
-    this.getUser();
+    this.getArticleByStatus();
+    console.log(this.pendingArticlesList);
   }
 
-  getRequests(): void {
-    this.requestService
-      .getRequests()
-      .subscribe(requests => this.requests = requests);
+  getArticleByStatus() {
+  this.articleService.getArticleByStatus(2).subscribe((result) => {
+  this.pendingArticlesList = result;
+  console.log(result);
+  });
+    // console.log(this.pendingArticlesList);
   }
 
-  accept(request: Request): void {
-    this.requests = this.requests.filter(r => r !== request);
+  // getRequests(): void {
+  //   this.requestService
+  //     .getRequests()
+  //     .subscribe(requests => this.requests = requests);
+  // }
+
+  accept(article: Article): void {
+    // this.requests = this.requests.filter(r => r !== request);
+  this.articleService.changeArticleStatus(article.id, 1).subscribe(data => console.log(data));
+  const indexOfArticle: number = this.pendingArticlesList.indexOf(article);
+  this.pendingArticlesList.splice(indexOfArticle, 1);
+  console.log(article);
   }
 
-  deny(request: Request): void {
-    this.requests = this.requests.filter(r => r !== request);
+  deny(article: Article): void {
+    // this.requests = this.requests.filter(r => r !== request);
+    this.articleService.changeArticleStatus(article.id, 0).subscribe(data => console.log(data));
+    const indexOfArticle: number = this.pendingArticlesList.indexOf(article);
+    this.pendingArticlesList.splice(indexOfArticle, 1);
+    console.log(article);
   }
 
-  getUser(): void {
-    this.username = this.userInfoService.getUsername();
-    this.usertype = this.userInfoService.getUsertype();
-  }
-
-  onSelect(request: Request): void {
-    this.selectedRequest = request;
-  }
+  // onSelect(request: Article): void {
+  //   this.selectedRequest = request;
+  // }
 
 }
