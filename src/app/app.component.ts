@@ -13,9 +13,10 @@ export class AppComponent implements AfterViewInit {
   title = '#hub';
   name = '';
   date;
-  @Input()loginPhase = true;
+  @Input() loginPhase = true;
   someValue;
-  constructor(private _cookieService: CookieService, private router: Router ) {
+
+  constructor(private _cookieService: CookieService, private router: Router) {
       console.log('dsadadsadas1');
     }
   onCreate() {
@@ -24,9 +25,10 @@ export class AppComponent implements AfterViewInit {
   toogle() {
     this.loginPhase = !this.loginPhase;
   }
+
   getCurrentDate() {
-   this.date = new Date();
-   return this.date.getDate();
+    this.date = new Date();
+    return this.date.getDate();
   }
 
   ngAfterViewInit(): void {
@@ -34,5 +36,4 @@ export class AppComponent implements AfterViewInit {
     this.router.navigateByUrl('/login');
   }
 }
-
 

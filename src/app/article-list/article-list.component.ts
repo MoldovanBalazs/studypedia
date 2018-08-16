@@ -27,7 +27,7 @@ export class ArticleListComponent implements OnInit {
   shownTable: string;
   public articleList: Article[] = [];
   public userList: User[] = [];
-  public subjectList: Subject[]= [];
+  public subjectList: Subject[] = [];
 
   get listFilter(): string {
     return this._listFilter;

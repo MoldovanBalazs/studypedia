@@ -3,9 +3,12 @@ import {User} from './user';
 export class Article {
   public id: number;
   public title: string;
-  public user: User;
   public date: Date;
-  public articleType: number;
-  public link: string;
+  public user: User;
+  public userId: number;
   public description: string;
+  public articleType: string;
+  public subject: string;
+  public file: string|any;
+
 }

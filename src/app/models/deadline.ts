@@ -1,4 +1,4 @@
-import {User} from "./user";
+import { User} from './user';
 
 export class Deadline {
   public id: number;
@@ -8,9 +8,9 @@ export class Deadline {
   public timeRemaining: Duration;
 }
 
-export class Duration{
-  public days:Number;
-  public hours:Number;
-  public minutes: Number;
-  public seconds:Number;
+export class Duration {
+  public days: number;
+  public hours: number;
+  public minutes: number;
+  public seconds: number;
 }

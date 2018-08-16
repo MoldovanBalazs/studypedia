@@ -33,16 +33,16 @@ textarea {
   margin-bottom: 25px;
   border: 2px solid steelblue;
   background-color: antiquewhite;
-  width:345px;
-  height: 100px;
+  width: 800px;
+  height: 350px;
   font: 1em/1.5 sans-serif;
 }
 
 
-.form-group {
+ .form-group {
   width: 320px;
 }
-select{
+  select{
   margin-bottom: 25px;
   border: 2px solid steelblue;
   height: 40px;

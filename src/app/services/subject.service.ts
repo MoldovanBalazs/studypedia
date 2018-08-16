@@ -11,7 +11,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class SubjectService {
 
-  allSubjectsUrl = "http://localhost:8080/subject/all";
+  allSubjectsUrl = 'http://localhost:8080/subject/all';
   constructor(private http: HttpClient) { }
 
   getSubjects(): Observable<Subject[]> {
