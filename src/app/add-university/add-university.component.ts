@@ -22,6 +22,7 @@ export class AddUniversityComponent implements OnInit {
   btn_subject: boolean;
 
   btn_add: boolean;
+  newUniversity: University;
 
   universities: University[] = [];
   faculties: Faculty[] = [];
@@ -31,6 +32,16 @@ export class AddUniversityComponent implements OnInit {
   shownTable: string;
 
   shownActions: string;
+
+  currentUniversityId: string;
+  currentFacultyId: string;
+  currentBranchId: string;
+  currentSubjectId: string;
+
+  newUniversityName: string;
+  newFacultyName: string;
+  newBranchName: string;
+  newSubjectName: string;
 
  /* currentUniversity: University;
   universities: University[] = [];
@@ -61,6 +72,7 @@ export class AddUniversityComponent implements OnInit {
     this.getSubjects();
 
     this.shownActions = null;
+    this.newUniversity = new University();
   }
 
   getUniversities() {
@@ -127,6 +139,14 @@ export class AddUniversityComponent implements OnInit {
     this.getFaculties();
     this.getBranches();
     this.getSubjects();
+  }
+
+  /*addUniversity(): void {
+    this.universityService.addUniversity(this.newUniversity);
+  }*/
+
+  addUniversity(): void {
+    this.universityService.addUniversity(this.newUniversity.name);
   }
 
 //   addUniversity(): void {

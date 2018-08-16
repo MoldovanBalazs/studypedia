@@ -16,4 +16,9 @@ export class FacultyService {
   getFaculties(): Observable<Faculty[]> {
     return this.http.get<Faculty[]>(this.allFacultiesUrl);
   }
+
+  addFaculty(name: string){
+
+  }
+
 }

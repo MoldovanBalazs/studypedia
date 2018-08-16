@@ -37,16 +37,7 @@
         </svg>
         <span>Subject</span>
       </label>
-      <button (click)="showActions('add')">Add</button>
-      <div *ngIf="shownActions === 'add'">
-        University
-        <div>
-          Name:
-          <input />
-          <button>Add</button>
-        </div>
       </div>
-    </div>
   </form>
   <div>
     <div class="table-responsive" *ngIf="shownTable === 't01'" >
@@ -112,4 +103,51 @@
       </table>
     </div>
   </div>
+</div>
+<div>
+  <button (click)="showActions('add')">Add</button>
+  <div *ngIf="shownActions === 'add'">
+    <div *ngIf="shownTable === 't01'">
+      University
+      <div>
+        Name:
+        <input [(ngModel)]="newUniversity.name"/>
+        <button (click)="addUniversity()">Add</button>
+      </div>
+    </div>
+    <div *ngIf="shownTable === 't02'">
+      Faculty
+      <div>
+        University:
+        <select [(ngModel)]="currentUniversityId">
+          <option *ngFor="let university of universities" [value]="university.id">{{university.name}}</option>
+        </select>
+        <br>
+        Name:
+        <input />
+        <button>Add</button>
+      </div>
+    </div>
+    <div *ngIf="shownTable === 't03'">
+      Branch
+      <select [(ngModel)]="currentFacultyId">
+        <option *ngFor="let faculty of faculties" [value]="faculty.id">{{faculty.name}}</option>
+      </select>
+      <br>
+      Name:
+      <input />
+      <button>Add</button>
+    </div>
+    <div *ngIf="shownTable === 't04'">
+      Subject
+      <br>
+      <select [(ngModel)]="currentBranchId">
+        <option *ngFor="let branch of branches" [value]="branch.id">{{branch.name}}</option>
+      </select>
+      <br>
+      Name:
+      <input />
+      <button>Add</button>
+    </div>
+</div>
 </div>

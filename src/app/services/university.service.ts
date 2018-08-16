@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UniversityComponent } from '../university/university.component';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {University} from '../models/university';
 import {Faculty} from '../models/faculty';
 import {Branch} from '../models/branch';
@@ -26,10 +26,18 @@ export class UniversityService {
   }
 
   /**POST: add a new University to the server;*/
-  addUniversity(newUniversity: University): Observable<University> {
-	const url = 'http://localhost:8080/insertUniversity';
-	let body = JSON.stringify(newUniversity);
+  /*addUniversity(newUniversity: University) {
+	  const url = 'http://localhost:8080/insertUniversity';
+    let body = JSON.stringify(newUniversity);
     return this.http.post<University>(url, body, httpOptions);
+  }*/
+
+  addUniversity (name : string) {
+    console.log(name);
+    const params = new HttpParams().set('name', name);
+    let body = JSON.stringify(name);
+    const url = 'http://localhost:8080/insertUniversity';
+    this.http.post<String>(url,body, httpOptions).subscribe(data => console.log(data));
   }
 
   getUniversity(universityId: number): Observable<University> {
