@@ -1,0 +1,41 @@
+body {
+  margin-left: 10%;
+}
+
+h1{
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+}
+
+h2{
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+}
+.center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+table, th, td {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "HP Simplified Light";
+  font-size: x-large;
+}
+

@@ -21,7 +21,7 @@
       <tbody>
       <tr *ngFor='let article of articleList'>
 
-        <td> <a routerLink="/article" routerLinkActive="active"> {{article.title}} </a> </td>
+        <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
 
         <td>{{ article.date.toLocaleString() }}</td>
 

@@ -16,7 +16,7 @@
         <tr *ngFor='let article of articleList'>
 
           <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
-          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.user.username}} </a> </td>
+          <td> <a (click) = userClick(article.user)> {{article.user.username}} </a> </td>
           <td>{{ article.date.toLocaleString() }}</td>
 
         </tr>

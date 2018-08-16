@@ -5,24 +5,25 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Deadline} from '../models/deadline';
 import {User} from '../models/user';
 
-
+const URL = 'http://localhost:8080/';
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  articleInsertUrl: '/insertArticle';
+  articleInsertUrl = '/insertArticle';
   articleGetByTypeUrl = 'http://localhost:8080/article/type';
   allArticlesUrl = 'http://localhost:8080/article/all';
   articlePutStatusUrl = 'http://localhost:8080/article';
   articleGetByStatusUrl = 'http://localhost:8080/article/status';
   articleByIdUrl = 'http://localhost:8080/article/id';
 
-  constructor(private http: HttpClient)  { }
-
   public headers = new HttpHeaders({
     'Content-Type': 'application/json'
   });
+
+  constructor(public http: HttpClient)  { }
+
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.allArticlesUrl);
   }
