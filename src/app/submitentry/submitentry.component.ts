@@ -45,7 +45,6 @@ export class SubmitentryComponent implements OnInit {
   descriptionName: string;
 
   public subjectList: Subject[] = [];
-
   constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService) {
   }
 
