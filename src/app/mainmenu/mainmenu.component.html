@@ -1,16 +1,7 @@
 <!-- home, my page, submit,  -->
 
 <div >
-  <!--<div>-->
-  <!--<div  style="text-align:center; display: inline-flex">-->
-    <!--<div style="text-align: left;">-->
-      <!---->
-    <!--</div>-->
-    <!--<div  style="flex-grow: inherit">-->
-      <!--<h1><img src="../../assets/studypedia.png"/>studypedia</h1>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
+
   <div class="col-sm-12 float-left">
     <div  class="col-sm-2 float-left" style="text-align: center">
       <img src="../../assets/studypedia.png" height="221" width="242"/>
@@ -45,7 +36,7 @@
       </a>
       <br>
       <a routerLink="/login" routerLinkActive="active">
-        <button class = "menubutton">Log Out</button>
+        <button class = "menubutton" (click) = "logout()">Log Out</button>
       </a>
     </div>
     <div class="col-sm-10 float-left">

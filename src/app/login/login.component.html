@@ -6,9 +6,12 @@
 </style>
 <body>
 
+<div *ngIf="!pageRenderable">
+  <div id="load"></div>
+</div>
+
+<div *ngIf="pageRenderable">
 <div style= "text-align: center" >
-
-
 <img src="../../assets/studypedia.png" height="221" width="242">
 <div class="content">
   <div class="container">
@@ -45,6 +48,7 @@
 
 </div>
 
+</div>
 </div>
 </body>
 

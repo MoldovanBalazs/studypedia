@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
   cookieData = '';
   public user: User;
   userIsValid = true;
+  pageRenderable = false;
 
   model = new User(18, 'admin', 'admin');
   users: any[] = [
@@ -57,6 +58,26 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private _cookieService: CookieService, router: Router, private authorizationService: AuthorizationService ) {
+
+    if(this._cookieService.get('userCookie') !== "") {
+      console.log(this._cookieService.get('userCookie'));
+      let user: User = JSON.parse(this._cookieService.get('userCookie')) as User;
+      const loggedUser = new UserLog(user.username, user.password);
+      console.log("MY USER:" + user.name);
+      this.authorizationService.validateUser(loggedUser).subscribe((data: User) => {
+        this.user = data as User;
+        if ( this.user === null) {
+          console.log('null user');
+          this.userIsValid = false;
+          //this.router.navigateByUrl('/mainmenu');
+        } else {
+          console.log('Validation log ' + this.user.name);
+          this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+          this.router.navigateByUrl('/mainmenu');
+        }
+      });
+    }
+
     this.loggedUser.name = '';
     this.loggedUser.username = '';
     this.loggedUser.password = '';
@@ -65,6 +86,7 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
+    this.pageRenderable = true;
   }
 
   loginUser(event) {
@@ -87,4 +109,5 @@ export class LoginComponent implements OnInit {
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
   }
+
 }

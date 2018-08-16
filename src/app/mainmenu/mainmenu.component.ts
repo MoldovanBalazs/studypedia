@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-mainmenu',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainmenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(public cookieService: CookieService) { }
 
+  public logout() {
+    this.cookieService.delete("userCookie");
+  }
   ngOnInit() {
   }
 
