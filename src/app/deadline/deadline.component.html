@@ -6,7 +6,7 @@
 <div  *ngIf = "(renderable)">
 
   <div class = "container" style = "float:right">
-      <div style="overflow-y: scroll; background: transparent; height: 600px;" class = "centered">
+      <div style="overflow-y: scroll; background: transparent; height: 400px;" class = "centered">
         <div *ngFor="let curriculaObj of curricula">
 
           <div class = "panel" class = "container">
@@ -40,21 +40,17 @@
   <hr style="color:#58668b">
 
   <div title="add deadline">
-    <p class = "paragraphInput"> Register your assignment
-    </p>
-    <input id = "01" #curriculaName class = "inputstyle"  style = "float:left">
-    <br>
-    <input id = '02' #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center">
-    <br>
+    <div class="inline-block">
+    <p class = "paragraphInput" style="text-align: left; margin-top:12px "> Register your assignment</p>
+      <div><input id = "01" #curriculaName class = "inputstyle"  style = "float:left"></div>
+      <div><input id = '02' #curriculaDate class = "inputstyle_date" type="datetime-local" style = "float:left; text-align: center"></div>
+      <div>
+        <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = "((checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton')" >Add</button>
+      </div>
+
+    </div>
   </div>
 
 
-
-
-
-  <div>
-    <br>
-    <button [disabled]="!checkValidInput( curriculaName.value, curriculaDate.value)"   (click) = "addCurricula(curriculaName.value, curriculaDate.value)" [ngClass] = "((checkValidInput(curriculaName.value, curriculaDate.value)) ?  'addbutton' : 'cantAddButton')" style = "float:right">Add</button>
-  </div>
 </div>
 

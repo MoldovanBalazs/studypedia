@@ -32,6 +32,7 @@ export class ProfiledetailComponent implements OnInit {
   constructor(private articleService: ArticleService,private _cookieService: CookieService) {
     this.name = this.getSessionUser().username;
     this.university = this.getSessionUser().university.name;
+
   }
 
   ngOnInit() {
