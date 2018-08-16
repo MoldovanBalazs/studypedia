@@ -1,30 +1,61 @@
 <!-- home, my page, submit,  -->
 
 <div >
-  <div style = "display:inline-block;vertical-align: top">
-    <a routerLink="home" routerLinkActive="active">
-      <button class = "menubutton">Home</button>
-    </a>
-    <br>
-      <a routerLink="profile" routerLinkActive="active">
-        <button class = "menubutton">My profile</button>
+  <!--<div>-->
+  <!--<div  style="text-align:center; display: inline-flex">-->
+    <!--<div style="text-align: left;">-->
+      <!---->
+    <!--</div>-->
+    <!--<div  style="flex-grow: inherit">-->
+      <!--<h1><img src="../../assets/studypedia.png"/>studypedia</h1>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <div class="col-sm-12 float-left">
+    <div  class="col-sm-2 float-left" style="text-align: center">
+      <img src="../../assets/studypedia.png" height="221" width="242"/>
+    </div>
+    <div class="col-sm-10 float-left">
+      <h1>“Be the change that you wish to see in the world.” - Mahatma Gandhi</h1>
+    </div>
+  </div>
+  <div class="col-sm-12 float-left">
+    <div class="col-sm-2 float-left">
+      <a routerLink="home" routerLinkActive="active">
+        <button class = "menubutton">Home</button>
       </a>
-    <br>
-    <button class = "menubutton">Submit materials</button>
-    <br>
-    <a routerLink="search" routerLinkActive="active">
-      <button class = "menubutton">Search</button>
-    </a>
-    <br>
-    <a routerLink="requests" routerLinkActive="active">
-      <button class = "menubutton">Requests</button>
-    </a>
-    <br>
-    <a routerLink="add-university" routerLinkActive="active">
-      <button class = "menubutton">Manage Universities</button>
-    </a>
+      <br>
+        <a routerLink="profilepage" routerLinkActive="active">
+          <button class = "menubutton">My profile</button>
+        </a>
+      <br>
+      <button class = "menubutton">Submit materials</button>
+      <br>
+      <a routerLink="search" routerLinkActive="active">
+        <button class = "menubutton">Search</button>
+      </a>
+      <br>
+      <a routerLink="requests" routerLinkActive="active">
+        <button class = "menubutton">Requests</button>
+      </a>
+      <br>
+      <a routerLink="add-university" routerLinkActive="active">
+        <button class = "menubutton">Manage Universities</button>
+      </a>
+      <br>
+      <a routerLink="/login" routerLinkActive="active">
+        <button class = "menubutton">Log Out</button>
+      </a>
+    </div>
+    <div class="col-sm-10 float-left">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
   </div>
-  <div style = "display:inline-block;vertical-align: top">
-    <router-outlet></router-outlet>
-  </div>
+
+
+
+
 </div>
+<!--<div style="flex-grow: 1; display: inline-flex; flex-direction: column; vertical-align: top">-->

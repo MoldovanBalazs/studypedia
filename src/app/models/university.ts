@@ -20,6 +20,9 @@ export class University {
   getName(): string {
     return this.name;
   }
+  getId(): number {
+    return this.id;
+  }
 
   setFaculties(faculties: Faculty[]): void{
 	  this.faculties = faculties;

@@ -40,6 +40,18 @@ export class UniversityService {
   getUniversities(): Observable<University[]> {
     return this.http.get<University[]>(this.universitiesUrl);
   }
+  // Cristina
+  getUniversityList(): Observable<University[]> {
+    return this.http.get<University[]>('http://localhost:8080/universities');
+  }
+
+  getUniversityFaculties(universityId: number): Observable<Faculty[]> {
+    return this.http.get<Faculty[]>('http://localhost:8080/' + universityId.toString() + '/faculties');
+  }
+
+  public getFacultyBranches(facultyId: number): Observable<Branch[]> {
+    return this.http.get<Branch[]>('http://localhost:8080/' + facultyId.toString() + '/branches');
+  }
 
   getFacultiesByUniversity(universityId): Observable<Faculty[]> {
 	  //const url = 'http://localhost:8080/getFacultiesByUniversityId?universityId=' + universityId;

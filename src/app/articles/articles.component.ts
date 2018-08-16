@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Article} from '../models/article';
+import {NewsfeedComponent} from '../newsfeed/newsfeed.component';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-articles',
@@ -7,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticlesComponent implements OnInit {
 
-  articleTitle = 'Punguta cu doi bani';
-  articleText = 'A fost o data ca niciodata...'
+  article: Article = JSON.parse(this._cookieService.get('articleCookie')) as Article;
 
+  constructor(private _cookieService: CookieService) {
+    console.log(this.article.id);
+  }
   ngOnInit() {
   }
 

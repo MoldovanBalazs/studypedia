@@ -1,5 +1,5 @@
 body {
-margin-left: 10%;
+  margin-left: 10%;
 }
 
 h1{
@@ -8,7 +8,7 @@ h1{
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "Roboto-Regular";
+  font-family: "HP Simplified Light";
   font-size: x-large;
 }
 
@@ -18,7 +18,7 @@ h2{
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "Roboto-Regular";
+  font-family: "HP Simplified Light";
   font-size: x-large;
 }
 .center {
@@ -35,7 +35,7 @@ table, th, td {
   font-weight: 700;
 
   margin-bottom: 30px;
-  font-family: "Roboto-Regular";
+  font-family: "HP Simplified Light";
   font-size: x-large;
 }
 
