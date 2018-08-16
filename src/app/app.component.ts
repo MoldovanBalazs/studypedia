@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, Input} from '@angular/core';
 import {logger} from 'codelyzer/util/logger';
-import {Router} from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,10 +16,9 @@ export class AppComponent implements AfterViewInit {
   @Input()loginPhase = true;
   someValue;
   constructor(private _cookieService: CookieService, private router: Router ) {
-    console.log('dsadadsadas1');
-  }
+      console.log('dsadadsadas1');
+    }
   onCreate() {
-
   }
 
   toogle() {

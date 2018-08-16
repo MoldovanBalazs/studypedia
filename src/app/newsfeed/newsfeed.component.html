@@ -1,11 +1,5 @@
 <div class = "card">
-  <div align = "right" class = card-header>
-    Welcome, {{user}}!
-  </div>
   <div align = "center" class = card-body>
-    <form action="url" >
-      <input type="submit" value="SEARCH" />
-    </form>
     <h1>{{subscribed <= 0 ? 'You are not subscribed to anybody' : 'Here are some news for you:'}}</h1>
     <div class='table-responsive'>
       <table class='table'
@@ -21,8 +15,8 @@
         <tbody>
         <tr *ngFor='let article of articleList'>
 
-          <td> <a routerLink="/article" routerLinkActive="active" > {{article.title}} </a> </td>
-          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.user}} </a> </td>
+          <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
+          <td> <a routerLink="/profile" routerLinkActive="active"> {{article.user.username}} </a> </td>
           <td>{{ article.date.toLocaleString() }}</td>
 
         </tr>
@@ -31,5 +25,6 @@
 
 
   </div>
+    <router-outlet></router-outlet>
 </div>
 </div>

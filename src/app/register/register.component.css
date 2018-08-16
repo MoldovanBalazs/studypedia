@@ -1,13 +1,91 @@
 /*@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');*/
 
 .ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948; /* green */
+  border-left: 5px solid #1C735E; /* green */
+  border-right: 5px solid #1C735E; /* green */
 }
 
 .ng-invalid:not(form)  {
   border-left: 5px solid #a94442; /* red */
+  border-right: 5px solid #a94442; /* red */
 }
 input[type=text]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+button {
+  /*margin: 2%;*/
+  padding: 0.75rem 1rem;
+  border:  grey 3px solid;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+select {
+  /*margin: 2%;*/
+
+  padding: 0.75rem 1rem;
+ border-top: transparent;
+ border-bottom: transparent;
+
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  #1C735E;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  cursor: pointer;
+  -webkit-appearance: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+label{
+  font-family: "Roboto-Regular" ;
+  font-weight: bold;
+}
+
+
+input{
+  padding: 0.75rem 1rem;
+  margin: 2%;
+  border-right: grey 3px solid;
+  border-left: grey 3px solid;
+  border-bottom: transparent;
+  border-top: transparent;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+}
+
+h2{
+  font-family: "Roboto-Regular";
+  color: #1C735E;
+}
+

@@ -3,6 +3,7 @@
 // export const USERS: User[] = [
 //   {
 //     'id': 1,
+//     'name': 'bobita',
 //     'username': 'Gigel',
 //     'password' : 'user',
 //     'university': 'UBB',
@@ -12,6 +13,7 @@
 //   },
 //   {
 //     'id': 2,
+//     'name': 'bobita',
 //     'username': 'Maria',
 //     'password' : 'user',
 //     'university': 'UBB',
@@ -21,6 +23,7 @@
 //   },
 //   {
 //     'id': 3,
+//     'name': 'bobita',
 //     'username': 'Bob',
 //     'password' : 'user',
 //     'university': 'UBB',
@@ -30,11 +33,12 @@
 //   },
 //   {
 //     'id': 4,
+//     'name': 'bobita',
 //     'username': 'Mariuca',
 //     'password' : 'user',
 //     'university': 'UTCN',
-//     'faculty' : 'Automatica',
-//     'branch' : '-',
+//     'faculty' : 'Facultatea de Automatica si Calculatoare',
+//     'branch' : 'Automatica',
 //     'userType' : 1
 //   }
 // ];
