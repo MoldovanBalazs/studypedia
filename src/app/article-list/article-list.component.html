@@ -1,20 +1,12 @@
+<div class="col-sm-12 float-left">
+
+
+
 <div>
-  <div style="flex-grow: 1; display: flex; flex-direction: column">
-  <!--<div class="card-header">-->
-    <!--{{pageTitle}}-->
-  <!--</div>-->
+  <div >
   <div class="card-body">
-    <div class="row topnav">
+    <div class="col-sm-9 float-left">
       <form class="container">
-        <!--<input type="radio"  name="type" value="notes" [(ngModel)]="btn_notes" (ngModelChange)="showTable('t01')"> Notes-->
-        <!--<input type="radio" name="type" value="seminars" [(ngModel)]="btn_seminars" (ngModelChange)="showTable('t011')"> Seminars-->
-        <!--<input type="radio" name="type" value="labs" [(ngModel)]="btn_labs" (ngModelChange)="showTable('t012')"> Labs-->
-        <!--<input type="radio" name="type" value="exams" [(ngModel)]="btn_exams" (ngModelChange)="showTable('t013')"> Exams-->
-        <!--<input type="radio" name="type" value="users" [(ngModel)]="btn_users" (ngModelChange)="showTable('t02')"> Users-->
-        <!--<input type="radio" name="type" value="subjects" [(ngModel)]="btn_subjects" (ngModelChange)="showTable('t03')" > Subjects-->
-        <!--<br>-->
-        <!--<br>-->
-        <br>
         <div class="cntr">
           <label for="rdo-1" class="btn-radio">
             <input type="radio" value="notes" [(ngModel)]="btn_notes" (ngModelChange)="showTable('t01')" id="rdo-1" name="radio-grp">
@@ -78,15 +70,14 @@
     </div>
     <div class="row">
       <div class="col-md-2">
-        <!--<div class="topnav">-->
-          <!--<input type="text" placeholder="Search.." [(ngModel)]="listFilter"/>-->
-        <!--</div>-->
+
       </div>
       <br>
       <br>
     </div>
+    <div class="col-sm-9 float-left">
     <div *ngIf="shownTable === 't01'">
-      <table id="t01" class="table table-responsive" *ngIf="btn_notes && filteredArticles && filteredArticles.length">
+      <table id="t01"  *ngIf="btn_notes && filteredArticles && filteredArticles.length">
         <thead>
         <tr>
           <th>Note</th>
@@ -195,4 +186,6 @@
     </div>
   </div>
 </div>
+</div>
+  </div>
 </div>

@@ -30,7 +30,7 @@ export class ProfiledetailComponent implements OnInit {
 
 
   constructor(private articleService: ArticleService,private _cookieService: CookieService) {
-    this.name = this.getSessionUser().username;
+    this.name = this.getSessionUser().name;
     this.university = this.getSessionUser().university.name;
 
   }

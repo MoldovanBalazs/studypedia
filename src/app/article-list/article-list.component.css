@@ -1,18 +1,27 @@
+
 table {
-  border-collapse: collapse;
+  border-collapse: separate !important;
+  border:  #1C735E 3px solid;
+  border-radius: 0.317rem;
   width: 100%;
-  table-layout: auto;
+
 }
 
 th, td {
   text-align: left;
   padding: 8px;
-  border: 3px solid #355C7D;
+  width: auto;
   margin: 5px;
-  border-radius: 300px / 15px;;
+
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+}
+span, input {
+  font-family: "Roboto-Regular";
+  font-weight: bold;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+/*tr:nth-child(even){background-color: #f2f2f2}*/
 
 th {
   background-color: #f2f2f2;
@@ -25,7 +34,7 @@ html, body {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-family:"Roboto-Regular";
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   color: #222;
@@ -33,6 +42,11 @@ body {
 
 .cntr {
   margin: auto;
+}
+
+input {
+  margin: 15px;
+  width: 50%;
 }
 
 .btn-radio {
@@ -64,7 +78,7 @@ body {
   stroke: #C8CCD4;
 }
 .btn-radio svg path {
-  stroke: #42A948;
+  stroke: #1C735E;
 }
 .btn-radio svg path.inner {
   stroke-width: 6px;

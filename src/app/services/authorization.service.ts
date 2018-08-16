@@ -28,7 +28,6 @@ export class AuthorizationService {
   public validateUser(userLog: UserLog): Observable<User> {
     const url = 'http://localhost:8080/' + 'validate/' + JSON.stringify(userLog);
     return this.httpClient.get<User>(url, {headers: this.headers}).pipe();
-
   }
 
 }
