@@ -58,7 +58,7 @@ export class ArticleListComponent implements OnInit {
     this.filteredSubjects = this.performFilterOnSubjects(this.listFilter);
   }
 
-  constructor(private articleService : ArticleService, private userService : UserService, private subjectService : SubjectService) {
+  constructor(private articleService: ArticleService, private userService : UserService, private subjectService : SubjectService) {
     this.articleService.getArticles().subscribe((result) => {
       this.articleList = result;
     });
