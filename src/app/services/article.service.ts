@@ -49,10 +49,8 @@ export class ArticleService {
   }
 
   public changeArticleStatus(id: number, status: number): Observable<Article> {
-    const params = new HttpParams()
-      .set('id', id.toString())
-      .set('status', status.toString());
-    return this.http.put<Article>(this.articlePutStatusUrl, {params});
+    const url = this.articlePutStatusUrl + '?id=' + id.toString() + '&status=' + status.toString();
+    return this.http.put<Article>(url, {});
   }
 
 

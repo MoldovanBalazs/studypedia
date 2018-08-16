@@ -1,8 +1,6 @@
-<div *ngIf="request">
-  <h2>Article name: {{request.documentName}}</h2>
-  <div>hashcode: {{request.hash}}</div>
-  <div>Maker: {{request.authorName}}</div>
-  <div>Proposer: {{request.proposerName}}</div>
-  <div>Article description: {{request.articleDescription}}</div>
-  <div>Content Link: {{request.contentLink}}</div>
+<div *ngIf="article">
+  <h2>Title: {{article.title}}</h2>
+  <div>Author: {{article.user.name}}</div>
+  <div>Subject: {{article.subject.name}}</div>
+  <div>Date: {{article.date}}</div>
 </div>

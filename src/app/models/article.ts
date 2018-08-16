@@ -1,4 +1,5 @@
 import {User} from './user';
+import {Subject} from './subject';
 
 export class Article {
   public id: number;
@@ -8,4 +9,6 @@ export class Article {
   public articleType: number;
   public link: string;
   public description: string;
+  public subject: Subject;
+  public status: number;
 }

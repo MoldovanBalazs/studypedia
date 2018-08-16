@@ -13,39 +13,52 @@ import {Article} from '../models/article';
 })
 export class RequestsComponent implements OnInit {
 
-  selectedRequest: Request;
-  requests: Request[];
-  username: string;
-  usertype: number;
+  // selectedRequest: Article;
+  // requests: Article[];
+  // username: string;
+  // usertype: number;
   pendingArticlesList: Article[] = [];
 
   constructor( private requestService: RequestService, private articleService: ArticleService) {
   }
 
   ngOnInit() {
-    this.getRequests();
     this.getArticleByStatus();
+    console.log(this.pendingArticlesList);
   }
+
   getArticleByStatus() {
   this.articleService.getArticleByStatus(2).subscribe((result) => {
   this.pendingArticlesList = result;
-}); }
-  getRequests(): void {
-    this.requestService
-      .getRequests()
-      .subscribe(requests => this.requests = requests);
+  console.log(result);
+  });
+    // console.log(this.pendingArticlesList);
   }
 
-  accept(request: Request): void {
-    this.requests = this.requests.filter(r => r !== request);
+  // getRequests(): void {
+  //   this.requestService
+  //     .getRequests()
+  //     .subscribe(requests => this.requests = requests);
+  // }
+
+  accept(article: Article): void {
+    // this.requests = this.requests.filter(r => r !== request);
+  this.articleService.changeArticleStatus(article.id, 1).subscribe(data => console.log(data));
+  const indexOfArticle: number = this.pendingArticlesList.indexOf(article);
+  this.pendingArticlesList.splice(indexOfArticle, 1);
+  console.log(article);
   }
 
-  deny(request: Request): void {
-    this.requests = this.requests.filter(r => r !== request);
+  deny(article: Article): void {
+    // this.requests = this.requests.filter(r => r !== request);
+    this.articleService.changeArticleStatus(article.id, 0).subscribe(data => console.log(data));
+    const indexOfArticle: number = this.pendingArticlesList.indexOf(article);
+    this.pendingArticlesList.splice(indexOfArticle, 1);
+    console.log(article);
   }
 
-  onSelect(request: Request): void {
-    this.selectedRequest = request;
-  }
+  // onSelect(request: Article): void {
+  //   this.selectedRequest = request;
+  // }
 
 }
