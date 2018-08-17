@@ -72,6 +72,7 @@ export class DeadlineComponent implements OnInit {
     let user: User = new User();
     user.id = this.getSessionUser().id;
     deadline.user = user;
+    console.log(deadline);
     this.deadlineService.addDeadline(deadline, this.curricula);
   }
 

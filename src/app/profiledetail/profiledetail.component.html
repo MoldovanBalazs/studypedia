@@ -21,9 +21,9 @@
       <tbody>
       <tr *ngFor='let article of articleList'>
 
-        <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
+        <td style="font-family: Roboto-Regular; text-align: left">  <a (click) = articleClick(article) style="font-family: Roboto-Regular" >{{article.title}} </a> </td>
 
-        <td>{{ article.date.toLocaleString() }}</td>
+        <td>{{ article.date  | date: 'yyyy/MM/dd' }}</td>
 
       </tr>
       </tbody>

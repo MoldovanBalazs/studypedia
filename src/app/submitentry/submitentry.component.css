@@ -5,65 +5,112 @@ body {
 
 
 h1 {
-  text-align: center;
-  font-size: 50px;
-  color: steelblue;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 form {
-  margin: 20px auto;
+  /*margin: 20px auto;*/
   width: 320px;
   color: steelblue;
 }
 
 input {
-  padding: 10px;
+  padding: 15px;
   font-size: inherit;
+  height: 55px;
+  border-radius: 0.317rem;
+
+  width: 360px;
+  margin-bottom: 5%;
+  vertical-align: center;
+  padding: 0.75rem 1rem;
+  border:  grey 3px solid;
+  border-radius: 0.317rem;
+;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  align-items: left;
 }
 
 input[type="text"] {
   display:block;
   margin-bottom: 25px;
-  width: 100%;
-  border: 2px solid steelblue;
-  background-color: antiquewhite;
+  width: 347px;
+  border: 3px solid grey;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+
+
+
 }
 textarea {
   resize: none;
   margin-bottom: 25px;
-  border: 2px solid steelblue;
-  background-color: antiquewhite;
+  border: 3px solid grey;
+
   width: 800px;
   height: 350px;
   font: 1em/1.5 sans-serif;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
+  border-radius: 0.317rem;
 }
 
 
  .form-group {
-  width: 320px;
+   width: 347px;
 }
   select{
   margin-bottom: 25px;
-  border: 2px solid steelblue;
-  height: 40px;
+  border: 3px solid grey;
+  height: 50px;
   width: 345px;
-  padding: 10px;
+  /*padding: 10px;*/
   font-size: inherit;
-  background-color: antiquewhite;
+    font-family: "Roboto-Regular";
+    font-weight: bold;
+
   position: center;
+    border-radius: 0.317rem;
 }
 input [type="submit"] {
-  width: 344px;
-  height: 45px;
+  width: 380px;
+  height: 70px;
+
   border: none;
-  background-color: steelblue;
-  color: white;
-  position: center;
+  font-family: "Roboto-Regular";
+  font-weight: bold;
 }
 
 
 input:focus {
   background-color: white;
+}
+
+button {
+  width: 100%;
+  margin-bottom: 5%;
+  vertical-align: center;
+  padding: 0.75rem 1rem;
+  border:  grey 3px solid;
+  border-radius: 0.317rem;
+  min-width: 40%;
+  background-color: white;
+  color:  grey;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  font-family: "Roboto-Regular";
+  align-items: left;
 }
 
 

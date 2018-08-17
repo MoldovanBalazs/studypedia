@@ -9,6 +9,7 @@ import {Article} from '../models/article';
 import {Subject} from '../models/subject';
 import {SubjectService} from '../services/subject.service';
 import {CookieService} from 'ngx-cookie-service';
+import {User} from "../models/user";
 import {User} from '../models/user';
 
 
@@ -32,6 +33,7 @@ export class SubmitentryComponent implements OnInit {
   titleName: string;
   descriptionName: string;
   selectedFiles: FileList;
+  public message: string = '';
 
   public subjectList: Subject[] = [];
 
@@ -67,6 +69,10 @@ export class SubmitentryComponent implements OnInit {
     article.subject = this.subjectName;
     article.userId = this.getSessionUser().id;
     this.submitentryService.addArticle(article, this.selectedFiles);
+    this.message = "Successful submit";
+    setTimeout(function () {}, 5000);
+    this.message = '';
+    window.location.reload();
   }
 
   public getSessionUser(): User {

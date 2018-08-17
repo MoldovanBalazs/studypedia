@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Article} from '../models/article';
 import {NewsfeedComponent} from '../newsfeed/newsfeed.component';
 import {CookieService} from 'ngx-cookie-service';
-import {ArticleService} from '../services/article.service';
+import {ArticleService} from "../services/article.service";
 import {saveAs} from 'file-saver';
 
 @Component({
@@ -12,14 +12,19 @@ import {saveAs} from 'file-saver';
 })
 export class ArticlesComponent implements OnInit {
 
-  article: Article = JSON.parse(this._cookieService.get('articleCookie')) as Article;
+  article: Article;
 
-  constructor(private _cookieService: CookieService, private articleService: ArticleService) {
-    console.log(this.article.id);
+  constructor(private cookieService: CookieService, private articleService: ArticleService) {
+    const articleId = this.cookieService.get('articleCookie');
+    this.articleService.getArticleById(articleId).subscribe(data => {
+      this.article = data;
+    });
   }
 
   ngOnInit() {
+
   }
+
 
   downloadFile() {
     this.articleService.downloadFileForArticle(this.article.id.toString(), this.article.filename);
