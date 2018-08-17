@@ -8,6 +8,8 @@ import {SubmitentryService} from '../services/submitentry.service';
 import {Article} from '../models/article';
 import {Subject} from '../models/subject';
 import {SubjectService} from '../services/subject.service';
+import {CookieService} from 'ngx-cookie-service';
+import {User} from '../models/user';
 
 
 export interface Category {
@@ -20,26 +22,12 @@ export interface Category {
   templateUrl: './submitentry.component.html',
   styleUrls: ['./submitentry.component.css']
 })
-@NgModule({
-  imports: [
-    ReactiveFormsModule,
-    NgForm,
-    Category,
-    FormControl,
-    FormGroup,
-    HttpClient,
-    SubmitentryService,
-    SubjectService
-  ]
-})
+
 export class SubmitentryComponent implements OnInit {
   categories: string[] = [
     'Note', 'Seminar', 'Lab', 'Exam'
   ];
-  universityName: string;
-  branchName: string;
   subjectName: string;
-  facultyName: string;
   selectedCat: string;
   titleName: string;
   descriptionName: string;
@@ -47,7 +35,9 @@ export class SubmitentryComponent implements OnInit {
 
   public subjectList: Subject[] = [];
 
-  constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService) {
+
+  constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService,
+              private _cookieService: CookieService) {
   }
 
   uploadForm = new FormGroup({
@@ -75,9 +65,12 @@ export class SubmitentryComponent implements OnInit {
     article.description = this.descriptionName;
     article.title = this.titleName;
     article.subject = this.subjectName;
-    article.userId = 1;
+    article.userId = this.getSessionUser().id;
     this.submitentryService.addArticle(article, this.selectedFiles);
+  }
 
+  public getSessionUser(): User {
+    return JSON.parse(this._cookieService.get('userCookie')) as User;
   }
 
   ngOnInit() {

@@ -6,10 +6,11 @@ export class Article {
   public title: string;
   public user: User;
   public date: Date;
-  public articleType: number;
+  public articleType: string;
   public link: string;
   public description: string;
   public subject: string;
   public file: string|any;
   public status: number;
+  public userId: number;
 }
