@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {User} from 'src/app/models/user';
+import {User, UserLog} from 'src/app/models/user';
 import {University} from '../models/university';
 import {UniversityService} from '../services/university.service';
 import {Deadline} from '../models/deadline';
 import {Faculty} from '../models/faculty';
 import {Branch} from "../models/branch";
 import {UserService} from "../services/user.service";
+import {AuthorizationService} from "../services/authorization.service";
 
 @Component({
   selector: 'app-register',
@@ -25,14 +26,29 @@ export class RegisterComponent implements OnInit {
   public moderatorPassword: string;
 
   submitted = false;
-  invalidUsername = false;
+  public validUsername = false;
   renderable = false;
 
   onSubmit() {
     this.submitted = true;
+    this.userService.checkValidUsername(this.newUser.username).subscribe((data: boolean) => {
+      let validUsername = data as boolean;
+      console.log("validUsername" + validUsername);
+      if(validUsername === true ) {
+        this.registerNewUser(this.newUser);
+        this.validUsername = true;
+      } else {
+        this.validUsername = false;
+        setTimeout(function () {
+
+        }, 7000);
+        window.location.reload();
+      }
+    })
+
   }
 
-  constructor(public universityService: UniversityService, public userService: UserService) {
+  constructor(public universityService: UniversityService, public userService: UserService, public authorizationService: AuthorizationService) {
     this.newUser = new User();
     this.universityService.getUniversityList().subscribe((data: University[]) => {
       data.forEach(item => {
@@ -45,15 +61,6 @@ export class RegisterComponent implements OnInit {
   }
   ngOnInit() {  }
 
-  registerUser(event) {
-    // if (this.modPass) {
-    //   this.newUser.userType = 1;
-    // } else {
-    //   this.newUser.userType = 0;
-    // }
-    // this.newUser = new User(17, this.newUser.name, this.newUser.username, this.newUser.password,  this.newUser.university,
-    //                                 this.newUser.faculty, this.newUser.branch, this.newUser.userType);
-  }
   toggleRegister(): void {
     this.registerButton = !this.registerButton;
   }

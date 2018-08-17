@@ -2,7 +2,7 @@
 <div>
   <ul class="requests">
     <li *ngFor="let article of pendingArticlesList">
-      Title: {{article.title}}, Author: {{article.user.username}}, Subject: {{article.subject.name}}, Date: {{article.date}}
+     {{article.title}} from {{article.user.name}}, {{article.date | date: 'yyyy.MM.dd' }}
       <button class="accept" title="accept request" (click)="accept(article)">Accept</button>
       <button class="deny" title="delete request" (click)="deny(article)">Deny</button>
     </li>

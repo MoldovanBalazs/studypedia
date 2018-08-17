@@ -16,7 +16,8 @@ export class ArticleService {
   allArticlesUrl = 'http://localhost:8080/article/all';
   articlePutStatusUrl = 'http://localhost:8080/article';
   articleGetByStatusUrl = 'http://localhost:8080/article/status';
-  articleByIdUrl = 'http://localhost:8080/article/id';
+  articleByIdUrl = 'http://localhost:8080/articleid';
+
 
   public headers = new HttpHeaders({
     'Content-Type': 'application/json'
@@ -58,4 +59,11 @@ export class ArticleService {
     const url = URL + 'user/' + userId.toString() + '/articles';
     return this.http.get<Article[]>(url, {headers: this.headers}).pipe();
   }
+
+  getArticleById(articleId: string): Observable<Article> {
+    const params = new HttpParams()
+      .set('id', articleId);
+    return this.http.get<Article>(this.articleByIdUrl, {params});
+  }
+
 }

@@ -1,45 +1,46 @@
-<h1>Submit Entry</h1>
+<div>
+  <div>
+    <h1>Submit Entry</h1>
+  </div>
 
+  <div>
+    <form>
+      <div class="form-group">
+        <form>
+          <select [(ngModel)]="subjectName" name="sub" id="subject">
+            <option *ngFor="let sub of subjectList" [ngValue]="sub.name" style = "font-family: Roboto-Regular; font-weight: bold">
+              {{sub.name}}
+            </option>
+          </select>
+        </form>
 
-  <form>
-    <div class="form-group">
-      <form>
-        <select [(ngModel)]="subjectName" name="sub" id="subject">
-          <option *ngFor="let sub of subjectList" [ngValue]="sub.name">
-            {{sub.name}}
-          </option>
-        </select>
-      </form>
+        <form>
+          <select [(ngModel)]="selectedCat" name="cat" id="cat">
+            <option *ngFor="let cat of categories" [value]="cat" style = "font-family: Roboto-Regular; font-weight: bold" >
+              {{cat}}
+            </option>
+          </select>
+        </form>
+      </div>
 
-      <form>
-        <select [(ngModel)]="selectedCat" name="cat" id="cat">
-          <option *ngFor="let cat of categories" [value]="cat">
-            {{cat}}
-          </option>
-        </select>
-      </form>
-    </div>
+      <div>
+        <input type="text" placeholder="Title" class="form-control" id="title" [(ngModel)]="titleName" required name="titleName">
 
-    <div>
-    <input type="text" placeholder="Title" class="form-control" id="title" [(ngModel)]="titleName" required name="titleName">
+        <textarea class="form-control" id="description" name="descriptionName" placeholder="Description" required [(ngModel)]="descriptionName"></textarea>
+      </div>
 
-    <textarea class="form-control" id="description" name="descriptionName" placeholder="Description" required [(ngModel)]="descriptionName"></textarea>
-    </div>
-  <!--<form action="index.php" method="post" enctype="multipart/form-data">-->
-
-    <!--<input type="file" name="file" multiple="multiple"/>-->
-
-    <!--<input type="submit" value="SUBMIT">-->
+    </form>
 
     <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
-      Select file to upload:
       <input type="file" name="file" id="fileToUpload" formControlName="file1" (change)="selectFile($event)">
 
 
       <input type="submit" value="SUBMIT" name="submit">
     </form>
 
+  </div>
+</div>
 
 
-  </form>
+
 

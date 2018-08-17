@@ -8,6 +8,8 @@ import {SubmitentryService} from '../services/submitentry.service';
 import {Article} from '../models/article';
 import {Subject} from '../models/subject';
 import {SubjectService} from '../services/subject.service';
+import {CookieService} from 'ngx-cookie-service';
+import {User} from "../models/user";
 
 
 export interface Category {
@@ -44,10 +46,11 @@ export class SubmitentryComponent implements OnInit {
   titleName: string;
   descriptionName: string;
   selectedFiles: FileList;
+  public message: string = '';
 
   public subjectList: Subject[] = [];
 
-  constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService) {
+  constructor(private submitentryService: SubmitentryService, private subjectService: SubjectService, public cookieService: CookieService) {
   }
 
   uploadForm = new FormGroup({
@@ -75,8 +78,14 @@ export class SubmitentryComponent implements OnInit {
     article.description = this.descriptionName;
     article.title = this.titleName;
     article.subject = this.subjectName;
-    article.userId = 1;
-    this.submitentryService.addArticle(article, this.selectedFiles);
+    let user: User = new User();
+    user = JSON.parse(this.cookieService.get('userCookie')) as User;
+    article.user = user;
+    this.submitentryService.addArticle(article, user, this.selectedFiles);
+    this.message = "Successful submit";
+    setTimeout(function () {}, 5000);
+    this.message = '';
+    window.location.reload();
 
   }
 

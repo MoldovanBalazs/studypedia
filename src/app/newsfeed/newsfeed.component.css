@@ -19,3 +19,14 @@ a:visited {
   color: blueviolet;
   top: 5px;
 }
+
+table, th, td {
+  background-color: #f8f8fa  ;
+  color:#58668b  ;
+  font-weight: 700;
+
+  margin-bottom: 30px;
+  font-family: "Roboto-Regular";
+  font-size: x-large;
+}
+

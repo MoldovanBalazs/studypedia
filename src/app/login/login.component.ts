@@ -55,10 +55,14 @@ export class LoginComponent implements OnInit {
         if ( this.user === null) {
           console.log('null user');
           this.userIsValid = false;
-          //this.router.navigateByUrl('/mainmenu');
+          this.router.navigateByUrl('/mainmenu');
         } else {
           console.log('Validation log ' + this.user.name);
-          this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+          this._cookieService.delete('userCookie');
+          if(this._cookieService.get('userCookie') === '') {
+            this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+          }
+
           this.router.navigateByUrl('/mainmenu');
         }
       });
@@ -86,7 +90,10 @@ export class LoginComponent implements OnInit {
         //this.router.navigateByUrl('/mainmenu');
       } else {
         console.log('Validation log ' + this.user.name);
-        this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+        // this._cookieSer vice.deleteAll('userCookie');
+        if(this._cookieService.get('userCookie') === '') {
+          this._cookieService.set( 'userCookie', JSON.stringify(this.user));
+        }
         this.router.navigateByUrl('/mainmenu');
       }
     });

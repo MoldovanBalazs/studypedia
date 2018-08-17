@@ -41,7 +41,7 @@ button {
 select {
   /*margin: 2%;*/
 
-  padding: 0.75rem 1rem;
+  padding: -0.25rem 1rem;
  border-top: transparent;
  border-bottom: transparent;
 
@@ -63,10 +63,12 @@ label{
   font-family: "Roboto-Regular" ;
   font-weight: bold;
 }
-
+ table, th, td {
+   font-family: "Roboto-Regular";
+ }
 
 input{
-  padding: 0.75rem 1rem;
+  padding: -0.25rem 1rem;
   margin: 2%;
   border-right: grey 3px solid;
   border-left: grey 3px solid;

@@ -1,6 +1,6 @@
 <div class = "card">
   <div align = "center" class = card-body>
-    <h1>{{subscribed <= 0 ? 'You are not subscribed to anybody' : 'Here are some news for you:'}}</h1>
+    <h1 style = "font-family: Roboto-Regular">{{subscribed <= 0 ? 'You are not subscribed to anybody' : 'Here are some news for you:'}}</h1>
     <div class='table-responsive'>
       <table class='table'
              *ngIf="articleList && articleList.length">
@@ -15,10 +15,10 @@
         <tbody>
         <tr *ngFor='let article of articleList'>
 
-          <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
-          <td> <a (click) = userClick(article.user)> {{article.user.username}} </a> </td>
+          <td>  <a (click) = articleClick(article) style="font-family: Roboto-Regular" >{{article.title}} </a> </td>
+          <td> <a (click) = userClick(article.user) style="font-family: Roboto-Regular" > {{article.user.name}} </a> </td>
           <td>{{ article.date | date: 'yyyy/MM/dd' }}</td>
-          
+
         </tr>
         </tbody>
       </table>

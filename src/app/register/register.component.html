@@ -15,7 +15,7 @@
 
 <div [hidden]="submitted" *ngIf = 'registerButton'>
 
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm" method = "post" (submit) = registerUser($event)>
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm" method = "post">
 <div class="container">
     <div class="form-group">
 
@@ -92,7 +92,7 @@
 
   </div>
    <div>
-     <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid" (click)="validateModerator(moderatorPassword.value);registerNewUser(newUser)">Register</button>
+     <button type="submit" class="btn btn-success"  [disabled]="!registerForm.form.valid" (click)="validateModerator(moderatorPassword.value);">Register</button>
    </div>
 
 
@@ -103,10 +103,11 @@
 
 <div [hidden]="!submitted">
 
-  <div *ngIf="modPass===false">
+  <div *ngIf="validUsername===false">
     <h2>Not successful registration!</h2>
   </div>
-  <div *ngIf="modPass===true">
+  <div *ngIf="validUsername===true">
     <h2>Successful registration!</h2>
   </div>
+
 </div>

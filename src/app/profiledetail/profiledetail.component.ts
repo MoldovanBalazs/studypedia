@@ -40,7 +40,7 @@ export class ProfiledetailComponent implements OnInit {
 
   constructor(private articleService: ArticleService, private _cookieService: CookieService, router: Router) {
     this.router = router;
-    this.name = this.getSessionUser().username;
+    this.name = this.getSessionUser().name;
     this.university = this.getSessionUser().university.name;
 
   }
@@ -52,7 +52,7 @@ export class ProfiledetailComponent implements OnInit {
 
   articleClick(article: Article) {
     console.log(article.title);
-    this._cookieService.set( 'articleCookie', JSON.stringify(article));
+    this._cookieService.set( 'articleCookie', article.id.toString());
     this.router.navigate(['/mainmenu/article', article.id]);
   }
 

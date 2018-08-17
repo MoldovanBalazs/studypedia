@@ -9,11 +9,11 @@ import {User} from '../models/user';
 })
 export class MainmenuComponent implements OnInit {
 
-  user: User = JSON.parse(this.cookieService.get('userCookie')) as User;
-  constructor(public cookieService: CookieService) { }
+  user: User = JSON.parse(this._cookieService.get('userCookie')) as User;
+  constructor(public _cookieService: CookieService) { }
 
   public logout() {
-    this.cookieService.delete('userCookie');
+    this._cookieService.deleteAll('userCookie');
   }
 
     ngOnInit() {

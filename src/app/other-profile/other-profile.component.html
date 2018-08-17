@@ -8,22 +8,22 @@
   </div>
 
   <div style="flex-grow: 1">
-    <h2>{{ contributionHeader }}</h2>
+    <h2 style="font-family: Roboto-Regular">{{ contributionHeader }}</h2>
     <div style="overflow-y: scroll; height: 800px; ">
       <table *ngIf="articleList && articleList.length">
         <thead>
         <tr>
-          <th>Title</th>
-          <th>Date</th>
+          <th style="font-family: Roboto-Regular">Title</th>
+          <th style="font-family: Roboto-Regular">Date</th>
         </tr>
         </thead>
 
         <tbody>
         <tr *ngFor='let article of articleList'>
 
-          <td>  <a (click) = articleClick(article) >{{article.title}} </a> </td>
+          <td>  <a (click) = articleClick(article) style="font-family: Roboto-Regular">{{article.title}} </a> </td>
 
-          <td>{{ article.date.toLocaleString() }}</td>
+          <td style="font-family: Roboto-Regular"> {{ article.date | date: 'yyyy.MM.dd' }}</td>
 
         </tr>
         </tbody>

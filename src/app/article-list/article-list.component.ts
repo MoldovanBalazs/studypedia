@@ -42,6 +42,7 @@ export class ArticleListComponent implements OnInit {
   getUsers() {
     this.userService.getUsers().subscribe((result) => {
       this.userList = result;
+      console.log(this.userList)
     });
   }
 
@@ -125,7 +126,7 @@ export class ArticleListComponent implements OnInit {
     console.log('In OnInit');
     this.getArticles();
     this.getUsers();
-    this.getSubjects(); 
+    this.getSubjects();
   }
 
   findType(id: any): number {

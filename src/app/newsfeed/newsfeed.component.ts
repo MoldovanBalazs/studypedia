@@ -20,8 +20,9 @@ export class NewsfeedComponent implements OnInit {
   articleList: Article[];
 
   getArticles() {
-    this.articleService.getArticles().subscribe((result) => {
-      this.articleList = result;
+    this.articleService.getArticleByStatus(1).subscribe((result) => {
+      this.articleList = result as Article[];
+      console.log("srticle List: " + this.articleList);
     });
   }
 
@@ -36,7 +37,8 @@ export class NewsfeedComponent implements OnInit {
   }
 
   articleClick(article: Article) {
-    this._cookieService.set( 'articleCookie', JSON.stringify(article));
+    this._cookieService.delete('articleCookie');
+    this._cookieService.set( 'articleCookie', article.id.toString());
     this.router.navigate(['/mainmenu/article', article.id]);
   }
 
