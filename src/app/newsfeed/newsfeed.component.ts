@@ -1,5 +1,5 @@
 import {Component, Injectable, OnInit} from '@angular/core';
-import { Article} from '../models/article';
+import {Article} from '../models/article';
 import {ArticleService} from '../services/article.service';
 import {Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
@@ -28,20 +28,23 @@ export class NewsfeedComponent implements OnInit {
   getId() {
     return this.id;
   }
+
   constructor(private articleService: ArticleService, router: Router, private _cookieService: CookieService) {
     this.router = router;
   }
+
   ngOnInit() {
-      this.getArticles();
+    this.getArticles();
   }
 
   articleClick(article: Article) {
-    this._cookieService.set( 'articleCookie', JSON.stringify(article));
+    this._cookieService.delete('articleCookie');
+    this._cookieService.set('articleCookie', JSON.stringify(article));
     this.router.navigate(['/mainmenu/article', article.id]);
   }
 
   userClick(user: User) {
-    this._cookieService.set( 'otherUserCookie', JSON.stringify(user));
+    this._cookieService.set('otherUserCookie', JSON.stringify(user));
     this.router.navigate(['/mainmenu/otherProfile', user.id]);
   }
 }

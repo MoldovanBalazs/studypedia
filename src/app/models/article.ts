@@ -13,4 +13,5 @@ export class Article {
   public file: string|any;
   public status: number;
   public userId: number;
+  public filename: string;
 }
