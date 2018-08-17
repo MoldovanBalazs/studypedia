@@ -1,3 +1,24 @@
+a{
+  color: blue !important;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  color: lightblue !important;
+  cursor: pointer;
+}
+
+a:active {
+  color: blueviolet !important;
+  top: 5px;
+}
+
+a:visited {
+  color: blueviolet;
+  top: 5px;
+}
 
 table {
   border-collapse: separate !important;

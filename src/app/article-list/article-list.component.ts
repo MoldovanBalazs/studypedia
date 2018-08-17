@@ -5,6 +5,8 @@ import {User} from '../models/user';
 import {ArticleService} from '../services/article.service';
 import {SubjectService} from '../services/subject.service';
 import {UserService} from '../services/user.service';
+import {Router} from "@angular/router";
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'pm-articles',
@@ -28,13 +30,14 @@ export class ArticleListComponent implements OnInit {
   public articleList: Article[] = [];
   public userList: User[] = [];
   public subjectList: Subject[] = [];
+  router: Router;
 
   get listFilter(): string {
     return this._listFilter;
   }
 
   getArticles() {
-    this.articleService.getArticles().subscribe((result) => {
+    this.articleService.getArticleByStatus(1).subscribe((result) => {
       this.articleList = result;
     });
   }
@@ -59,7 +62,8 @@ export class ArticleListComponent implements OnInit {
     this.filteredSubjects = this.performFilterOnSubjects(this.listFilter);
   }
 
-  constructor(private articleService: ArticleService, private userService : UserService, private subjectService : SubjectService) {
+  constructor(router: Router,private _cookieService: CookieService,private articleService: ArticleService, private userService : UserService, private subjectService : SubjectService) {
+    this.router = router;
     this.articleService.getArticles().subscribe((result) => {
       this.articleList = result;
     });
@@ -127,6 +131,16 @@ export class ArticleListComponent implements OnInit {
     this.getArticles();
     this.getUsers();
     this.getSubjects();
+  }
+
+  articleClick(article: Article) {
+    this._cookieService.set( 'articleCookie', article.id.toString());
+    this.router.navigate(['/mainmenu/article', article.id]);
+  }
+
+  userClick(user: User) {
+    this._cookieService.set( 'otherUserCookie', JSON.stringify(user));
+    this.router.navigate(['/mainmenu/otherProfile', user.id]);
   }
 
   findType(id: any): number {
